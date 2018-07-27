@@ -1,8 +1,16 @@
 import config, { nodeEnv, logStars } from './config';
 import apiRouter from './api';
-
+import sassMiddleware from 'node-sass-middleware';
+import path from 'path';
 import express from 'express';
+
 const server = express();
+
+server.use(sassMiddleware({
+  src: path.join(__dirname, 'sass'),
+  dest: path.join(__dirname, 'public'),
+  indentedSyntax : true, //allows sass files to compile -- false for scss
+}));
 
 //the magic line for EJS to serve HTML with embedded js
 server.set('view engine', 'ejs');

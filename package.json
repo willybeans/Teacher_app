@@ -12,9 +12,13 @@
   "author": "Will Wedmedyk",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "dotenv": "^6.0.0",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "mongodb": "^3.1.0",
+    "mongoose": "^5.2.6",
     "node-sass-middleware": "^0.11.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1"

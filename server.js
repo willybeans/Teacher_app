@@ -5,9 +5,8 @@ import path from 'path';
 import express from 'express';
 
 const server = express(),
-      cors = require('cors'),
-      bodyParser = require('body-parser'),
-      server = express();
+  cors = require('cors'),
+  bodyParser = require('body-parser'),
 
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());

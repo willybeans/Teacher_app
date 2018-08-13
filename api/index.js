@@ -16,14 +16,14 @@ require("dotenv").config({
 
 mongoose.Promise = global.Promise;
 mongoose.connect(db,
-   { useNewUrlParser: true })
-   .then( (res) => {
-     console.log('Connected to DB');
-     console.log('DB: ' + db);
-   }).catch((err) => {
-     console.log('Connection failed');
-     console.log(err);
-   });
+  { useNewUrlParser: true })
+  .then( (res) => {
+    console.log('Connected to DB');
+    console.log('DB: ' + db);
+  }).catch((err) => {
+    console.log('Connection failed');
+    console.log(err);
+  });
 
 const router = express.Router();
 

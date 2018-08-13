@@ -5,7 +5,6 @@ import config, { nodeEnv } from '../config';
 const mongo = require('mongodb'),
   mongoose = require('mongoose'),
   app = express(),
-  dns = require('dns'),
   router = express.Router(),
   path = require('path');
 

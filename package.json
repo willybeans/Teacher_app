@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Blank template for MERN apps",
   "main": "index.js",
+  "url": "https://github.com/willybeans/Teacher_app.git",
   "scripts": {
     "start": "nodemon --exec babel-node server.js --ignore public/",
     "w-start": "webpack --mode development",

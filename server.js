@@ -16,7 +16,7 @@ server.use(cors());
 require('dotenv').config({
   path: path.resolve(__dirname, '.env'),
 });
-//require('dotenv').load();
+
 const db = (nodeEnv === 'development') ?
   process.env.DEV_URI : process.env.MONGO_URI;
 

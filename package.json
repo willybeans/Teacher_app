@@ -1,7 +1,7 @@
 {
-  "name": "mern-template",
+  "name": "teacher-app",
   "version": "1.0.0",
-  "description": "Blank template for MERN apps",
+  "description": "An application for music teachers",
   "main": "index.js",
   "url": "https://github.com/willybeans/Teacher_app.git",
   "scripts": {

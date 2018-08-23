@@ -13,7 +13,13 @@ class App extends Component {
   getStudents(){
     //this is where the async DB request will go
     this.setState({
-      students: ['jun yada', 'willybeans', 'brian blade', 'chick corea']
+      students: [
+        'jun yada',
+        'willybeans',
+        'brian blade',
+        'chick corea',
+        'brad mehldau'
+      ]
     });
   }
 

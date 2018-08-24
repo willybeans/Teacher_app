@@ -9,7 +9,7 @@ class Students extends Component {
         return (
           <StudentItem key={student} student={student} />
         )
-      })
+      });
     }
 
     return (

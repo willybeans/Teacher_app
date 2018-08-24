@@ -32,10 +32,20 @@ class App extends Component {
 
     return (
       <div className="container-fluid">
-        <div className="banner"><h1> Teacher App </h1></div>
-        <Students
-          students={this.state.students}
-         />
+        <div className="banner text-center"><h1> Teacher App </h1></div>
+        <div className="wrapper row">
+
+          <div className="student_view_left col col-4 text-center">
+            <Students
+              students={this.state.students}
+            />
+          </div>
+
+          <div className="student_view_right col col-8">
+          test
+          </div>
+
+        </div>
       </div>
 
     )

@@ -1,1 +1,23 @@
+$blue: #CAEBF2
+$tan: #EFEFEF
+$red: #FF3B3F
+$grey: #A9A9A9
 
+%student_selectors
+  background: $blue
+%app_body
+  background: $tan
+%caution_buttons
+  background: $red
+%borders
+  border: solid 1px $grey
+
+.wrapper
+  @extend %app_body
+.student_view_left, .student_view_right
+  @extend %borders
+
+.student_view_left
+  @extend %student_selectors
+.student_view_right
+  @extend %app_body

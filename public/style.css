@@ -1,0 +1,8 @@
+.student_view_left {
+  background: #CAEBF2; }
+
+.wrapper, .student_view_right {
+  background: #EFEFEF; }
+
+.student_view_left, .student_view_right {
+  border: solid 1px #A9A9A9; }

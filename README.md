@@ -9,7 +9,7 @@ This app will allow teachers to document their students, the progress and goals 
   ### Contributing: 
   1. Fork on github
   2. Clone your fork locally
-    - `git clone git@github.com:<my-github-name>/opencomparison.git`
+    - `git clone git@github.com:<my-github-name>/Teacher_app.git`
   3. Install packages
    1. npm install
    2. run your local mongodb shell:

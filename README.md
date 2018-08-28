@@ -13,12 +13,10 @@ This app will allow teachers to document their students, the progress and goals 
   3. Install packages: `npm install`
   4. run your local mongodb shell:
        - on mac ` mongo --shell `
-  5. create .env file in root directory:
-	`touch .env`
-   6. open file and insert connection to local mongodb:
+  5. open file and insert connection to local mongodb:
 	` DEV_URI="mongodb://localhost:27017/teacher-app" `
-   7. Always be up to date: `git pull master`
-   8. open two terminals and run the commands: 
+  6. Always be up to date: `git pull master`
+  7. open two terminals and run the commands: 
        - webpack bundle: `npm run dev`
        - nodemon server: `npm start`
   #### Issues

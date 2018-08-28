@@ -1,4 +1,4 @@
-[Contribution guidelines for this project](teacher-app-view.png)
+[Web App UI example](teacher-app-view.png)
 
 Teaching app
 
@@ -46,21 +46,21 @@ Backend:
 
 Restful design to allow all HTTP requests. GET, POST, PUT, DELETE
 Model using mongo/mongoose of: 
-Teacher: 
-	Name: String
-	Instrument: String
-	List of students: array of id’s
-	Sync Students to Teacher
-Student
--Name: string
--Teachers Name: string
--Contact info: Phone # : int
+1. Teacher: 
+	⋅⋅*Name: String
+	⋅⋅*Instrument: String
+	⋅⋅*List of students: array of id’s
+	⋅⋅*Sync Students to Teacher
+2. Student:
+	⋅⋅*Name: string
+	⋅⋅*Teachers Name: string
+	⋅⋅*Contact info: Phone # : int
 		Email: string
--Goals : string
-	-Goal Number
-	- Start Date
-	- Status
-	- Info
+	⋅⋅*Goals : string
+		⋅⋅1. Goal Number
+		⋅⋅2. Start Date
+		⋅⋅3. Status
+		⋅⋅4. Info
 -Todays date maybe? (date of starting lessons): string?
 -Assignments : string
 -list assignments in chronological order by date

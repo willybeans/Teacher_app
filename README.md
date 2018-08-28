@@ -1,7 +1,38 @@
+# Contribution Guidlines: 
+### Goal of project: 
+This app will allow teachers to document their students, the progress and goals of each individual, and gives teachers a way to share with the student or other teachers links to their assignments. 
+#### What problem is being solved?
+  - As a private lesson teacher, almost all of your students forget their assignemt notebook, the asssignment sheet music, or what the assignment was all together. 
+  - There are times when teachers need to get a replacement(substitute) teacher to fill in for a week or two. When this occurs, you have to write out the previous assignments of the students in a separate email. 
+  - Students often forget to read their assignments. This can allow us to email not only the student, but the parent as well as a reminder. 
+  
+  ### Contributing: 
+  1. Fork on github
+  2. Clone your fork locally
+    - `git clone git@github.com:<my-github-name>/opencomparison.git`
+  3. Install packages
+   1. npm install
+   2. run your local mongodb shell:
+       - on mac ` mongo --shell `
+   3. create .env file in root directory:
+	`touch .env`
+   4. open file and insert connection to local mongodb:
+	` DEV_URI="mongodb://localhost:27017/teacher-app" `
+   5. in terminal run: `git pull master`
+   6. open two terminals and run the commands: 
+       - webpack bundle: `npm run dev`
+       - nodemon server: `npm start`
+  #### Issues
+  - Pick an unassigned issue that you think you can accomplish, add a comment that you are attempting to do it.
+  - Feel free to propose issues that aren’t described! Get the okay that it is inline with the project goals before working.
+  
+  ### Project Liscence: 
+
+
+# The Nitty Gritty:
+
 ### [Web App UI example](./UI/web-app-view.png)
 ### [Mobile App UI example](./UI/mobile-app-view.png)
-
-Allow teachers to document their students progress and goals. Gives teachers a way to share with the student links to related music and recordings of recently received assignments. 
 
 ## Front end:
 

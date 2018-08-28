@@ -18,7 +18,7 @@ This app will allow teachers to document their students, the progress and goals 
 	`touch .env`
    4. open file and insert connection to local mongodb:
 	` DEV_URI="mongodb://localhost:27017/teacher-app" `
-   5. in terminal run: `git pull master`
+   5. Always be up to date: `git pull master`
    6. open two terminals and run the commands: 
        - webpack bundle: `npm run dev`
        - nodemon server: `npm start`

@@ -1,12 +1,10 @@
 [Web App UI example](teacher-app-view.png)
 
-Teaching app
-
 Allow teachers to document their students progress and goals. Gives teachers a way to share with the student links to related music and recordings of recently received assignments. 
 
 ## Front end:
 
-## Features:
+### Features:
 1. Login / signup
 2. Display current students
 3. Display “add student” button, opens modal
@@ -27,7 +25,7 @@ Allow teachers to document their students progress and goals. Gives teachers a w
 		Allow a time stamp to be added
 		Allow links for recordings a sheet music
 
-## Backend:
+### Backend:
 - Restful design to allow all HTTP requests. GET, POST, PUT, DELETE
 - Model using mongo/mongoose of: 
 
@@ -40,15 +38,19 @@ Allow teachers to document their students progress and goals. Gives teachers a w
 	* Name: string
 	* Teachers Name: string
 	* Contact info: Phone # : int
-		Email: string
-	* Goals : string
-		1. Goal Number
-		2. Start Date
-		3. Status
-		4. Info
-- Todays date maybe? date of starting lessons: string?
-- Assignments : string
-- list assignments in chronological order by date
+		  * Email: string
+	* Goals:
+		1. Goal Number: int
+		2. Start Date: string
+		3. Status: boolean
+		4. Info: string
+  	* Assignments:
+  	1. Todays Date: string
+  	2. Title: string
+  	3. Composer: string
+  	4. URL-sheet music: string
+  	5. URL-recording: string
+  	6. Notes: string
 
 	Teacher
 Student

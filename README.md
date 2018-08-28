@@ -30,8 +30,8 @@ Allow teachers to document their students progress and goals. Gives teachers a w
 - Model using mongo/mongoose of: 
 
 1. Teacher:
-  * Name: String
-  * Instrument: String
+    * Name: String
+    * Instrument: String
     * List of students: array of id’s
     * Sync Students to Teacher
 2. Student:
@@ -45,12 +45,12 @@ Allow teachers to document their students progress and goals. Gives teachers a w
 		3. Status: boolean
 		4. Info: string
   	* Assignments:
-  	1. Todays Date: string
-  	2. Title: string
-  	3. Composer: string
-  	4. URL-sheet music: string
-  	5. URL-recording: string
-  	6. Notes: string
+  		1. Todays Date: string
+  		2. Title: string
+  		3. Composer: string
+  		4. URL-sheet music: string
+  		5. URL-recording: string
+  		6. Notes: string
 
 	Teacher
 Student

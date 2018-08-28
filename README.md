@@ -6,6 +6,12 @@ This app will allow teachers to document their students, the progress and goals 
   - There are times when teachers need to get a replacement(substitute) teacher to fill in for a week or two. When this occurs, you have to write out the previous assignments of the students in a separate email. 
   - Students often forget to read their assignments. This can allow us to email not only the student, but the parent as well as a reminder. 
   
+  ### What Stack? What is where?
+  - MERN stack, using sass, ejs, webpack, nodemon.
+  - React files are in `./src`
+  - EJS files are in `./views`
+  - Sass in `./sass`
+  
   ### Contributing: 
   1. Fork on github
   2. Clone your fork locally

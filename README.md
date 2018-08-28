@@ -10,16 +10,15 @@ This app will allow teachers to document their students, the progress and goals 
   1. Fork on github
   2. Clone your fork locally
     - `git clone git@github.com:<my-github-name>/Teacher_app.git`
-  3. Install packages
-   1. npm install
-   2. run your local mongodb shell:
+  3. Install packages: `npm install`
+  4. run your local mongodb shell:
        - on mac ` mongo --shell `
-   3. create .env file in root directory:
+  5. create .env file in root directory:
 	`touch .env`
-   4. open file and insert connection to local mongodb:
+   6. open file and insert connection to local mongodb:
 	` DEV_URI="mongodb://localhost:27017/teacher-app" `
-   5. Always be up to date: `git pull master`
-   6. open two terminals and run the commands: 
+   7. Always be up to date: `git pull master`
+   8. open two terminals and run the commands: 
        - webpack bundle: `npm run dev`
        - nodemon server: `npm start`
   #### Issues

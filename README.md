@@ -27,6 +27,7 @@ This app will allow teachers to document their students, the progress and goals 
   - Feel free to propose issues that aren’t described! Get the okay that it is inline with the project goals before working.
   
   ### Project Liscence: 
+  GPL
 
 
 # The Nitty Gritty:

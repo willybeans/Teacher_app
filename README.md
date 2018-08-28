@@ -1,3 +1,4 @@
+[Contribution guidelines for this project](teacher-app-view.png)
 
 Teaching app
 

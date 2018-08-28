@@ -1,5 +1,5 @@
-### [Web App UI example](teacher-app-view.png)
-### [Mobile App UI example](mobile-app-view.png)
+### [Web App UI example](./UI/web-app-view.png)
+### [Mobile App UI example](./UI/mobile-app-view.png)
 
 Allow teachers to document their students progress and goals. Gives teachers a way to share with the student links to related music and recordings of recently received assignments. 
 

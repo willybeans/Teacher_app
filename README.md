@@ -11,6 +11,7 @@ This app will allow teachers to document their students, the progress and goals 
   - React files are in `./src`
   - EJS files are in `./views`
   - Sass in `./sass`
+  - Views(UX/UI) in `./UI`
   
   ### Contributing: 
   1. Fork on github
@@ -28,6 +29,7 @@ This app will allow teachers to document their students, the progress and goals 
   #### Issues
   - Pick an unassigned issue that you think you can accomplish, add a comment that you are attempting to do it.
   - Feel free to propose issues that aren’t described! Get the okay that it is inline with the project goals before working.
+  - Keep in mind that all code should be compliant to the proper es-lint rules laid out in the `eslintrc.js` file
   
   ### Project Liscence: 
   GPL

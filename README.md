@@ -13,7 +13,7 @@ This app will allow teachers to document their students, the progress and goals 
   - Sass in `./sass`
   - Views(UX/UI) in `./UI`
   
-  ### Contributing: 
+  ### Contribting: 
   1. Fork on github
   2. Clone your fork locally
     - `git clone git@github.com:<my-github-name>/Teacher_app.git`
@@ -26,14 +26,20 @@ This app will allow teachers to document their students, the progress and goals 
   7. open two terminals and run the commands: 
        - webpack bundle: `npm run dev`
        - nodemon server: `npm start`
+  ### Your first pull request
+  - Make clear your intention to work on a problem in the issue section by either: 
+   1. Making an issue yourself and leaving a comment of your intent to complete the issue
+   2. Comment on existing issue with your intention to fix it
+  - All code should be compliant to the proper es-lint rules laid out in the `eslintrc.js` file
+  - Use a branch name like fix/short-fix-description or feature/short-feature-description
+  - Please keep all pull requests concise
+  - *Avoid* pushing more than one file at a time (avoid `git add .` unless you are certain it is not adding additional unrelated material)
   #### Issues
   - Pick an unassigned issue that you think you can accomplish, add a comment that you are attempting to do it.
   - Feel free to propose issues that aren’t described! Get the okay that it is inline with the project goals before working.
-  - Keep in mind that all code should be compliant to the proper es-lint rules laid out in the `eslintrc.js` file
   
   ### Project Liscence: 
   GPL
-
 
 # The Nitty Gritty:
 

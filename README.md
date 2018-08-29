@@ -32,8 +32,9 @@ This app will allow teachers to document their students, the progress and goals 
    2. Comment on existing issue with your intention to fix it
   - All code should be compliant to the proper es-lint rules laid out in the `eslintrc.js` file
   - Use a branch name like fix/short-fix-description or feature/short-feature-description
-  - Please keep all pull requests concise
+  - Please keep all push requests concise
   - *Avoid* pushing more than one file at a time (avoid `git add .` unless you are certain it is not adding additional unrelated material)
+  - Push to staging branch so your commit can be tested and confirmed
   #### Issues
   - Pick an unassigned issue that you think you can accomplish, add a comment that you are attempting to do it.
   - Feel free to propose issues that aren’t described! Get the okay that it is inline with the project goals before working.

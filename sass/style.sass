@@ -14,10 +14,13 @@ $grey: #A9A9A9
 
 .wrapper
   @extend %app_body
-.student_view_left, .student_view_right
+
+.student_view_left,
+.student_view_right,
+.studentItem
   @extend %borders
 
-.student_view_left
+.studentItem:hover
   @extend %student_selectors
 .student_view_right
   @extend %app_body

@@ -23,8 +23,9 @@ This app will allow teachers to document their students, the progress and goals 
        - on mac ` mongo --shell `
   5. open file and insert connection to local mongodb:
 	` DEV_URI="mongodb://localhost:27017/teacher-app" `
-  6. Always be up to date: `git pull master`
-  7. open two terminals and run the commands: 
+  6. point your git to the original project for updates: `git remote add upstream https://github.com/willybeans/Teacher_app`
+  7. Always be up to date: `git pull master`
+  8. open two terminals and run the commands: 
        - webpack bundle: `npm run dev`
        - nodemon server: `npm start`
   ### Your first push request

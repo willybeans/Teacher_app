@@ -5,6 +5,7 @@ This app will allow teachers to document their students, the progress and goals 
   - As a private lesson teacher, almost all of your students forget their assignemt notebook, the asssignment sheet music, or what the assignment was all together. 
   - There are times when teachers need to get a replacement(substitute) teacher to fill in for a week or two. When this occurs, you have to write out the previous assignments of the students in a separate email. 
   - Students often forget to read their assignments. This can allow us to email not only the student, but the parent as well as a reminder. 
+  - As a tool for teachers, this can aid in remembering small notes for ourselves to remember certain things for each individual. 
   
   ### What Stack? What is where?
   - MERN stack, using sass, ejs, webpack, nodemon.

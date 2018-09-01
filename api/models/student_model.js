@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Assignments = require('./assignment_model');
 
 const StudentSchema = new Schema({
   name: {
@@ -11,10 +10,10 @@ const StudentSchema = new Schema({
     type: String,
     required: false
   },
-  assignments: {
-    type: [Assignments],
-    required: false
-  }
+  assignments: [{
+    type: Schema.Types.ObjectId,
+    ref: 'AssignmentSchema'
+  }]
 });
 
 

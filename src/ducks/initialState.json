@@ -1,0 +1,52 @@
+{
+  "loggedIn": true,
+  "teacher": {
+    "id": "1",
+    "name": "WillyBeans",
+    "email": "willy@beans.com",
+    "students": {
+      "ChickCorea": {
+        "name": "Chick Corea",
+        "email": "chick@corea.conm",
+        "age": 9,
+        "assignments": {
+          "9-2-2018": {
+            "date": "9-2-2018",
+            "title": "guns for hands",
+            "composer": "21 pilots",
+            "url": "21.pilots.com",
+            "notes": "Work on your drum fills"
+          },
+          "9-9-2018": {
+            "date": "9-9-2018",
+            "title": "Back In Black",
+            "composer": "AC/DC",
+            "url": "ac.dc.com",
+            "notes": "Work on your grip"
+          }
+        }
+      },
+      "Brad Mehldau": {
+        "name": "Brad Mehldau",
+        "email": "brad@mehldau.com",
+        "age": 12,
+        "assignments": {
+          "9-3-2018": {
+            "date": "9-3-2018",
+            "title": "I Am Colossus",
+            "composer": "Meshugga",
+            "url": "meshugga.com",
+            "notes": "Work on reading 12/8"
+          },
+          "9-10-2018": {
+            "date": "9-10-2018",
+            "title": "I Am Colossus",
+            "composer": "Meshugga",
+            "url": "meshugga.com",
+            "notes": "The Fill in the Chorus needs work"
+          }
+        }
+      }
+    }
+  }
+}

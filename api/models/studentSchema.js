@@ -12,16 +12,8 @@ const StudentSchema = new Schema({
   },
   assignments: [{
     type: Schema.Types.ObjectId,
-    ref: 'AssignmentSchema'
+    ref: 'Assignment'
   }]
 });
 
-
-let student_model;
-try {
-  student_model = mongoose.model('StudentSchema');
-} catch (error) {
-  student_model = mongoose.model('StudentSchema', StudentSchema);
-}
-
-module.exports = student_model;
+module.exports = StudentSchema;

@@ -10,16 +10,18 @@ const TeacherSchema = new Schema({
     type: String,
     required: false
   },
-  student_list {
-  	type: []
-  },	
+  students: [{
+    type: Schema.Types.ObjectId,
+    ref: 'StudentSchema'
+  }],
 });
 
 let teacher_model;
+
 try {
-  model = mongoose.model('TeacherSchema');
+  teacher_model = mongoose.model('TeacherSchema');
 } catch (error) {
-  model = mongoose.model('TeacherSchema', UrlSchema);
+  teacher_model = mongoose.model('TeacherSchema', TeacherSchema);
 }
 
 module.exports = teacher_model;

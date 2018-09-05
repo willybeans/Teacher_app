@@ -5,6 +5,7 @@ This app will allow teachers to document their students, the progress and goals 
   - As a private lesson teacher, almost all of your students forget their assignemt notebook, the asssignment sheet music, or what the assignment was all together. 
   - There are times when teachers need to get a replacement(substitute) teacher to fill in for a week or two. When this occurs, you have to write out the previous assignments of the students in a separate email. 
   - Students often forget to read their assignments. This can allow us to email not only the student, but the parent as well as a reminder. 
+  - As a tool for teachers, this can aid in remembering small notes for ourselves to remember certain things for each individual. 
   
   ### What Stack? What is where?
   - MERN stack, using sass, ejs, webpack, nodemon.
@@ -22,18 +23,20 @@ This app will allow teachers to document their students, the progress and goals 
        - on mac ` mongo --shell `
   5. open file and insert connection to local mongodb:
 	` DEV_URI="mongodb://localhost:27017/teacher-app" `
-  6. Always be up to date: `git pull master`
-  7. open two terminals and run the commands: 
+  6. point your git to the original project for updates: `git remote add upstream https://github.com/willybeans/Teacher_app`
+  7. Always be up to date: `git pull master`
+  8. open two terminals and run the commands: 
        - webpack bundle: `npm run dev`
        - nodemon server: `npm start`
-  ### Your first pull request
+  ### Your first push request
   - Make clear your intention to work on a problem in the issue section by either: 
    1. Making an issue yourself and leaving a comment of your intent to complete the issue
    2. Comment on existing issue with your intention to fix it
   - All code should be compliant to the proper es-lint rules laid out in the `eslintrc.js` file
   - Use a branch name like fix/short-fix-description or feature/short-feature-description
-  - Please keep all pull requests concise
+  - Please keep all push requests concise
   - *Avoid* pushing more than one file at a time (avoid `git add .` unless you are certain it is not adding additional unrelated material)
+  - Push to staging branch so your commit can be tested and confirmed
   #### Issues
   - Pick an unassigned issue that you think you can accomplish, add a comment that you are attempting to do it.
   - Feel free to propose issues that aren’t described! Get the okay that it is inline with the project goals before working.

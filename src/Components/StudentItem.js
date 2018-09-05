@@ -4,9 +4,9 @@ class StudentItem extends Component {
   render() {
 
     return (
-      <li className="studentItem">
+      <div className="studentItem row text-center">
         {this.props.student}
-      </li>
+      </div>
     );
   }
 }

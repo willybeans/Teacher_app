@@ -6,6 +6,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      login: false,
+      teacher: '',
       students: [''],
       show_add_student: false
     };

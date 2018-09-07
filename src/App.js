@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import Students from './Components/Students';
 import AddStudents from './Components/AddStudents';
+import { connect } from 'react-redux';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      login: false,
-      teacher: '',
-      students: [''],
       show_add_student: false
     };
     this.getStudents = this.getStudents.bind(this);
@@ -53,7 +51,12 @@ class App extends Component {
       <div className="container-fluid">
 
         <div className="row">
-          <div className="banner text-center col"><h1> You Teach Me </h1></div>
+          <div className="banner text-center col">
+            { this.props.login ?
+              <div style={{color:'red'}}><h1>TeacherAppTitle</h1></div>
+              : <div style={{color:'black'}}><h1>TeacherAppTitle</h1></div>}
+
+          </div>
         </div>
 
         <div className="row">
@@ -64,8 +67,9 @@ class App extends Component {
 
         <div className="wrapper row">
           <div className="student_view_left col col-4 text-center">
+
             <Students
-              students={this.state.students}
+              students={this.props.students}
             />
           </div>
 
@@ -75,15 +79,32 @@ class App extends Component {
                 <AddStudents handleSubmit={this.handleSubmit} />
                 : null
             }
-
           </div>
-
-
         </div>
       </div>
-
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    teacher: state.teacher,
+    login: state.login,
+    students: state.students
+  };
+};
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    login: (login) => {
+      dispatch({
+        type: 'LOGIN',
+        payload: login
+      });
+    }
+  };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+//export default App;

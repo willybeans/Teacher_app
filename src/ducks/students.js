@@ -22,7 +22,7 @@ export function deleteStudent (student){
   };
 }
 
-export function studentReducer (state = initialState, action) {
+export default function reducer (state = initialState.students, action) {
   switch(action.type){
   case C.ADD_STUDENT:
   //this needs to do two things:

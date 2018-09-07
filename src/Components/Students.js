@@ -7,10 +7,10 @@ class Students extends Component {
     if(this.props.students) {
       studentItems = this.props.students.map(student => {
         return (
-          <StudentItem key={student} student={student} />
-        )
+          <StudentItem key={student.studentID} student={student.name} />
+        );
       });
-    }
+    };
 
     return (
       <div className="">

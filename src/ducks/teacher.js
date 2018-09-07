@@ -31,7 +31,7 @@ export function addTeacher(id, name, email){
   };
 }
 
-export function teacherReducer(state = initialState, action){
+export default function reducer(state = initialState.teacher, action){
   switch(action.type){
   case C.ADD_TEACHER:
     break;

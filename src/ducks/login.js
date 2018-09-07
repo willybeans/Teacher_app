@@ -8,7 +8,7 @@ export function login(login){
   };
 }
 
-export function loginReducer(state = initialState, action){
+export default function reducer(state = initialState.login, action){
   switch(action.type){
   case C.LOGIN:
     if (state.login === false) {

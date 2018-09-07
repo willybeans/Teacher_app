@@ -5,22 +5,43 @@
       "name": "",
       "email": ""
   },
-  "students": {
-    "0": {
-      "studentID": "0",
-      "teacherID": "0",
-      "name": "Chick Corea",
-      "email": "chick@corea.conm",
-      "age": 9
-    },
-    "1": {
-      "studentID": "1",
-      "teacherID": "0",
-      "name": "Brad Mehldau",
-      "email": "brad@mehldau.com",
-      "age": 12
-    }
-  },
+  "students": [
+    {
+       "studentID": "0",
+       "teacherID": "0",
+       "name": "Chick Corea",
+       "email": "chick@corea.conm",
+       "age": 9
+     },
+    {
+       "studentID": "1",
+       "teacherID": "0",
+       "name": "Brad Mehldau",
+       "email": "brad@mehldau.com",
+       "age": 12
+     },
+     {
+        "studentID": "2",
+        "teacherID": "0",
+        "name": "Cyber Putty",
+        "email": "cyber@putty.com",
+        "age": 76
+      },
+      {
+         "studentID": "3",
+         "teacherID": "0",
+         "name": "Det tri",
+         "email": "Aarondet@tri.com",
+         "age": 540
+       },
+       {
+          "studentID": "4",
+          "teacherID": "0",
+          "name": "Willy Beans",
+          "email": "willy@beans.com",
+          "age": 3
+        }
+  ],
   "assignments": {
     "0": {
       "studentID": "0",

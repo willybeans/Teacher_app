@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import StudentModel from './models/student_model';
+import { Students } from './models';
 
 const student = Router();
 
@@ -11,7 +11,7 @@ student.post('/', (req, res) => {
   const assignments = req.body.assignments;
   // check for any required attributes and create the student
   if (name) {
-    StudentModel
+    Students
       .create({
         name,
         contact,

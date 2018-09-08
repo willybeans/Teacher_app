@@ -29,11 +29,4 @@ const AssignmentSchema = new Schema({
 
 });
 
-let assignment_model;
-try {
-  assignment_model = mongoose.model('AssignmentSchema');
-} catch (error) {
-  assignment_model = mongoose.model('AssignmentSchema', AssignmentSchema);
-}
-
-module.exports = assignment_model;
+module.exports = AssignmentSchema;

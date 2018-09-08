@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const StudentSchema = require('./student_model');
 
 const TeacherSchema = new Schema({
   name: {
@@ -10,18 +11,7 @@ const TeacherSchema = new Schema({
     type: String,
     required: false
   },
-  students: [{
-    type: Schema.Types.ObjectId,
-    ref: 'StudentSchema'
-  }],
+  students: [StudentSchema],
 });
 
-let teacher_model;
-
-try {
-  teacher_model = mongoose.model('TeacherSchema');
-} catch (error) {
-  teacher_model = mongoose.model('TeacherSchema', TeacherSchema);
-}
-
-module.exports = teacher_model;
+module.exports = TeacherSchema;

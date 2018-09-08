@@ -22,7 +22,7 @@ export const deleteAssignment = (assignment) => {
   };
 };
 
-export default function reducer(state = initialState, action){
+export default function reducer(state = initialState.assignments, action){
   switch(action.type){
   case C.ADD_ASSIGNMENT:
     return {

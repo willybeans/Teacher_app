@@ -52,10 +52,7 @@ class App extends Component {
 
         <div className="row">
           <div className="banner text-center col">
-            { this.props.login ?
-              <div style={{color:'red'}}><h1>TeacherAppTitle</h1></div>
-              : <div style={{color:'black'}}><h1>TeacherAppTitle</h1></div>}
-
+            <h1>TeacherAppTitle</h1>
           </div>
         </div>
 
@@ -89,7 +86,8 @@ const mapStateToProps = (state) => {
   return {
     teacher: state.teacher,
     login: state.login,
-    students: state.students
+    students: state.students,
+    assignments: state.assigments
   };
 };
 

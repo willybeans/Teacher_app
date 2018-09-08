@@ -42,8 +42,8 @@
           "age": 3
         }
   ],
-  "assignments": {
-    "0": {
+  "assignments": [
+     {
       "studentID": "0",
       "date": "9-2-2018",
       "title": "guns for hands",
@@ -51,7 +51,7 @@
       "url": "21.pilots.com",
       "notes": "Work on your drum fills"
     },
-    "1": {
+     {
       "studentID": "0",
       "date": "9-9-2018",
       "title": "Back In Black",
@@ -59,7 +59,7 @@
       "url": "ac.dc.com",
       "notes": "Work on your grip"
     },
-    "2": {
+     {
       "studentID": "1",
       "date": "9-3-2018",
       "title": "I Am Colossus",
@@ -67,7 +67,7 @@
       "url": "meshugga.com",
       "notes": "Work on reading 12/8"
     },
-    "3": {
+     {
       "studentID": "1",
       "date": "9-10-2018",
       "title": "I Am Colossus",
@@ -75,5 +75,7 @@
       "url": "meshugga.com",
       "notes": "The Fill in the Chorus needs work"
     }
-  }
+  ]
+
+
 }

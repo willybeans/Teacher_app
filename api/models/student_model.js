@@ -7,8 +7,16 @@ const StudentSchema = new Schema({
     type: String,
     required: true
   },
-  contact: {
+  email: {
     type: String,
+    required: false
+  },
+  phone: {
+    type: String,
+    required: false
+  },
+  age: {
+    type: Number,
     required: false
   },
   assignments: [AssignmentSchema]

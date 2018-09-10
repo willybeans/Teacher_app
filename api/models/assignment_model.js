@@ -24,7 +24,7 @@ const AssignmentSchema = new Schema({
   },
   notes: {
     type: String,
-    required: true
+    required: false
   }
 
 });

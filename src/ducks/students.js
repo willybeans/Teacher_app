@@ -66,7 +66,7 @@ export function editStudent(student){
 export function deleteStudent (student){
   return dispatch => {
     return fetch('/api/student/delete', {
-      method: 'GET',
+      method: 'DELETE',
       credentials: 'same-origin',
       headers: {
         'content-type': 'application/json'

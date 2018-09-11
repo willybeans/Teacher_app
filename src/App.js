@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Students from './Components/Students';
 import AddStudents from './Components/AddStudents';
 import { connect } from 'react-redux';
-import { addStudent } from './ducks/students';
+import { addStudent, deleteStudent } from './ducks/students';
 
 class App extends Component {
   constructor(props) {
@@ -32,6 +32,7 @@ class App extends Component {
   componentDidMount() {
     //this is where we will put async requests
     this.getStudents();
+    this.props.deleteStudent({studentID: '0'});
   }
 
   handleShowAddStudent() {
@@ -98,6 +99,10 @@ const mapDispatchToProps = (dispatch) => {
     addStudent: (student) => {
       console.log("dispatch before send: " + student);
       dispatch(addStudent(student));
+    },
+    deleteStudent: (student) => {
+      console.log("delete fired from app");
+      dispatch(deleteStudent(student));
     }
   };
 };

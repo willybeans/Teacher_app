@@ -1,6 +1,5 @@
 import C from './constants';
 import initialState from './initialState';
-const LOGIN = "/api/login/";
 
 export function login(login){
   return dispatch => {
@@ -9,6 +8,7 @@ export function login(login){
       credentials: 'same-origin',
       body: JSON.stringify({
         email: login.email,
+        password: login.password
       }),
       headers: {
         'content-type': 'application/json'
@@ -17,7 +17,7 @@ export function login(login){
       .then(res => res.json())
       .then(data => {
         dispatch({
-          type: LOGIN,
+          type: C.LOGIN,
           payload: data
         });
       });
@@ -26,7 +26,7 @@ export function login(login){
 
 export default function reducer(state = initialState.login, action){
   switch(action.type){
-  case LOGIN:
+  case C.LOGIN:
     if (state.login === false) {
       return {...state,
         login: true

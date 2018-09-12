@@ -5,6 +5,7 @@ class LoginRegister extends Component {
     super(props);
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleRegister = this.handleRegister.bind(this);
   }
 
   handleRegister(event) {
@@ -14,6 +15,7 @@ class LoginRegister extends Component {
       instrument: this.state.instrument,
       email: this.state.regEmail
     };
+    this.props.addTeacher(body);
   }
 
   handleChange(event) {

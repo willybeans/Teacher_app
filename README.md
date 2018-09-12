@@ -98,19 +98,14 @@ This app will allow teachers to document their students, the progress and goals 
   		4. URL-sheet music: string
   		5. URL-recording: string
   		6. Notes: string
+##DB QUERIES:
 
-	Teacher
-Student
-Info
-Instrument (array of string)?
-Assignment
-Assignment Number
-Instrument
-Start Date
-Target Date
-Finish Date
-Status
-Info
-Student
-Instrument
-Assignment
+The students are part of teachers as a subdoc
+  - when we want to add a student
+    - open the teachers document save a new student to the teacher.
+to add an assignment to the student pass the assignment the teacher student object and it creates a ref in its assignments array. 
+this way the student object knows it is linked to the correct assignments in the assignments collection.
+so just to clarify im reading this right @CyberPutty everything is going thtrough the teacher?
+ok so when you want to update the students assignments you create an assignment directly that way it goes into a collection and does not live with the teacher document. when you do that you need to pass the assignment object to the student reference array which basically adds a pointer to the parent that says I live in the assignments field and you can now use the populate method to request and filter out what you want to get back in the assignments field of your students.
+the whole point of reference isn't necessarily to make the setup easier, it's more that you can use advanced methods to get back more specific data and so that it loads efficiently. it's more powerful basically and you can load what you need.
+

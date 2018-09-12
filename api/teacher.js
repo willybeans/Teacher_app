@@ -22,12 +22,12 @@ router.post("/", (req, res) => {
     email: req.body.email
   };
   Teacher.create(newTeacher)
-    .then( data =>
-      res.status(400).json({
+    .then(data => {
+      res.status(200).json({
         message: 'teacher created',
         teacher: data
       })
-    )
+    })
     .catch(err => console.log(err));
 });
 

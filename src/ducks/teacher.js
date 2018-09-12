@@ -28,11 +28,7 @@ export function addTeacher(teacher){
     return fetch(ADD_TEACHER, {
       method: 'POST',
       credentials: 'same-origin',
-      body: JSON.stringify({
-        name: teacher.name,
-        instrument: teacher.instrument,
-        email: teacher.email,
-      }),
+      body: JSON.stringify(teacher),
       headers: {
         'content-type': 'application/json'
       }
@@ -41,7 +37,10 @@ export function addTeacher(teacher){
       .then(data => {
         dispatch({
           type: ADD_TEACHER,
-          payload: data
+          payload: data.teacher
+        });
+        dispatch({
+          type: C.LOGIN
         });
       });
   };
@@ -49,17 +48,14 @@ export function addTeacher(teacher){
 
 export default function reducer(state = initialState.teacher, action){
   switch(action.type){
-  case C.ADD_TEACHER:
+  case ADD_TEACHER:
     return {
       ...state,
-      teacher: {
-        id: action.payload.teacher._id,
-        name: action.payload.teacher.name,
-        instrument: action.payload.teacher.instrument,
-        email: action.payload.teacher.email
-      }
+      id: action.payload._id,
+      name: action.payload.name,
+      instrument: action.payload.instrument,
+      email: action.payload.email
     };
-    break;
   case C.EDIT_TEACHER_NAME:
     return {
       ...state,

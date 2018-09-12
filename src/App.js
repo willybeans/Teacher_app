@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import Students from './Components/Students';
 import AddStudents from './Components/AddStudents';
+import LoginRegister from './Components/LoginRegister';
 import { connect } from 'react-redux';
 import { addStudent, deleteStudent } from './ducks/students';
+import { addTeacher } from './ducks/teacher';
 
 class App extends Component {
   constructor(props) {
@@ -49,10 +51,11 @@ class App extends Component {
   }
 
   render() {
-
+    if (!this.props.login) {
+      return <LoginRegister addTeacher={this.props.addTeacher} />
+    }
     return (
       <div className="container-fluid">
-
         <div className="row">
           <div className="banner text-center col">
             <h1>TeacherAppTitle</h1>
@@ -103,6 +106,10 @@ const mapDispatchToProps = (dispatch) => {
     deleteStudent: (student) => {
       console.log("delete fired from app");
       dispatch(deleteStudent(student));
+    },
+    addTeacher: (teacher) => {
+      console.log("Add teacher: " + teacher);
+      dispatch(addTeacher(teacher));
     }
   };
 };

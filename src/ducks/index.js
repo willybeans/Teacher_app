@@ -1,15 +1,29 @@
-import { createStore, combineReducers } from 'redux';
-import C from './constants';
-import initialState from './initialState.json';
+import thunkMiddleware from 'redux-thunk';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import logger from 'redux-logger';
 
-store.dispatch(loginAction("runlogin"));
+import teacher from './teacher';
+import students from './students';
+import * as studentActions from './students';
+import assignments from './assignments';
+import login from './login';
+import { login as loginAction } from './login';
 
-store.dispatch(studentActions.addStudent({
-  'studentID': '2',
-  'teacherID': '0',
-  'name': 'Wily beans',
-  'email': 'cbeans.com',
-  'age': 55
-}));
+const rootReducer = combineReducers({
+  login,
+  students,
+  teacher,
+  assignments
+});
 
-store.dispatch(loginAction("runlogin"));
+export default rootReducer;
+
+export function configureStore() {
+  const store = createStore(
+    rootReducer,
+    {},
+    applyMiddleware(thunkMiddleware, logger)
+  );
+  //add auth check
+  return store;
+}

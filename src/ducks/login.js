@@ -2,9 +2,25 @@ import C from './constants';
 import initialState from './initialState';
 
 export function login(login){
-  return {
-    type: C.LOGIN,
-    login: login
+  return dispatch => {
+    return fetch('/api/login', {
+      method: 'GET',
+      credentials: 'same-origin',
+      body: JSON.stringify({
+        email: login.email,
+        password: login.password
+      }),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        dispatch({
+          type: C.LOGIN,
+          payload: data
+        });
+      });
   };
 }
 

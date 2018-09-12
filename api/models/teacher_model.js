@@ -7,11 +7,15 @@ const TeacherSchema = new Schema({
     type: String,
     required: true
   },
-  Instrument: {
+  instrument: {
     type: String,
     required: false
   },
-  students: [StudentSchema],
+  email: {
+    type: String,
+    required: true
+  },
+  students: [StudentSchema]
 });
 
 module.exports = TeacherSchema;

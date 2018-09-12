@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const AssignmentSchema = require('./assignment_model');
+//const AssignmentSchema = require('./assignment_model');
+const index = require('./index');
 
 const StudentSchema = new Schema({
   name: {
@@ -19,7 +20,14 @@ const StudentSchema = new Schema({
     type: Number,
     required: false
   },
-  assignments: [AssignmentSchema]
+  goals: [{
+    type: String,
+    required: false
+  }],
+  assignments: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: index.Assignments
+  }]
 });
 
 module.exports = StudentSchema;

@@ -1,8 +1,7 @@
 import express from 'express';
 import studentRouter from './student';
-import loginRouter from './login';
 import teacherRouter from './teacher';
-import assignmentsRouter from './assignments';
+import assignmentRouter from './assignment';
 
 const router = express.Router();
 

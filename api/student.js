@@ -1,40 +1,30 @@
-import { Router } from 'express';
-import { Students } from './models';
-// const StudentSchema = require('./models/student_model');
-// const mongoose = require('mongoose');
-// const Students = mongoose.model('Students', StudentSchema);
+var express = require("express");
+var router = express.Router();
+import models from "./models/models";
+const Teacher = models.Teacher;
+import mongoose from "mongoose";
 
-const student = Router();
-
-student.post('/add', (req, res) => {
-  // grab student data for our post request
-  // anything not in the body will be undefined
-  console.log("post request: " + JSON.stringify(req.body));
-  const name = req.body.name;
-  const contact = req.body.email;
-  const assignments = req.body.assignments;
+router.post("/", (req, res) => {
+  const teacherId = req.body.teacherId;
   // check for any required attributes and create the student
-  if (name) {
-    var promise = Students.create({
-      name: name,
-      contact: contact,
-      assignments: assignments
-    });
-    promise.then(student => {
-      return res.status(200).json({
-        message: 'Student successfully created!',
-        data: student
+  if (teacherId) {
+    Teacher.findById(teacherId, function(err, teacher) {
+      if (err) res.json(err);
+      
+      const newStudent = {
+        name: req.body.name,
+        email: req.body.email,
+        phone: req.body.phone,
+        age: req.body.age,
+        goals: req.body.goals
+      };
+      // may also be addtoset? will need to test
+      teacher.students.push(newStudent);
+      teacher.save(err => {
+        if (err) res.json(err);
+
+        res.json(teacher);
       });
-    })
-      .catch(err => {
-        console.log(err);
-        return res.status(400).json({
-          message: 'Student was not created. Error: ' + err.toString()
-        });
-      });
-  } else {
-    return res.status(400).json({
-      message: 'A name must be provided when creating Students'
     });
   }
 });
@@ -46,4 +36,4 @@ student.get('/delete', (req, res) => {
   });
 });
 
-export default student;
+export default router;

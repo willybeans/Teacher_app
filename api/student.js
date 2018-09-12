@@ -29,4 +29,11 @@ router.post("/", (req, res) => {
   }
 });
 
+student.get('/delete', (req, res) => {
+  console.log("delete route: " + req.body);
+  return res.status(400).json({
+    message: 'delete fired'
+  });
+});
+
 export default router;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Students from './Components/Students';
 import AddStudents from './Components/AddStudents';
 import { connect } from 'react-redux';
+import { addStudent, deleteStudent } from './ducks/students';
 
 class App extends Component {
   constructor(props) {
@@ -11,7 +12,8 @@ class App extends Component {
     };
     this.getStudents = this.getStudents.bind(this);
     this.handleShowAddStudent = this.handleShowAddStudent.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    //this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleAddStudent = this.handleAddStudent.bind(this);
   }
 
   getStudents(){
@@ -30,6 +32,7 @@ class App extends Component {
   componentDidMount() {
     //this is where we will put async requests
     this.getStudents();
+    this.props.deleteStudent({studentID: '0'});
   }
 
   handleShowAddStudent() {
@@ -40,8 +43,8 @@ class App extends Component {
     }
   }
 
-  handleSubmit(e){
-    e.preventDefault();
+  handleAddStudent(student) {
+    this.props.addStudent(student);
     this.handleShowAddStudent();
   }
 
@@ -73,7 +76,7 @@ class App extends Component {
           <div className="student_view_right col col-8">
             {
               this.state.show_add_student ?
-                <AddStudents handleSubmit={this.handleSubmit} />
+                <AddStudents addStudent={this.handleAddStudent} />
                 : null
             }
           </div>
@@ -93,11 +96,13 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    login: (login) => {
-      dispatch({
-        type: 'LOGIN',
-        payload: login
-      });
+    addStudent: (student) => {
+      console.log("dispatch before send: " + student);
+      dispatch(addStudent(student));
+    },
+    deleteStudent: (student) => {
+      console.log("delete fired from app");
+      dispatch(deleteStudent(student));
     }
   };
 };

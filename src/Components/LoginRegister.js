@@ -3,6 +3,17 @@ import React, { Component } from "React";
 class LoginRegister extends Component {
   constructor(props) {
     super(props);
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleRegister(event) {
+    event.preventDefault();
+    const body = {
+      name: this.state.teacherName,
+      instrument: this.state.instrument,
+      email: this.state.regEmail
+    };
   }
 
   handleChange(event) {
@@ -45,15 +56,15 @@ class LoginRegister extends Component {
             <form onSubmit={this.handleRegister}>
               <div className="form-group">
                 <label htmlFor="nameInput">Name</label>
-                <input type="text" className="form-control" id="nameInput" placeholder="Teacher name" />
+                <input name="teacherName" type="text" className="form-control" id="nameInput" placeholder="Teacher name" onChange={this.handleChange} />
               </div>
               <div className="form-group">
                 <label htmlFor="instInput">Instrument</label>
-                <input type="text" className="form-control" id="instInput" placeholder="Teacher name" />
+                <input name="instrument" type="text" className="form-control" id="instInput" placeholder="Teacher name" onChange={this.handleChange} />
               </div>
               <div className="form-group">
                 <label htmlFor="emailInput">Email address</label>
-                <input type="email" className="form-control" id="emailInput" placeholder="Email goes here" />
+                <input name="regEmail" type="email" className="form-control" id="emailInput" placeholder="Email goes here" onChange={this.handleChange} />
               </div>
               <button type="submit" className="btn btn-primary">Register</button>
             </form>

@@ -1,15 +1,11 @@
 import express from 'express';
-import { MongoClient } from 'mongodb';
-import config, { nodeEnv } from '../config';
+import studentRouter from './student';
+import teacherRouter from './teacher';
+import assignmentRouter from './assignment';
+const router = express.Router();
 
-const mongo = require('mongodb'),
-  mongoose = require('mongoose'),
-  app = express(),
-  router = express.Router(),
-  path = require('path');
-
-router.get('/', (req,res) => {
-  res.send( {data: []} );
-});
-
+// CRUD routes
+router.use('/student', studentRouter);
+router.use('/teacher', teacherRouter);
+router.use('/assignment',assignmentRouter);
 export default router;

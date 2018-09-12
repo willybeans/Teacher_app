@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Students from './Components/Students';
 import AddStudents from './Components/AddStudents';
+import LoginRegister from './Components/LoginRegister';
 import { connect } from 'react-redux';
 import { addStudent, deleteStudent } from './ducks/students';
 
@@ -49,10 +50,11 @@ class App extends Component {
   }
 
   render() {
-
+    if (!this.props.login) {
+      return <LoginRegister />
+    }
     return (
       <div className="container-fluid">
-
         <div className="row">
           <div className="banner text-center col">
             <h1>TeacherAppTitle</h1>

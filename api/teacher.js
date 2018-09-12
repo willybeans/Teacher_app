@@ -21,7 +21,14 @@ router.post("/", (req, res) => {
     instrument: req.body.instrument,
     email: req.body.email
   };
-  Teacher.create(newTeacher);
+  Teacher.create(newTeacher)
+    .then( data =>
+      res.status(400).json({
+        message: 'teacher created',
+        teacher: data
+      })
+    )
+    .catch(err => console.log(err));
 });
 
 router.put('/', (req,res) => {

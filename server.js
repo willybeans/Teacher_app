@@ -27,7 +27,7 @@ server.use(sassMiddleware({
 }));
 
 mongoose.Promise = global.Promise;
-mongoose.connect(db,
+mongoose.connect(encodeURI(db),
   { useNewUrlParser: true })
   .then( (res) => {
     console.log('Connected to DB');

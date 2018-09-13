@@ -2,6 +2,7 @@ import C from './constants';
 import initialState from './initialState';
 const LOGIN = './api/login/';
 import { loginTeacher } from './teacher';
+import { loginStudents } from './students';
 
 export function loginUser(login){
   let loginEmail = LOGIN + login.email;
@@ -21,6 +22,7 @@ export function loginUser(login){
           payload: data.message
         });
         dispatch(loginTeacher(data.body));
+        dispatch(loginStudents(data.body.students));
       });
   };
 }

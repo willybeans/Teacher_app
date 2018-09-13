@@ -58,6 +58,15 @@ export function editStudent(student){
   };
 }
 
+export function loginStudents(students) {
+  return dispatch => {
+    dispatch({
+      type: C.LOGIN_STUDENTS,
+      payload: students
+    });
+  };
+}
+
 // export function deleteStudent (student){
 //   return dispatch => {
 //     return fetch('/api/deleteStudent', {
@@ -104,6 +113,8 @@ export function deleteStudent (student){
 }
 
 export default function reducer (state = initialState.students, action) {
+  console.log('reducer in login payload: ' + action.payload);
+
   switch(action.type){
   case ADD_STUDENT:
     return {
@@ -113,6 +124,12 @@ export default function reducer (state = initialState.students, action) {
         action.payload.data
       ]
     }
+    break;
+  case C.LOGIN_STUDENTS:
+    return [
+      ...state,
+      ...action.payload
+    ]
     break;
   case C.EDIT_STUDENT:
     return null;

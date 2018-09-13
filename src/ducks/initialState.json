@@ -7,35 +7,35 @@
   },
   "students": [
     {
-       "studentID": "0",
+       "_id": "0",
        "teacherID": "0",
        "name": "Chick Corea",
        "email": "chick@corea.conm",
        "age": 9
      },
     {
-       "studentID": "1",
+       "_id": "1",
        "teacherID": "0",
        "name": "Brad Mehldau",
        "email": "brad@mehldau.com",
        "age": 12
      },
      {
-        "studentID": "2",
+        "_id": "2",
         "teacherID": "0",
         "name": "Cyber Putty",
         "email": "cyber@putty.com",
         "age": 76
       },
       {
-         "studentID": "3",
+         "_id": "3",
          "teacherID": "0",
          "name": "Det tri",
          "email": "Aarondet@tri.com",
          "age": 540
        },
        {
-          "studentID": "4",
+          "_id": "4",
           "teacherID": "0",
           "name": "Willy Beans",
           "email": "willy@beans.com",
@@ -44,7 +44,7 @@
   ],
   "assignments": [
      {
-      "studentID": "0",
+      "_id": "0",
       "date": "9-2-2018",
       "title": "guns for hands",
       "composer": "21 pilots",
@@ -52,7 +52,7 @@
       "notes": "Work on your drum fills"
     },
      {
-      "studentID": "0",
+      "_id": "0",
       "date": "9-9-2018",
       "title": "Back In Black",
       "composer": "AC/DC",
@@ -60,7 +60,7 @@
       "notes": "Work on your grip"
     },
      {
-      "studentID": "1",
+      "_id": "1",
       "date": "9-3-2018",
       "title": "I Am Colossus",
       "composer": "Meshugga",
@@ -68,7 +68,7 @@
       "notes": "Work on reading 12/8"
     },
      {
-      "studentID": "1",
+      "_id": "1",
       "date": "9-10-2018",
       "title": "I Am Colossus",
       "composer": "Meshugga",

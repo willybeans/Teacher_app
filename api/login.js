@@ -6,6 +6,7 @@ const Teacher = models.Teacher;
 router.get('/:email', function(req, res) {
   const email = req.params.email;
   Teacher.findOne({email: email})
+    .populate({ path: 'students'})
     .then(data => {
       return res.status(200).json({
         message: 'login fired',

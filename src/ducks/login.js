@@ -1,43 +1,39 @@
 import C from './constants';
 import initialState from './initialState';
+const LOGIN = './api/login/';
+import { loginTeacher } from './teacher';
 
-export function login(login){
+export function loginUser(login){
+  let loginEmail = LOGIN + login.email;
   return dispatch => {
-    return fetch('/api/login', {
+    return fetch(LOGIN + encodeURIComponent(login.email), {
       method: 'GET',
       credentials: 'same-origin',
-      body: JSON.stringify({
-        email: login.email,
-        password: login.password
-      }),
       headers: {
-        'content-type': 'application/json'
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
       }
     })
       .then(res => res.json())
       .then(data => {
         dispatch({
-          type: C.LOGIN,
-          payload: data
+          type: LOGIN,
+          payload: data.message
         });
+        dispatch(loginTeacher(data.body));
       });
   };
 }
 
 export default function reducer(state = initialState.login, action){
+  const message = action.payload;
   switch(action.type){
-  case C.LOGIN:
-    if (state.login === false) {
-      return {...state,
-        login: true
-      }
+  case LOGIN:
+    if (state === false && message === 'login fired') {
+      return true;
     } else {
-      return {
-        ...state,
-        login: false
-      };
+      return false;
     }
-
   default:
     return state;
   }

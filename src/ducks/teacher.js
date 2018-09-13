@@ -46,6 +46,15 @@ export function addTeacher(teacher){
   };
 }
 
+export function loginTeacher(teacher){
+  return dispatch => {
+    dispatch({
+      type: ADD_TEACHER,
+      payload: teacher
+    });
+  };
+}
+
 export default function reducer(state = initialState.teacher, action){
   switch(action.type){
   case ADD_TEACHER:

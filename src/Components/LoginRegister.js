@@ -6,6 +6,15 @@ class LoginRegister extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
+  }
+
+  handleLogin(event) {
+    event.preventDefault();
+    const body = {
+      email: this.state.loginEmail
+    }
+    this.props.loginUser(body);
   }
 
   handleRegister(event) {
@@ -17,6 +26,15 @@ class LoginRegister extends Component {
     };
     this.props.addTeacher(body);
   }
+
+  // handleChange = (propName) => (event) => {
+  //   const {student} = this.state;
+  //   const newStudent = {
+  //     ...student,
+  //     [propName]: event.target.value
+  //   };
+  //   this.setState({student: newStudent});
+  // }
 
   handleChange(event) {
     const target = event.target;

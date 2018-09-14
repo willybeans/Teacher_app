@@ -100,19 +100,15 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     loginUser: (login) => {
-      console.log('dispatch login: ' + JSON.stringify(login));
       dispatch(loginUser(login));
     },
     addStudent: (student) => {
-      console.log("dispatch before send: " + student);
       dispatch(addStudent(student));
     },
     deleteStudent: (student) => {
-      console.log("delete fired from app");
       dispatch(deleteStudent(student));
     },
     addTeacher: (teacher) => {
-      console.log("Add teacher: " + teacher);
       dispatch(addTeacher(teacher));
     }
   };

@@ -1,12 +1,16 @@
 import React, { Component } from "React";
+import Login from './login';
+import Register from './Register';
 
 class LoginRegister extends Component {
   constructor(props) {
     super(props);
-
+    this.state = {
+      showRegister: false
+    };
+    this.handleOnClick = this.handleOnClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
-    this.handleLogin = this.handleLogin.bind(this);
   }
 
   handleLogin(event) {
@@ -25,6 +29,20 @@ class LoginRegister extends Component {
       email: this.state.regEmail
     };
     this.props.addTeacher(body);
+  }
+
+  handleOnClick(event){
+    event.preventDefault();
+    if(this.state.showRegister === false){
+      this.setState({
+        showRegister: true
+      });
+    } else {
+      this.setState({
+        showRegister: false
+      });
+    }
+
   }
 
   // handleChange = (propName) => (event) => {
@@ -51,46 +69,23 @@ class LoginRegister extends Component {
       <div className="container-fluid">
         <div className="row">
           <div className="banner text-center col">
-            <h2>Please login or register.</h2>
+            { (this.state.showRegister === false) ?
+              <div> Please Login or <a href="" onClick={this.handleOnClick}> Register </a>
+              </div>
+              :
+              <div><a href="" onClick={this.handleOnClick}> Return to Login </a>
+              </div>
+            }
           </div>
         </div>
 
         <div className="row">
-          <div className="col-6">
-            <div className="banner text-center">
-              <h3>Login</h3>
-            </div>
-            <form onSubmit={this.handleLogin}>
-              <div className="form-group">
-                <label htmlFor="loginEmailInput">Email address</label>
-                <input name="loginEmail" type="email" className="form-control" id="loginEmailInput" placeholder="Email goes here" onChange={this.handleChange} />
-              </div>
-              <button type="submit" className="btn btn-primary">Login</button>
-            </form>
-          </div>
-
-          <div className="col-6">
-            <div className="banner text-center">
-              <h3>Register</h3>
-            </div>
-            <form onSubmit={this.handleRegister}>
-              <div className="form-group">
-                <label htmlFor="nameInput">Name</label>
-                <input name="teacherName" type="text" className="form-control" id="nameInput" placeholder="Teacher name" onChange={this.handleChange} />
-              </div>
-              <div className="form-group">
-                <label htmlFor="instInput">Instrument</label>
-                <input name="instrument" type="text" className="form-control" id="instInput" placeholder="Teacher name" onChange={this.handleChange} />
-              </div>
-              <div className="form-group">
-                <label htmlFor="emailInput">Email address</label>
-                <input name="regEmail" type="email" className="form-control" id="emailInput" placeholder="Email goes here" onChange={this.handleChange} />
-              </div>
-              <button type="submit" className="btn btn-primary">Register</button>
-            </form>
+          <div className="col">
+            { this.state.showRegister === false ?
+              <Login loginUser={this.props.loginUser} />
+              : <Register addTeacher={this.props.addTeacher} />}
           </div>
         </div>
-
       </div>
     );
   }

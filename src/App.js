@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Students from './Components/Students';
+import StudentDisplay from './Components/StudentDisplay';
 import AddStudents from './Components/AddStudents';
 import LoginRegister from './Components/LoginRegister';
 import { connect } from 'react-redux';
@@ -11,12 +12,14 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      show_add_student: false
+      show_add_student: false,
+      studentDisplay: []
     };
     this.getStudents = this.getStudents.bind(this);
     this.handleShowAddStudent = this.handleShowAddStudent.bind(this);
     //this.handleSubmit = this.handleSubmit.bind(this);
     this.handleAddStudent = this.handleAddStudent.bind(this);
+    this.displayStudent = this.displayStudent.bind(this);
   }
 
   getStudents(){
@@ -35,6 +38,18 @@ class App extends Component {
   componentDidMount() {
     //this is where we will put async requests
     this.getStudents();
+  }
+
+  displayStudent(id){
+    let student = this.props.students.filter(x => {
+      if(x._id === id){
+        return x;
+      }
+    });
+    console.log("student0 " + Object.keys(student[0]));
+    this.setState({
+      studentDisplay: student[0]
+    });
   }
 
   handleShowAddStudent() {
@@ -73,6 +88,7 @@ class App extends Component {
 
             <Students
               students={this.props.students}
+              displayStudent={this.displayStudent}
             />
           </div>
 
@@ -82,6 +98,7 @@ class App extends Component {
                 <AddStudents addStudent={this.handleAddStudent} />
                 : null
             }
+            <StudentDisplay student={this.state.studentDisplay} />
           </div>
         </div>
       </div>

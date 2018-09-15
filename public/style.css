@@ -1,7 +1,7 @@
 .studentItem:hover {
   background: #CAEBF2; }
 
-.wrapper, .student_view_right {
+.wrapper, body, .student_view_right {
   background: #EFEFEF; }
 
 .student_view_left, .student_view_right,

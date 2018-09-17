@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import StudentItem from './StudentItem'
 
 class Students extends Component {
-  displayStudent(id){
-    this.props.displayStudent(id);
+  displayStudentOnClick(id){
+    this.props.displayStudentOnClick(id);
   }
 
   render () {
@@ -14,7 +14,7 @@ class Students extends Component {
           <StudentItem
             key={student._id}
             student={student}
-            displayStudent={this.displayStudent.bind(this)}
+            displayStudentOnClick={this.displayStudentOnClick.bind(this)}
           />
         );
       });

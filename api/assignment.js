@@ -33,20 +33,24 @@ router.post("/", function(req, res) {
       assignment.save();
       student.assignments.push(assignment);
       teacher.save();
+      return res.status(200).json({
+        message: 'register fired',
+        assignment: assignment
+      });
     });
   }
 });
 
 router.put('/', (req,res) => {
   //const assignmentID = req.body.assignmentID;
-  return res.status(400).json({
+  return res.status(200).json({
     message: 'update fired'
   });
 });
 
 router.delete('/', (req, res) => {
   //const assignmentID = req.body.assignmentID;
-  return res.status(400).json({
+  return res.status(200).json({
     message: 'delete fired',
   });
 });

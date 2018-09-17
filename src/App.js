@@ -14,7 +14,7 @@ class App extends Component {
     this.state = {
       show_add_student: false,
       show_current_student: false,
-      currentStudent: ''
+      clickedStudent: ''
     };
     this.getStudents = this.getStudents.bind(this);
     this.handleShowAddStudent = this.handleShowAddStudent.bind(this);
@@ -42,10 +42,16 @@ class App extends Component {
   }
 
   displayStudentOnClick(id){
+    // let index = this.props.students.findIndex( x => {
+    //   if(x._id === id){
+    //     return x;
+    //   }
+    // });
+
     this.setState({
       show_add_student: false,
       show_current_student: true,
-      currentStudent: id
+      clickedStudent: id
     });
   }
 
@@ -100,7 +106,8 @@ class App extends Component {
             }
             {
               this.state.show_current_student ?
-                <StudentDisplay allStudents={this.props.students} student={this.state.currentStudent} />
+                <StudentDisplay students={this.props.students}
+                  clickedStudent={this.state.clickedStudent} />
                 : null
             }
           </div>

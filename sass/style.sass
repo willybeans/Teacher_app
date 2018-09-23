@@ -9,6 +9,8 @@ $grey: #A9A9A9
   background: $tan
 %caution_buttons
   background: $red
+%menu_headers
+  background: $grey
 %borders
   border: solid 1px $grey
 
@@ -26,3 +28,7 @@ body
   @extend %student_selectors
 .student_view_right
   @extend %app_body
+
+.studentDisplayNav, .studentDisplayNavProfile, .studentDisplayNavAssignments
+  @extend %borders
+  @extend %menu_headers

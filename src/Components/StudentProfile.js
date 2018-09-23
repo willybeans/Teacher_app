@@ -5,21 +5,31 @@ class StudentProfile extends Component {
   render() {
 
     return (
-      <div className="StudentProfile row text-center">
+      <div className="StudentProfile">
         <div className="row">
-        Name: {this.props.name}
+          <div className="col">
+            Name: {this.props.name}
+          </div>
         </div>
         <div className="row">
-        Age:  {this.props.age}
+          <div className="col">
+            Age:  {this.props.age}
+          </div>
         </div>
         <div className="row">
-        Email:  {this.props.email}
+          <div className="col">
+            Email:  {this.props.email}
+          </div>
         </div>
         <div className="row">
-        Phone:  {this.props.phone}
+          <div className="col">
+            Phone:  {this.props.phone}
+          </div>
         </div>
         <div className="row">
-        Goals:  {this.props.goals}
+          <div className="col">
+            Goals:  {this.props.goals}
+          </div>
         </div>
 
       </div>

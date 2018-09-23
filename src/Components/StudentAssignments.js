@@ -6,6 +6,7 @@ class StudentAssignments extends Component {
 
     return (
       <div className="StudentAssignments row text-center">
+      {this.props.assignments}
       </div>
     );
   }

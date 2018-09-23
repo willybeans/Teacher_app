@@ -42,12 +42,6 @@ class App extends Component {
   }
 
   displayStudentOnClick(id){
-    // let index = this.props.students.findIndex( x => {
-    //   if(x._id === id){
-    //     return x;
-    //   }
-    // });
-
     this.setState({
       show_add_student: false,
       show_current_student: true,
@@ -107,7 +101,9 @@ class App extends Component {
             {
               this.state.show_current_student ?
                 <StudentDisplay students={this.props.students}
-                  clickedStudent={this.state.clickedStudent} />
+                  clickedStudent={this.state.clickedStudent}
+                  assignments={this.props.assignments}
+                />
                 : null
             }
           </div>
@@ -121,7 +117,7 @@ const mapStateToProps = (state) => {
     teacher: state.teacher,
     login: state.login,
     students: state.students,
-    assignments: state.assigments
+    assignments: state.assignments
   };
 };
 

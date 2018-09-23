@@ -5,7 +5,7 @@ const Assignment = models.Assignment;
 const Teacher = models.Teacher;
 
 router.get('/', (req,res) => {
-  return res.status(400).json({
+  return res.status(200).json({
     message: 'get fired'
   });
 });

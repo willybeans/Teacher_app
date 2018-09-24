@@ -5,8 +5,13 @@ class StudentAssignments extends Component {
   render() {
 
     return (
-      <div className="StudentAssignments row text-center">
-      {this.props.assignments}
+      <div className="StudentAssignments">
+        <div className="container">
+          <div className="row">
+            <div className="col col-4 assignment_search"> Search </div>
+            <div className="col col-8 text-center assignment_body"> Body </div>
+          </div>
+        </div>
       </div>
     );
   }

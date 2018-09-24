@@ -1,5 +1,26 @@
 import C from './constants';
 import initialState from './initialState';
+const GET_ASSIGNMENTS = './api/assignment/';
+
+export const getAssignments = (id) => {
+  return dispatch => {
+    return fetch(GET_ASSIGNMENTS + id, {
+      method: 'GET',
+      credentials: 'same-origin',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        dispatch({
+          type: GET_ASSIGNMENTS,
+          payload: data.body
+        });
+      });
+  }
+}
 
 export const addAssignment = (assignment) => {
   return {
@@ -24,6 +45,10 @@ export const deleteAssignment = (assignment) => {
 
 export default function reducer(state = initialState.assignments, action){
   switch(action.type){
+  case GET_ASSIGNMENTS:
+    return [
+      ...action.payload.data
+    ]
   case C.ADD_ASSIGNMENT:
     return {
       ...state,

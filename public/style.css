@@ -8,5 +8,6 @@
   background: #A9A9A9; }
 
 .student_view_left, .student_view_right,
+.assignment_search,
 .studentItem, .studentDisplayNav, .studentDisplayNavProfile, .studentDisplayNavAssignments {
   border: solid 1px #A9A9A9; }

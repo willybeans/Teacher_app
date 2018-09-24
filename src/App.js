@@ -6,7 +6,8 @@ import LoginRegister from './Components/LoginRegister';
 import { connect } from 'react-redux';
 import { addStudent, deleteStudent } from './ducks/students';
 import { addTeacher } from './ducks/teacher';
-import { loginUser } from './ducks/login'
+import { getAssignments } from './ducks/assignments';
+import { loginUser } from './ducks/login';
 
 class App extends Component {
   constructor(props) {
@@ -100,7 +101,9 @@ class App extends Component {
             }
             {
               this.state.show_current_student ?
-                <StudentDisplay students={this.props.students}
+                <StudentDisplay
+                  getAssignments={this.props.getAssignments}
+                  students={this.props.students}
                   clickedStudent={this.state.clickedStudent}
                   assignments={this.props.assignments}
                 />
@@ -134,6 +137,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     addTeacher: (teacher) => {
       dispatch(addTeacher(teacher));
+    },
+    getAssignments: (id) => {
+      dispatch(getAssignments(id));
     }
   };
 };

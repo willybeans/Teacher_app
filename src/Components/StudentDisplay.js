@@ -11,25 +11,32 @@ class StudentDisplay extends Component {
     this.handleOnClick = this.handleOnClick.bind(this);
   }
 
+  componentDidMount() {
+    let id = this.props.clickedStudent;
+    this.props.getAssignments(id);
+  }
+
   handleOnClick(event){
     event.preventDefault();
-    let currentClick = event.currentTarget.textContent;
+    let currentClick = event.currentTarget.innerText;
     let currentState = this.state.showAssignments;
-    let newState;
+    let newState = currentState;
 
-    console.log("click: " + currentClick);
-    console.log("state " + currentState);
-
-    if((currentState === false) && (currentClick == 'Assignments')){
-      this.setState({
-        showAssignments: true
-      });
-    } else if (currentState === true && currentClick == 'Profile') {
-      console.log('inside profile');
-      this.setState({
-        showAssignments: false
-      });
+    switch(currentClick){
+    case 'Assignments':
+      if(currentState === false){
+        newState = true;
+      }
+      break;
+    case 'Profile':
+      if(currentState === true){
+        newState = false;
+      }
+      break;
+    default:
+      console.log('failed switch');
     }
+    this.setState({ showAssignments: newState });
   }
 
   render() {
@@ -48,12 +55,35 @@ class StudentDisplay extends Component {
     }
 
     if(this.props.assignments){
-      let id = this.props.clickedStudent;
-      // console.log('assignments: ' + JSON.stringify(this.props.assignments));
-      // console.log('student: ' + JSON.stringify(currentClickedStudent));
-      // console.log('assignments length ' + this.props.assignments.length);
-      // console.log('assignments length ' + currentClickedStudent.assignments.length);
-
+      // let countMatch = 0;
+      // let match = false;
+       //let id = this.props.clickedStudent;
+      // let currentAssignmentsLength = currentClickedStudent.assignments.length;
+      // let stateAssignmentsLength = this.props.assignments.length;
+      // // console.log('assignments: ' + JSON.stringify(this.props.assignments));
+      // // console.log('student: ' + JSON.stringify(currentClickedStudent));
+      // // console.log('assignments length ' + this.props.assignments.length);
+      // // console.log('assignments length ' + currentClickedStudent.assignments.length);
+      // for(let i = 0; i < currentAssignmentsLength; i++){
+      //   for (let el of this.props.assignments){
+      //     if(el._id === currentClickedStudent.assignments[i]){
+      //       console.log("el: " + JSON.stringify(el));
+      //       countMatch++;
+      //       break;
+      //     }
+      //   }
+      // }
+      //
+      // if(countMatch === currentAssignmentsLength){
+      //   match = true;
+      // } else {
+      //   match = false;
+      // }
+      // if(!match){
+      //   this.props.getAssignments(id);
+      //   match = true;
+      // }
+      //this.props.getAssignments(id);
       //(let i = this.props.assignments.length; )
       //now check currentlClickedStudent.assignments ID's vs this.props.assignments id's
       //if there is any that dont match throw a thunk to capture the newest ones
@@ -67,7 +97,7 @@ class StudentDisplay extends Component {
       <div>
         <div className="studentDisplayNav row text-center">
           <div className="studentDisplayNavAssignments col-6">
-            <a href="" onClick={this.handleOnClick}> Assignments </a>
+            <a href="" onClick={this.handleOnClick} > Assignments </a>
           </div>
           <div className="studentDisplayNavProfile col-6">
             <a href="" onClick={this.handleOnClick}> Profile </a>

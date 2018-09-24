@@ -28,7 +28,7 @@ router.post("/", (req, res) => {
         teacher: data
       })
     })
-    .catch(err => console.log(err));
+    .catch(err => console.error(err));
 });
 
 router.put('/', (req,res) => {

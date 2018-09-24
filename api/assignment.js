@@ -4,10 +4,20 @@ import models from "./models/models";
 const Assignment = models.Assignment;
 const Teacher = models.Teacher;
 
-router.get('/', (req,res) => {
-  return res.status(200).json({
-    message: 'get fired'
-  });
+router.get('/:studentId', (req,res) => {
+  const id = req.params.studentId;
+  Assignment.find({student: id})
+    .then(data => {
+      res.status(200).json({
+        message: 'assignment get fired',
+        body: {
+          id: id,
+          data: data
+        }
+      });
+    })
+    .catch(err => console.error(err));
+
 });
 
 router.post("/", function(req, res) {

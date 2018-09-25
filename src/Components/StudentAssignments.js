@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AssignmentItem from './AssignmentItem';
+import AssignmentBody from './ASsignmentBody';
 
 class StudentAssignments extends Component {
   displayAssignmentOnClick(id){
@@ -22,24 +23,29 @@ class StudentAssignments extends Component {
       });
 
       let id = this.props.currentClickedAssignment;
-      currentClickedAssignment = this.props.assignments.filter(item => {
+      currentClickedAssignment = this.props.assignments.map(item => {
         if(item._id === id){
-          return item;
+          return (
+            <AssignmentBody
+              key={item._id}
+              student={item.student}
+              id={item._id}
+              title={item.title}
+              composer={item.composer}
+              recording={item.recording}
+              sheetMusic={item.sheet_music}
+              notes={item.notes}
+            />
+          );
         }
       });
-      currentClickedAssignment = currentClickedAssignment[0];
-      console.log(currentClickedAssignment);
     }
     return (
       <div className="StudentAssignments">
         <div className="container">
           <div className="row">
-            <div className="col col-6 assignment_search"> {assignmentItems} </div>
-            <div className="col col-6 text-center assignment_body">
-
-
-
-            </div>
+            <div className="col col-3 assignment_search"> {assignmentItems} </div>
+            <div className="col col-9 text-center assignment_body"> {currentClickedAssignment}</div>
           </div>
         </div>
       </div>

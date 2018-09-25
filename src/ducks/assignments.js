@@ -16,7 +16,7 @@ export const getAssignments = (id) => {
       .then(data => {
         dispatch({
           type: GET_ASSIGNMENTS,
-          payload: data.body
+          payload: data.body.data
         });
       });
   }
@@ -47,7 +47,7 @@ export default function reducer(state = initialState.assignments, action){
   switch(action.type){
   case GET_ASSIGNMENTS:
     return [
-      ...action.payload.data
+      ...action.payload
     ]
   case C.ADD_ASSIGNMENT:
     return {

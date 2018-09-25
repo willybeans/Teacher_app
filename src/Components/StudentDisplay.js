@@ -11,10 +11,10 @@ class StudentDisplay extends Component {
     this.handleOnClick = this.handleOnClick.bind(this);
   }
 
-  componentDidMount() {
-    let id = this.props.clickedStudent;
-    this.props.getAssignments(id);
-  }
+  // componentDidMount() {
+  //   let id = this.props.clickedStudent;
+  //   this.props.getAssignments(id);
+  // }
 
   handleOnClick(event){
     event.preventDefault();
@@ -52,45 +52,27 @@ class StudentDisplay extends Component {
         }
       });
       currentClickedStudent = currentClickedStudent[0];
-    }
 
-    if(this.props.assignments){
-      // let countMatch = 0;
-      // let match = false;
-       //let id = this.props.clickedStudent;
-      // let currentAssignmentsLength = currentClickedStudent.assignments.length;
-      // let stateAssignmentsLength = this.props.assignments.length;
-      // // console.log('assignments: ' + JSON.stringify(this.props.assignments));
-      // // console.log('student: ' + JSON.stringify(currentClickedStudent));
-      // // console.log('assignments length ' + this.props.assignments.length);
-      // // console.log('assignments length ' + currentClickedStudent.assignments.length);
-      // for(let i = 0; i < currentAssignmentsLength; i++){
-      //   for (let el of this.props.assignments){
-      //     if(el._id === currentClickedStudent.assignments[i]){
-      //       console.log("el: " + JSON.stringify(el));
-      //       countMatch++;
-      //       break;
-      //     }
-      //   }
-      // }
-      //
-      // if(countMatch === currentAssignmentsLength){
-      //   match = true;
-      // } else {
-      //   match = false;
-      // }
-      // if(!match){
-      //   this.props.getAssignments(id);
-      //   match = true;
-      // }
-      //this.props.getAssignments(id);
-      //(let i = this.props.assignments.length; )
-      //now check currentlClickedStudent.assignments ID's vs this.props.assignments id's
-      //if there is any that dont match throw a thunk to capture the newest ones
-      //does this pose a looping problem? only if there are artifacts of old assignments
-    } else {
-      //thunk new request for assignments.
-      //this is identical to the thunk for if it exists.
+      if (this.props.assignments){
+        let countMatch = 0;
+        let currentAssignmentsLength = currentClickedStudent.assignments.length;
+        let stateAssignmentsLength = this.props.assignments.length;
+        //compare current states assignments with students assignment id's
+        for(let i = 0; i < currentAssignmentsLength; i++){
+          for (let item of this.props.assignments){
+            if(item._id === currentClickedStudent.assignments[i]){
+              console.log("matching item: " + JSON.stringify(item));
+              countMatch++;
+              break;
+            }
+          }
+        }
+        //when assignments dont match, fire a thunk to retreive them
+        if(countMatch != currentAssignmentsLength){
+          this.props.getAssignments(this.props.clickedStudent);
+          console.log('fired dispatch');
+        }
+      }
     }
 
     return (
@@ -107,7 +89,8 @@ class StudentDisplay extends Component {
           {
             this.state.showAssignments ?
               <StudentAssignments
-                assignments={currentAssignments}/>
+                assignments={this.props.assignments}
+              />
               :
               <StudentProfile
                 name={currentClickedStudent.name}

@@ -113,8 +113,6 @@ export function deleteStudent (student){
 }
 
 export default function reducer (state = initialState.students, action) {
-  console.log('reducer in login payload: ' + action.payload);
-
   switch(action.type){
   case ADD_STUDENT:
     return {

@@ -6,15 +6,24 @@ class StudentDisplay extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showAssignments: true
+      showAssignments: true,
+      currentClickedAssignment: ''
     };
     this.handleOnClick = this.handleOnClick.bind(this);
+    this.displayAssignmentOnClick = this.displayAssignmentOnClick.bind(this);
   }
 
   // componentDidMount() {
   //   let id = this.props.clickedStudent;
   //   this.props.getAssignments(id);
   // }
+
+  displayAssignmentOnClick(id){
+    console.log(id);
+    this.setState({
+      currentClickedAssignment: id
+    });
+  }
 
   handleOnClick(event){
     event.preventDefault();
@@ -61,7 +70,6 @@ class StudentDisplay extends Component {
         for(let i = 0; i < currentAssignmentsLength; i++){
           for (let item of this.props.assignments){
             if(item._id === currentClickedStudent.assignments[i]){
-              console.log("matching item: " + JSON.stringify(item));
               countMatch++;
               break;
             }
@@ -70,7 +78,6 @@ class StudentDisplay extends Component {
         //when assignments dont match, fire a thunk to retreive them
         if(countMatch != currentAssignmentsLength){
           this.props.getAssignments(this.props.clickedStudent);
-          console.log('fired dispatch');
         }
       }
     }
@@ -90,6 +97,8 @@ class StudentDisplay extends Component {
             this.state.showAssignments ?
               <StudentAssignments
                 assignments={this.props.assignments}
+                currentClickedAssignment={this.state.currentClickedAssignment}
+                displayAssignmentOnClick={this.displayAssignmentOnClick}
               />
               :
               <StudentProfile

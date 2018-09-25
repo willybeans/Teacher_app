@@ -6,6 +6,7 @@ class StudentProfile extends Component {
 
     return (
       <div className="StudentProfile">
+      
         <div className="row">
           <div className="col">
             Name: {this.props.name}

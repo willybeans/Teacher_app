@@ -85,7 +85,7 @@ class App extends Component {
         </div>
 
         <div className="wrapper row">
-          <div className="student_view_left col col-4 text-center">
+          <div className="student_view_left col col-3 text-center">
 
             <Students
               students={this.props.students}
@@ -93,7 +93,7 @@ class App extends Component {
             />
           </div>
 
-          <div className="student_view_right col col-8">
+          <div className="student_view_right col col-9">
             {
               this.state.show_add_student ?
                 <AddStudents addStudent={this.handleAddStudent} />

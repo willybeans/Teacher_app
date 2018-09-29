@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Students from './Components/Students';
-import StudentDisplay from './Components/StudentDisplay';
+import Students from './Components/StudentSearch/Students';
+import StudentDisplay from './Components/StudentDisplay/StudentDisplay';
 import AddStudents from './Components/AddStudents';
-import LoginRegister from './Components/LoginRegister';
+import LoginRegister from './Components/Login/LoginRegister';
 import { connect } from 'react-redux';
 import { addStudent, deleteStudent } from './ducks/students';
 import { addTeacher } from './ducks/teacher';

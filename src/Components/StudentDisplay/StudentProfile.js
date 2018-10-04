@@ -2,11 +2,25 @@ import React, { Component } from 'react';
 
 class StudentProfile extends Component {
 
+  handleDeleteStudent(){
+    console.log('delete student');
+  }
+
+  handleEditStudent(){
+    console.log('edit student');
+  }
+
   render() {
 
     return (
       <div className="StudentProfile">
-      
+
+        <div className="row text-right">
+          <div className='col'>
+            <button className="btn btn-info" onClick={this.handleEditStudent}>Edit Student</button>
+          </div>
+        </div>
+
         <div className="row">
           <div className="col">
             Name: {this.props.name}
@@ -30,6 +44,12 @@ class StudentProfile extends Component {
         <div className="row">
           <div className="col">
             Goals:  {this.props.goals}
+          </div>
+        </div>
+
+        <div className="row text-right">
+          <div className='col'>
+            <button className="btn btn-danger" onClick={this.handleDeleteStudent}>Delete Student</button>
           </div>
         </div>
 

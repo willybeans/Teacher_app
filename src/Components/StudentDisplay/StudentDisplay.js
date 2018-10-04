@@ -6,10 +6,10 @@ class StudentDisplay extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showAssignments: true,
+      showAssignments: false,
       currentClickedAssignment: ''
     };
-    this.handleOnClick = this.handleOnClick.bind(this);
+    this.handleOnClickBanner = this.handleOnClickBanner.bind(this);
     this.displayAssignmentOnClick = this.displayAssignmentOnClick.bind(this);
   }
 
@@ -25,7 +25,11 @@ class StudentDisplay extends Component {
     });
   }
 
-  handleOnClick(event){
+  handleAddAssignment(){
+    console.log('add assignment');
+  }
+
+  handleOnClickBanner(event){
     event.preventDefault();
     let currentClick = event.currentTarget.innerText;
     let currentState = this.state.showAssignments;
@@ -84,15 +88,17 @@ class StudentDisplay extends Component {
 
     return (
       <div>
-        <div className="studentDisplayNav row text-center">
-          <div className="studentDisplayNavAssignments col-6">
-            <a href="" onClick={this.handleOnClick} > Assignments </a>
+        <div className="studentDisplayNav row">
+          <div className="studentDisplayNavAssignments col-6 row">
+            <div className="col-10 text-center"> <a href="" onClick={this.handleOnClickBanner} > Assignments </a> </div>
+            <button className="col-2 btn btn-secondary" onClick={this.handleAddAssignment}> + </button>
           </div>
           <div className="studentDisplayNavProfile col-6">
-            <a href="" onClick={this.handleOnClick}> Profile </a>
+            <a href="" onClick={this.handleOnClickBanner}> Profile </a>
           </div>
         </div>
-        <div className="studentDisplay row">
+
+        <div className="studentDisplay">
           {
             this.state.showAssignments ?
               <StudentAssignments
@@ -110,6 +116,9 @@ class StudentDisplay extends Component {
               />
           }
         </div>
+
+
+
       </div>
     );
   }

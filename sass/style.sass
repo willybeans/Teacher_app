@@ -2,6 +2,7 @@ $blue: #CAEBF2
 $tan: #EFEFEF
 $red: #FF3B3F
 $grey: #A9A9A9
+$dark_grey: #434343
 
 %student_selectors
   background: $blue
@@ -11,8 +12,10 @@ $grey: #A9A9A9
   background: $red
 %menu_headers
   background: $grey
-%borders
+%light_borders
   border: solid 1px $grey
+%dark_borders
+  border: solid 1px $dark_grey
 
 .wrapper
   @extend %app_body
@@ -23,7 +26,7 @@ body
 .student_view_right,
 .assignment_search,
 .studentItem
-  @extend %borders
+  @extend %light_borders
 
 .studentItem:hover
   @extend %student_selectors
@@ -31,5 +34,5 @@ body
   @extend %app_body
 
 .studentDisplayNav, .studentDisplayNavProfile, .studentDisplayNavAssignments
-  @extend %borders
+  @extend %dark_borders
   @extend %menu_headers

@@ -89,11 +89,13 @@ class StudentDisplay extends Component {
     return (
       <div>
         <div className="studentDisplayNav row">
-          <div className="studentDisplayNavAssignments col-6 row">
-            <div className="col-10 text-center"> <a href="" onClick={this.handleOnClickBanner} > Assignments </a> </div>
-            <button className="col-2 btn btn-secondary" onClick={this.handleAddAssignment}> + </button>
+          <div className="studentDisplayNavAssignments col-6">
+            <div className="row">
+              <div className="col-10 text-center"> <a href="" onClick={this.handleOnClickBanner} > Assignments </a> </div>
+              <button className="col-2 btn btn-secondary" onClick={this.handleAddAssignment}> + </button>
+            </div>
           </div>
-          <div className="studentDisplayNavProfile col-6">
+          <div className="studentDisplayNavProfile col-6 text-center">
             <a href="" onClick={this.handleOnClickBanner}> Profile </a>
           </div>
         </div>
@@ -116,8 +118,6 @@ class StudentDisplay extends Component {
               />
           }
         </div>
-
-
 
       </div>
     );

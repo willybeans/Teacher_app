@@ -42,10 +42,26 @@ router.put('/', (req,res) => {
 });
 
 router.delete('/', (req, res) => {
-  const studentID = req.body.studentID;
-  return res.status(400).json({
-    message: 'delete fired',
-  });
+  const studentId = req.body.studentId;
+  const teacherId = req.body.teacherId;
+
+  if(studentId && teacherId) {
+    Teacher.findById(teacherId, function(err, teacher){
+      if (err) res.json(err);
+      teacher.students.id(studentId).remove();
+      teacher.save(function (err) {
+        if (err) return handleError(err);
+        console.log('subdoc was removed!');
+      })
+
+      //console.log(JSON.stringify(test));
+
+    });
+  }
+
+  // return res.status(200).json({
+  //   message: 'delete fired',
+  // });
 });
 
 export default router;

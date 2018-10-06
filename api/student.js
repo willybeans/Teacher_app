@@ -1,7 +1,9 @@
 var express = require("express");
 var router = express.Router();
 import models from "./models/models";
-const Teacher = models.Teacher;
+const Teacher = models.Teacher,
+  Assignment = models.Assignment;
+
 import mongoose from "mongoose";
 
 router.get('/', (req,res) => {
@@ -51,17 +53,21 @@ router.delete('/', (req, res) => {
       teacher.students.id(studentId).remove();
       teacher.save(function (err) {
         if (err) return handleError(err);
-        console.log('subdoc was removed!');
+
+        Assignment.deleteMany({ student: studentId }, function(err){
+          if (err) {
+            console.error('err ' + err);
+            return res.status(400).json({
+              message: 'Failed to delete student/assignments',
+            });
+          }
+          return res.status(200).json({
+            message: 'Student Deleted',
+          });
+        });
       })
-
-      //console.log(JSON.stringify(test));
-
     });
   }
-
-  // return res.status(200).json({
-  //   message: 'delete fired',
-  // });
 });
 
 export default router;

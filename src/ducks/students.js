@@ -1,13 +1,13 @@
 import C from './constants';
 import initialState from './initialState';
-const ADD_STUDENT = "/api/addStudent";
-//const DELETE_STUDENT = "/api/deleteStudent"
+const ADD_STUDENT = '/api/student/ADD_STUDENT';
+const DELETE_STUDENT = '/api/student/DELETE_STUDENT';
 
 export function addStudent(student){
   //this needs to read the id's of the students and
   //set a new id 1 higher than the previous most high
   return dispatch => {
-    return fetch('/api/addStudent', {
+    return fetch('/api/student/', {
       method: 'POST',
       credentials: 'same-origin',
       body: JSON.stringify({
@@ -19,43 +19,48 @@ export function addStudent(student){
         'content-type': 'application/json'
       }
     })
-      .then(res => res.json())
+      .then(res => {
+        return JSON.stringify(res)
+      })
       .then(data => {
+        console.log("message:" + data);
         console.log("data: " + JSON.stringify(data));
-        console.log("message:" + data.message);
-        dispatch({
-          type: ADD_STUDENT,
-          payload: data
-        });
+        // dispatch({
+        //   type: ADD_STUDENT,
+        //   payload: data
+        // });
       });
   };
 
 }
 
 export function editStudent(student){
-  return dispatch => {
-    return fetch('/api/addStudent', {
-      method: 'POST',
-      credentials: 'same-origin',
-      body: JSON.stringify({
-        name: student.name,
-        email: student.email,
-        age: student.age
-      }),
-      headers: {
-        'content-type': 'application/json'
-      }
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log("data: " + JSON.stringify(data));
-        console.log("message:" + data.message);
-        dispatch({
-          type: C.EDIT_STUDENT,
-          payload: data
-        });
-      });
-  };
+  // return dispatch => {
+  //   return fetch('/api/editStudent', {
+  //     method: 'PUT',
+  //     credentials: 'same-origin',
+  //     body: JSON.stringify({
+  //       name: student.name,
+  //       email: student.email,
+  //       age: student.age
+  //     }),
+  //     headers: {
+  //       'content-type': 'application/json'
+  //     }
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       console.log("data: " + JSON.stringify(data));
+  //       console.log("message:" + data.message);
+  //       dispatch({
+  //         type: C.EDIT_STUDENT,
+  //         payload: data
+  //       });
+  //     });
+  // };
+}
+export function test(test){
+  console.log(test);
 }
 
 export function loginStudents(students) {
@@ -67,45 +72,32 @@ export function loginStudents(students) {
   };
 }
 
-// export function deleteStudent (student){
-//   return dispatch => {
-//     return fetch('/api/deleteStudent', {
-//       method: 'DELETE',
-//       credentials: 'same-origin',
-//       body: JSON.stringify({
-//         _id: '0'
-//       }),
-//       headers: {
-//         'content-type': 'application/json'
-//       }
-//     })
-//       .then(res => res.json())
-//       .then(data => {
-//         console.log('delete data' + JSON.stringify(data));
-//         console.log("message:" + data.message);
-//         dispatch({
-//           type: C.DELETE_STUDENT,
-//           payload: data
-//         });
-//       })
-//   };
-// }
-
-export function deleteStudent (student){
+export function deleteStudent(student){
+  console.log('studentDisplay: ' + JSON.stringify(student));
+  console.log('teach ' + student.teacherId);
+  console.log('stu ' + student.studentId);
   return dispatch => {
-    return fetch('/api/student/delete', {
+    return fetch('/api/student', {
       method: 'DELETE',
       credentials: 'same-origin',
+      body: JSON.stringify({
+        studentId: student.studentId,
+        teacherId: student.teacherId
+      }),
       headers: {
-        'content-type': 'application/json'
+        'Content-Type': 'application/json'
       }
     })
-      .then(res => res.json())
+      .then(res => {
+        console.log('res' + Object.keys(res));
+        console.log('ressdfasd' + JSON.stringify(res));
+        res.json()
+      })
       .then(data => {
         console.log('delete data' + JSON.stringify(data));
-        console.log("message:" + data.message);
+        console.log("student:" + data);
         dispatch({
-          type: C.DELETE_STUDENT,
+          type: DELETE_STUDENT,
           payload: data
         });
       })
@@ -132,8 +124,12 @@ export default function reducer (state = initialState.students, action) {
   case C.EDIT_STUDENT:
     return null;
     break;
-  case C.DELETE_STUDENT:
-    return action.payload;
+  case DELETE_STUDENT:
+  console.log('actionpayload' + action.payload);
+    return [
+      ...state,
+      ...action.payload
+    ]
     break;
   default:
     return state;

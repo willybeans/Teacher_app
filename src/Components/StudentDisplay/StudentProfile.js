@@ -2,8 +2,20 @@ import React, { Component } from 'react';
 
 class StudentProfile extends Component {
 
+  componentDidMount(){
+    console.log(this.props.teacher);
+
+  }
+
   handleDeleteStudent(){
     console.log('delete student');
+    let student = {
+      teacherId: this.props.teacherId,
+      studentId: this.props.studentId
+    }
+    this.props.deleteStudent(student);
+    console.log('teacher ' + this.props.teacherId);
+    console.log('student ' + this.props.studentId);
   }
 
   handleEditStudent(){
@@ -49,7 +61,7 @@ class StudentProfile extends Component {
 
         <div className="row text-right">
           <div className='col'>
-            <button className="btn btn-danger" onClick={this.handleDeleteStudent}>Delete Student</button>
+            <button className="btn btn-danger" onClick={this.handleDeleteStudent.bind(this)}>Delete Student</button>
           </div>
         </div>
 

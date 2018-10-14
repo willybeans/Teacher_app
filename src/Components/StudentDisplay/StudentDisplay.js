@@ -11,11 +11,11 @@ class StudentDisplay extends Component {
     };
     this.handleOnClickBanner = this.handleOnClickBanner.bind(this);
     this.displayAssignmentOnClick = this.displayAssignmentOnClick.bind(this);
+    this.handleDeleteStudent = this.handleDeleteStudent.bind(this);
   }
 
   // componentDidMount() {
-  //   let id = this.props.clickedStudent;
-  //   this.props.getAssignments(id);
+  //   console.log(this.props.teacher);
   // }
 
   displayAssignmentOnClick(id){
@@ -27,6 +27,11 @@ class StudentDisplay extends Component {
 
   handleAddAssignment(){
     console.log('add assignment');
+  }
+
+  handleDeleteStudent(student){
+    console.log('studentDisplay: ' + JSON.stringify(student));
+    this.props.deleteStudent(student);
   }
 
   handleOnClickBanner(event){
@@ -110,6 +115,9 @@ class StudentDisplay extends Component {
               />
               :
               <StudentProfile
+                deleteStudent={this.handleDeleteStudent}
+                teacherId={this.props.teacher.id}
+                studentId={currentClickedStudent._id}
                 name={currentClickedStudent.name}
                 age={currentClickedStudent.age}
                 email={currentClickedStudent.email}

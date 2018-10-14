@@ -22,6 +22,7 @@ class App extends Component {
     //this.handleSubmit = this.handleSubmit.bind(this);
     this.handleAddStudent = this.handleAddStudent.bind(this);
     this.displayStudentOnClick = this.displayStudentOnClick.bind(this);
+    this.handleDeleteStudent = this.handleDeleteStudent.bind(this);
   }
 
   getStudents(){
@@ -66,6 +67,11 @@ class App extends Component {
     this.handleShowAddStudent();
   }
 
+  handleDeleteStudent(student){
+    console.log('App: ' + JSON.stringify(student));
+    this.props.deleteStudent(student);
+  }
+
   render() {
     if (!this.props.login) {
       return <LoginRegister loginUser={this.props.loginUser} addTeacher={this.props.addTeacher} />
@@ -102,10 +108,12 @@ class App extends Component {
             {
               this.state.show_current_student ?
                 <StudentDisplay
+                  teacher={this.props.teacher}
                   getAssignments={this.props.getAssignments}
                   students={this.props.students}
                   clickedStudent={this.state.clickedStudent}
                   assignments={this.props.assignments}
+                  deleteStudent={this.handleDeleteStudent}
                 />
                 : null
             }

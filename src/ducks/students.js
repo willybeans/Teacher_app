@@ -72,8 +72,7 @@ export function loginStudents(students) {
   };
 }
 
- export function deleteStudent(student){
-
+export function deleteStudent(student){
 return dispatch => {
     return fetch('/api/student', {
       method: 'DELETE',

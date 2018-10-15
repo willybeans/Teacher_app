@@ -58,7 +58,7 @@ class StudentDisplay extends Component {
 
   handleRender(){
     let currentClickedStudent;
-
+    //this grabs the currently clicked student from the full list
     if(this.props.students) {
       let id = this.props.clickedStudent;
       currentClickedStudent = this.props.students.filter(student => {
@@ -67,7 +67,7 @@ class StudentDisplay extends Component {
         }
       });
       currentClickedStudent = currentClickedStudent[0];
-
+      //this grabs the assignments of clicked student
       if (this.props.assignments){
         let countMatch = 0;
         let currentAssignmentsLength = currentClickedStudent.assignments.length;
@@ -92,7 +92,6 @@ class StudentDisplay extends Component {
 
   render() {
     let currentClickedStudent = this.handleRender();
-
 
     return (
       <div>

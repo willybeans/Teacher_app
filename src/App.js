@@ -68,7 +68,10 @@ class App extends Component {
   }
 
   handleDeleteStudent(student){
-    console.log('App: ' + JSON.stringify(student));
+    this.setState({
+      show_current_student: false,
+      clickedStudent: ''
+    });
     this.props.deleteStudent(student);
   }
 

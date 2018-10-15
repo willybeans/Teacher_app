@@ -3,19 +3,15 @@ import React, { Component } from 'react';
 class StudentProfile extends Component {
 
   componentDidMount(){
-    console.log(this.props.teacher);
 
   }
 
   handleDeleteStudent(){
-    console.log('delete student');
     let student = {
       teacherId: this.props.teacherId,
       studentId: this.props.studentId
     }
     this.props.deleteStudent(student);
-    console.log('teacher ' + this.props.teacherId);
-    console.log('student ' + this.props.studentId);
   }
 
   handleEditStudent(){

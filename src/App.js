@@ -63,6 +63,7 @@ class App extends Component {
   }
 
   handleAddStudent(student) {
+    student.teacher = this.props.teacher.id;
     this.props.addStudent(student);
     this.handleShowAddStudent();
   }

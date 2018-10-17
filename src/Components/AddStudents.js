@@ -7,7 +7,9 @@ class AddStudents extends Component {
       student:{
         name: '',
         age: '',
-        email: ''
+        email: '',
+        phone: '',
+        goals: [],
       }
     }
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -44,9 +46,21 @@ class AddStudents extends Component {
             </div>
 
             <div className="form-group">
-              <label>Contact Email: </label>
+              <label>Email: </label>
               <input type="text" className="form-control" id="student_email" placeholder="Email"
                 onChange={this.handleChange('email')} value={this.state.student.email}/>
+            </div>
+
+            <div className="form-group">
+              <label>Phone: </label>
+              <input type="text" className="form-control" id="student_phone" placeholder="Phone"
+                onChange={this.handleChange('phone')} value={this.state.student.phone}/>
+            </div>
+
+            <div className="form-group">
+              <label>Goals: </label>
+              <input type="text" className="form-control" id="student_email" placeholder="Goals"
+                onChange={this.handleChange('goals')} value={this.state.student.goals}/>
             </div>
 
             <input className="btn btn-primary" type="submit" value="Submit" />

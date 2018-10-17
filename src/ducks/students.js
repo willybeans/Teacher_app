@@ -4,31 +4,28 @@ const ADD_STUDENT = '/api/student/ADD_STUDENT';
 const DELETE_STUDENT = '/api/student/DELETE_STUDENT';
 
 export function addStudent(student){
-  //this needs to read the id's of the students and
-  //set a new id 1 higher than the previous most high
   return dispatch => {
     return fetch('/api/student/', {
       method: 'POST',
       credentials: 'same-origin',
       body: JSON.stringify({
+        teacherId: student.teacher,
         name: student.name,
+        age: student.age,
         email: student.email,
-        age: student.age
+        phone: student.phone,
+        goals: student.goals
       }),
       headers: {
         'content-type': 'application/json'
       }
     })
-      .then(res => {
-        return JSON.stringify(res)
-      })
+      .then(res => res.json())
       .then(data => {
-        console.log("message:" + data);
-        console.log("data: " + JSON.stringify(data));
-        // dispatch({
-        //   type: ADD_STUDENT,
-        //   payload: data
-        // });
+        dispatch({
+          type: ADD_STUDENT,
+          payload: data.students
+        });
       });
   };
 
@@ -58,9 +55,6 @@ export function editStudent(student){
   //       });
   //     });
   // };
-}
-export function test(test){
-  console.log(test);
 }
 
 export function loginStudents(students) {
@@ -98,13 +92,9 @@ return dispatch => {
 export default function reducer (state = initialState.students, action) {
   switch(action.type){
   case ADD_STUDENT:
-    return {
-      ...state,
-      students: [
-        ...state.students,
-        action.payload.data
-      ]
-    }
+    return [
+      ...action.payload
+    ]
     break;
   case C.LOGIN_STUDENTS:
     return [

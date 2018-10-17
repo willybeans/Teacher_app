@@ -14,7 +14,6 @@ router.get('/', (req,res) => {
 
 router.post("/", (req, res) => {
   const teacherId = req.body.teacherId;
-  // check for any required attributes and create the student
   if (teacherId) {
     Teacher.findById(teacherId, function(err, teacher) {
       if (err) res.json(err);
@@ -26,7 +25,6 @@ router.post("/", (req, res) => {
         age: req.body.age,
         goals: req.body.goals
       };
-      // may also be addtoset? will need to test
       teacher.students.push(newStudent);
       teacher.save(err => {
         if (err) res.json(err);

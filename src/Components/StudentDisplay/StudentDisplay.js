@@ -11,13 +11,10 @@ class StudentDisplay extends Component {
     };
     this.handleOnClickBanner = this.handleOnClickBanner.bind(this);
     this.displayAssignmentOnClick = this.displayAssignmentOnClick.bind(this);
+    this.handleEditStudent = this.handleEditStudent.bind(this);
     this.handleDeleteStudent = this.handleDeleteStudent.bind(this);
     this.handlerender = this.handleRender.bind(this);
   }
-
-  // componentDidMount() {
-  //   console.log(this.props.teacher);
-  // }
 
   displayAssignmentOnClick(id){
     this.setState({
@@ -27,6 +24,10 @@ class StudentDisplay extends Component {
 
   handleAddAssignment(){
     console.log('add assignment');
+  }
+
+  handleEditStudent(student){
+    this.props.editStudent(student);
   }
 
   handleDeleteStudent(student){
@@ -117,6 +118,7 @@ class StudentDisplay extends Component {
               />
               :
               <StudentProfile
+                editStudent={this.handleEditStudent}
                 deleteStudent={this.handleDeleteStudent}
                 teacherId={this.props.teacher.id}
                 studentId={currentClickedStudent._id}

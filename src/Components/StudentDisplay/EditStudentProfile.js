@@ -4,6 +4,7 @@ class EditStudentProfile extends Component {
   constructor(){
     super();
     this.state={
+      clicked: false,
       student:{
         teacherId: '',
         studentId: '',
@@ -37,18 +38,25 @@ class EditStudentProfile extends Component {
       ...student,
       [propName]: event.target.value
     };
-    this.setState({student: newStudent});
+    this.setState({
+      clicked: true,
+      student: newStudent
+    });
   }
-  // handleSubmit(e) {
-  //   e.preventDefault();
-  //   this.props.handleEditStudent(this.state.student);
-  // }
+  handleSubmit(e) {
+    e.preventDefault();
+    if(this.state.clicked !== false){
+      this.props.handleEditStudent(this.state.student);
+    }
+    //this.props.handleEditStudent(this.state.student);
+//  one liner: (e) => {e.preventDefault(); this.props.handleEditStudent(this.state.student);}
+  }
   render() {
 
     return (
       <div className='edit_students'>
         <div className="form">
-          <form onSubmit={(e) => {e.preventDefault(); this.props.handleEditStudent(this.state.student);} }>
+          <form onSubmit={this.handleSubmit}>
 
             <div className="form-group">
               <label>Name:</label>

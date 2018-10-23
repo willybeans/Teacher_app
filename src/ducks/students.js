@@ -32,6 +32,8 @@ export function addStudent(student){
 }
 
 export function editStudent(student){
+  console.log("hello action ");
+  console.log(student);
   // return dispatch => {
   //   return fetch('/api/editStudent', {
   //     method: 'PUT',

@@ -36,9 +36,29 @@ router.post("/", (req, res) => {
 });
 
 router.put('/', (req,res) => {
-  return res.status(400).json({
-    message: 'update fired'
-  });
+  const studentId = req.body.studentId;
+  const teacherId = req.body.teacherId;
+  let student;
+  
+  if(studentId && teacherId) {
+    Teacher.findById(teacherId).exec(function(err, teacher){
+      if (err) res.json(err);
+      student = teacher.students.id(studentId);
+      if(student){
+        for (let field in student) {
+          const testType = typeof student[field];
+          if((field !== '_id' && field !== "assignments") && (testType !== "function")){
+            if(req.body[field] !== undefined) {
+              student[field] = req.body[field];
+            }
+          }
+        }
+        teacher.save().then(data => {
+          res.status(200).json(data);
+        });
+      }
+    });
+  }
 });
 
 router.delete('/', (req, res) => {

@@ -12,10 +12,6 @@ class StudentProfile extends Component {
     this.handleEditStudent = this.handleEditStudent.bind(this);
   };
 
-  componentDidMount(){
-
-  }
-
   handleDeleteStudent(){
     let student = {
       teacherId: this.props.teacherId,

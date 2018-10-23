@@ -4,7 +4,7 @@ import StudentDisplay from './Components/StudentDisplay/StudentDisplay';
 import AddStudents from './Components/AddStudents';
 import LoginRegister from './Components/Login/LoginRegister';
 import { connect } from 'react-redux';
-import { addStudent, deleteStudent } from './ducks/students';
+import { addStudent, deleteStudent, editStudent } from './ducks/students';
 import { addTeacher } from './ducks/teacher';
 import { getAssignments } from './ducks/assignments';
 import { loginUser } from './ducks/login';
@@ -70,7 +70,7 @@ class App extends Component {
   }
 
   handleEditStudent(student){
-    console.log(student);
+    this.props.editStudent(student);
   }
 
   handleDeleteStudent(student){
@@ -152,6 +152,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     deleteStudent: (student) => {
       dispatch(deleteStudent(student));
+    },
+    editStudent: (student) => {
+      dispatch(editStudent(student));
     },
     addTeacher: (teacher) => {
       dispatch(addTeacher(teacher));

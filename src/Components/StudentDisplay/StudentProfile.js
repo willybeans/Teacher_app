@@ -9,6 +9,7 @@ class StudentProfile extends Component {
     this.state = {
       viewEditStudent: false
     }
+    this.showEditStudent = this.showEditStudent.bind(this);
     this.handleEditStudent = this.handleEditStudent.bind(this);
   };
 
@@ -21,11 +22,16 @@ class StudentProfile extends Component {
   }
 
   handleEditStudent(student){
+    this.props.editStudent(student);
+    console.log('wy');
+    this.showEditStudent;
+  }
+
+  showEditStudent(){
     let value = this.state.viewEditStudent ? false : true;
     this.setState({
       viewEditStudent: value
     });
-    this.props.editStudent(student);
   }
 
   render() {
@@ -37,9 +43,9 @@ class StudentProfile extends Component {
           <div className='col'>
             {
               (this.state.viewEditStudent) ?
-                <button className="btn btn-dark" onClick={this.handleEditStudent}>X</button>
+                <button className="btn btn-dark" onClick={this.showEditStudent}>X</button>
                 :
-                <button className="btn btn-info" onClick={this.handleEditStudent}>Edit Student</button>
+                <button className="btn btn-info" onClick={this.showEditStudent}>Edit Student</button>
             }
           </div>
         </div>
@@ -53,7 +59,7 @@ class StudentProfile extends Component {
               email={this.props.email}
               phone={this.props.phone}
               goals={this.props.goals}
-              handleEditStudent={this.handleEditStudent}
+              editStudent={this.handleEditStudent}
             />
             :
             <ViewStudentProfile

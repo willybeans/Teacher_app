@@ -4,7 +4,6 @@ class EditStudentProfile extends Component {
   constructor(){
     super();
     this.state={
-      clicked: false,
       student:{
         teacherId: '',
         studentId: '',
@@ -14,8 +13,8 @@ class EditStudentProfile extends Component {
         phone: '',
         goals: [],
       }
-    }
-  //  this.handleSubmit = this.handleSubmit.bind(this);
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount(){
@@ -39,15 +38,13 @@ class EditStudentProfile extends Component {
       [propName]: event.target.value
     };
     this.setState({
-      clicked: true,
       student: newStudent
     });
   }
+
   handleSubmit(e) {
     e.preventDefault();
-    if(this.state.clicked !== false){
-      this.props.handleEditStudent(this.state.student);
-    }
+    this.props.editStudent(this.state.student);
     //this.props.handleEditStudent(this.state.student);
 //  one liner: (e) => {e.preventDefault(); this.props.handleEditStudent(this.state.student);}
   }

@@ -1,7 +1,8 @@
 import C from './constants';
 import initialState from './initialState';
-const ADD_STUDENT = '/api/student/ADD_STUDENT';
-const DELETE_STUDENT = '/api/student/DELETE_STUDENT';
+const ADD_STUDENT = '/api/student/ADD_STUDENT',
+  DELETE_STUDENT = '/api/student/DELETE_STUDENT',
+  EDIT_STUDENT = './api/student/EDIT_STUDENT';
 
 export function addStudent(student){
   return dispatch => {
@@ -32,31 +33,32 @@ export function addStudent(student){
 }
 
 export function editStudent(student){
-  console.log("hello action ");
-  console.log(student);
-  // return dispatch => {
-  //   return fetch('/api/editStudent', {
-  //     method: 'PUT',
-  //     credentials: 'same-origin',
-  //     body: JSON.stringify({
-  //       name: student.name,
-  //       email: student.email,
-  //       age: student.age
-  //     }),
-  //     headers: {
-  //       'content-type': 'application/json'
-  //     }
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       console.log("data: " + JSON.stringify(data));
-  //       console.log("message:" + data.message);
-  //       dispatch({
-  //         type: C.EDIT_STUDENT,
-  //         payload: data
-  //       });
-  //     });
-  // };
+  return dispatch => {
+    return fetch('/api/student/', {
+      method: 'PUT',
+      credentials: 'same-origin',
+      body: JSON.stringify({
+        name: student.name,
+        email: student.email,
+        age: student.age,
+        phone: student.phone,
+        goals: student.goals,
+        studentId: student.studentId,
+        teacherId: student.teacherId
+      }),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        dispatch({
+          type: C.EDIT_STUDENT,
+          payload: data
+        });
+      });
+  };
 }
 
 export function loginStudents(students) {
@@ -104,8 +106,8 @@ export default function reducer (state = initialState.students, action) {
       ...action.payload
     ]
     break;
-  case C.EDIT_STUDENT:
-    return null;
+  // case C.EDIT_STUDENT:
+  //   return null;
     break;
   case DELETE_STUDENT:
     return [

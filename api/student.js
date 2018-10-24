@@ -36,8 +36,6 @@ router.post("/", (req, res) => {
 });
 
 router.put('/', (req,res) => {
-  console.log("hello api");
-  console.log(req.body);
   const studentId = req.body.studentId;
   const teacherId = req.body.teacherId;
   let student;

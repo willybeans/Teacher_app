@@ -52,10 +52,15 @@ export function editStudent(student){
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+        let updatedStudent;
+        data.students.forEach( item => {
+          if(item._id === student.studentId) {
+            updatedStudent = item;
+          }
+        });
         dispatch({
-          type: C.EDIT_STUDENT,
-          payload: data
+          type: EDIT_STUDENT,
+          payload: updatedStudent
         });
       });
   };
@@ -106,8 +111,14 @@ export default function reducer (state = initialState.students, action) {
       ...action.payload
     ]
     break;
-  // case C.EDIT_STUDENT:
-  //   return null;
+  case EDIT_STUDENT:
+    return state.map((item, index) =>{
+      if(item._id === action.payload._id){
+        return action.payload;
+      }
+      return item;
+    })
+
     break;
   case DELETE_STUDENT:
     return [

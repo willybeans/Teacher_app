@@ -24,7 +24,7 @@ class StudentProfile extends Component {
   handleEditStudent(student){
     this.props.editStudent(student);
     console.log('wy');
-    this.showEditStudent;
+    this.showEditStudent();
   }
 
   showEditStudent(){

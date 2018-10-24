@@ -13,8 +13,8 @@ class EditStudentProfile extends Component {
         phone: '',
         goals: [],
       }
-    }
-  //  this.handleSubmit = this.handleSubmit.bind(this);
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount(){
@@ -37,18 +37,23 @@ class EditStudentProfile extends Component {
       ...student,
       [propName]: event.target.value
     };
-    this.setState({student: newStudent});
+    this.setState({
+      student: newStudent
+    });
   }
-  // handleSubmit(e) {
-  //   e.preventDefault();
-  //   this.props.handleEditStudent(this.state.student);
-  // }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.editStudent(this.state.student);
+    //this.props.handleEditStudent(this.state.student);
+//  one liner: (e) => {e.preventDefault(); this.props.handleEditStudent(this.state.student);}
+  }
   render() {
 
     return (
       <div className='edit_students'>
         <div className="form">
-          <form onSubmit={(e) => {e.preventDefault(); this.props.handleEditStudent(this.state.student);} }>
+          <form onSubmit={this.handleSubmit}>
 
             <div className="form-group">
               <label>Name:</label>

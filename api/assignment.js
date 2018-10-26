@@ -21,7 +21,7 @@ router.get('/:studentId', (req,res) => {
 });
 
 router.post("/", function(req, res) {
-  const studentId = req.body.id;
+  const studentId = req.body.studentId;
 
   if (studentId) {
     Teacher.findOne({ students: { $elemMatch: { _id: studentId } } }, function(
@@ -34,7 +34,7 @@ router.post("/", function(req, res) {
         date: Date.now(),
         title: req.body.title,
         composer: req.body.composer,
-        sheet_music: req.body.sheet,
+        sheet_music: req.body.music,
         recording: req.body.recording,
         notes: req.body.notes,
         student: student
@@ -44,7 +44,7 @@ router.post("/", function(req, res) {
       student.assignments.push(assignment);
       teacher.save();
       return res.status(200).json({
-        message: 'register fired',
+        message: 'add assignment fired',
         assignment: assignment
       });
     });

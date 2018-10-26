@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import StudentProfile from './StudentProfile';
 import StudentAssignments from './StudentAssignments';
+import AddAssignment from './AddAssignment';
 
 class StudentDisplay extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      showing: true,
       showAssignments: false,
+      showAddAssignment: false,
       currentClickedAssignment: ''
     };
     this.handleOnClickBanner = this.handleOnClickBanner.bind(this);
@@ -14,6 +17,8 @@ class StudentDisplay extends Component {
     this.handleEditStudent = this.handleEditStudent.bind(this);
     this.handleDeleteStudent = this.handleDeleteStudent.bind(this);
     this.handlerender = this.handleRender.bind(this);
+    this.showAddAssignment = this.showAddAssignment.bind(this);
+    this.handleAddAssignment = this.handleAddAssignment.bind(this);
   }
 
   displayAssignmentOnClick(id){
@@ -22,8 +27,17 @@ class StudentDisplay extends Component {
     });
   }
 
-  handleAddAssignment(){
-    console.log('add assignment');
+  handleAddAssignment(assignment){
+    this.props.addAssignment(assignment);
+  }
+
+  showAddAssignment(){
+    let value1 = this.state.showAddAssignment ? false : true;
+    let value2 = this.state.showing ? false : true;
+    this.setState({
+      showAddAssignment: value1,
+      showing: value2
+    });
   }
 
   handleEditStudent(student){
@@ -54,7 +68,11 @@ class StudentDisplay extends Component {
     default:
       console.error('failed switch');
     }
-    this.setState({ showAssignments: newState });
+    this.setState({
+      showing: true,
+      showAddAssignment: false,
+      showAssignments: newState
+    });
   }
 
   handleRender(){
@@ -100,7 +118,7 @@ class StudentDisplay extends Component {
           <div className="studentDisplayNavAssignments col-6">
             <div className="row">
               <div className="col-10 text-center"> <a href="" onClick={this.handleOnClickBanner} > Assignments </a> </div>
-              <button className="col-2 btn btn-secondary" onClick={this.handleAddAssignment}> + </button>
+              <button className="col-2 btn btn-secondary" onClick={this.showAddAssignment}> + </button>
             </div>
           </div>
           <div className="studentDisplayNavProfile col-6 text-center">
@@ -110,25 +128,36 @@ class StudentDisplay extends Component {
 
         <div className="studentDisplay">
           {
-            this.state.showAssignments ?
-              <StudentAssignments
-                assignments={this.props.assignments}
-                currentClickedAssignment={this.state.currentClickedAssignment}
-                displayAssignmentOnClick={this.displayAssignmentOnClick}
-              />
-              :
-              <StudentProfile
-                editStudent={this.handleEditStudent}
-                deleteStudent={this.handleDeleteStudent}
-                teacherId={this.props.teacher.id}
-                studentId={currentClickedStudent._id}
-                name={currentClickedStudent.name}
-                age={currentClickedStudent.age}
-                email={currentClickedStudent.email}
-                phone={currentClickedStudent.phone}
-                goals={currentClickedStudent.goals}
-              />
+            this.state.showAddAssignment ?
+              <AddAssignment
+                showAddAssignment={this.showAddAssignment}
+                addAssignment={this.handleAddAssignment}
+               />
+              : null
           }
+          <div style={{display: (this.state.showing ? 'block' : 'none') }}>
+            {
+              this.state.showAssignments ?
+                <StudentAssignments
+                  assignments={this.props.assignments}
+                  currentClickedAssignment={this.state.currentClickedAssignment}
+                  displayAssignmentOnClick={this.displayAssignmentOnClick}
+                />
+                :
+                <StudentProfile
+                  editStudent={this.handleEditStudent}
+                  deleteStudent={this.handleDeleteStudent}
+                  teacherId={this.props.teacher.id}
+                  studentId={currentClickedStudent._id}
+                  name={currentClickedStudent.name}
+                  age={currentClickedStudent.age}
+                  email={currentClickedStudent.email}
+                  phone={currentClickedStudent.phone}
+                  goals={currentClickedStudent.goals}
+                />
+            }
+          </div>
+
         </div>
 
       </div>

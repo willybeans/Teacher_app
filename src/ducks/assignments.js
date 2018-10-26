@@ -1,10 +1,11 @@
 import C from './constants';
 import initialState from './initialState';
-const GET_ASSIGNMENTS = './api/assignment/';
+const GET_ASSIGNMENTS = './api/assignment/GET_ASSIGNMENTS';
+const ADD_ASSIGNMENT = './api/assignment/ADD_ASSIGNMENT';
 
 export const getAssignments = (id) => {
   return dispatch => {
-    return fetch(GET_ASSIGNMENTS + id, {
+    return fetch('./api/assignment/' + id, {
       method: 'GET',
       credentials: 'same-origin',
       headers: {
@@ -23,9 +24,30 @@ export const getAssignments = (id) => {
 }
 
 export const addAssignment = (assignment) => {
-  return {
-    type: C.ADD_ASSIGNMENT,
-    payload: assignment
+  return dispatch => {
+    return fetch('/api/assignment/', {
+      method: 'POST',
+      credentials: 'same-origin',
+      body: JSON.stringify({
+        studentId: assignment.studentId,
+        title: assignment.title,
+        composer: assignment.composer,
+        music: assignment.music,
+        recording: assignment.recording,
+        notes: assignment.notes
+      }),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        dispatch({
+          type: ADD_ASSIGNMENT,
+          payload: data.assignment
+        });
+      });
   };
 };
 
@@ -49,14 +71,11 @@ export default function reducer(state = initialState.assignments, action){
     return [
       ...action.payload
     ]
-  case C.ADD_ASSIGNMENT:
-    return {
+  case ADD_ASSIGNMENT:
+    return [
       ...state,
-      assignments: {
-        ...state.assignments,
-        [action.payload.assignmentID]: action.payload
-      }
-    };
+      action.payload
+    ];
     break;
   case C.EDIT_ASSIGNMENT:
     break;

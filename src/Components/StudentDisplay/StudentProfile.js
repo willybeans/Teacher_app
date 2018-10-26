@@ -3,11 +3,13 @@ import EditStudentProfile from './EditStudentProfile';
 import ViewStudentProfile from './ViewStudentProfile';
 
 
+
 class StudentProfile extends Component {
   constructor(props){
     super(props);
     this.state = {
-      viewEditStudent: false
+      viewEditStudent: false,
+      modalOpened: false
     }
     this.showEditStudent = this.showEditStudent.bind(this);
     this.handleEditStudent = this.handleEditStudent.bind(this);

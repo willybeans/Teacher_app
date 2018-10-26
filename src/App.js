@@ -6,7 +6,7 @@ import LoginRegister from './Components/Login/LoginRegister';
 import { connect } from 'react-redux';
 import { addStudent, deleteStudent, editStudent } from './ducks/students';
 import { addTeacher } from './ducks/teacher';
-import { getAssignments } from './ducks/assignments';
+import { getAssignments, addAssignment } from './ducks/assignments';
 import { loginUser } from './ducks/login';
 
 class App extends Component {
@@ -24,6 +24,7 @@ class App extends Component {
     this.displayStudentOnClick = this.displayStudentOnClick.bind(this);
     this.handleDeleteStudent = this.handleDeleteStudent.bind(this);
     this.handleEditStudent = this.handleEditStudent.bind(this);
+    this.handleAddAssignment = this.handleAddAssignment.bind(this);
   }
 
   getStudents(){
@@ -61,6 +62,11 @@ class App extends Component {
     } else {
       this.setState({show_add_student: false});
     }
+  }
+
+  handleAddAssignment(assignment){
+    assignment.studentId = this.state.clickedStudent;
+    this.props.addAssignment(assignment);
   }
 
   handleAddStudent(student) {
@@ -124,6 +130,7 @@ class App extends Component {
                   assignments={this.props.assignments}
                   deleteStudent={this.handleDeleteStudent}
                   editStudent={this.handleEditStudent}
+                  addAssignment={this.handleAddAssignment}
                 />
                 : null
             }
@@ -161,6 +168,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     getAssignments: (id) => {
       dispatch(getAssignments(id));
+    },
+    addAssignment: (assignment) => {
+      dispatch(addAssignment(assignment));
     }
   };
 };

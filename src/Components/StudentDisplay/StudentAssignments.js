@@ -10,6 +10,7 @@ class StudentAssignments extends Component {
   render() {
     let assignmentItems;
     let currentClickedAssignment;
+    let newestAssignmentDate = 0;
 
     if(this.props.assignments){
       assignmentItems = this.props.assignments.map( item => {

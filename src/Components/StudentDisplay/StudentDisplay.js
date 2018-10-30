@@ -8,7 +8,7 @@ class StudentDisplay extends Component {
     super(props);
     this.state = {
       showing: true,
-      showAssignments: false,
+      showAssignments: true,
       showAddAssignment: false,
       currentClickedAssignment: ''
     };
@@ -51,17 +51,16 @@ class StudentDisplay extends Component {
   handleOnClickBanner(event){
     event.preventDefault();
     let currentClick = event.currentTarget.innerText;
-    let currentState = this.state.showAssignments;
-    let newState = currentState;
+    let newState = this.state.showAssignments;
 
     switch(currentClick){
     case 'Assignments':
-      if(currentState === false){
+      if(newState === false){
         newState = true;
       }
       break;
     case 'Profile':
-      if(currentState === true){
+      if(newState === true){
         newState = false;
       }
       break;
@@ -101,9 +100,9 @@ class StudentDisplay extends Component {
             }
           }
           if(countMatch != currentAssignmentsLength){
-            this.props.getAssignments(this.props.clickedStudent);
+          this.props.getAssignments(this.props.clickedStudent);
           }
-        }
+       }
       }
       return currentClickedStudent;
     }
@@ -112,16 +111,38 @@ class StudentDisplay extends Component {
   render() {
     let currentClickedStudent = this.handleRender();
 
+    let highlightClickedBanner = {
+      background: "#CAEBF2"
+    };
+
     return (
       <div>
         <div className="studentDisplayNav row">
-          <div className="studentDisplayNavAssignments col-6">
+
+          <div className="studentDisplayNavAssignments col-6"
+            style={
+              (this.state.showing) ? (this.state.showAssignments) ?
+                highlightClickedBanner : null
+                :
+                null}>
+
             <div className="row">
-              <div className="col-10 text-center"> <a href="" onClick={this.handleOnClickBanner} > Assignments </a> </div>
+              <div className="col-10 text-center">
+                <a href="" onClick={this.handleOnClickBanner} > Assignments </a>
+              </div>
               <button className="col-2 btn btn-secondary" onClick={this.showAddAssignment}> + </button>
             </div>
           </div>
-          <div className="studentDisplayNavProfile col-6 text-center">
+
+          <div className="studentDisplayNavProfile col-6 text-center"
+          style={
+            (this.state.showing) ?
+              (this.state.showAssignments) ?
+                null : highlightClickedBanner
+                :
+                null}
+              >
+
             <a href="" onClick={this.handleOnClickBanner}> Profile </a>
           </div>
         </div>

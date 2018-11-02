@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TeacherProfile from './Components/TeacherProfile';
 import Students from './Components/StudentSearch/Students';
 import StudentDisplay from './Components/StudentDisplay/StudentDisplay';
 import AddStudents from './Components/AddStudents';
@@ -13,6 +14,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      show_teacher: false,
       show_add_student: false,
       show_current_student: false,
       clickedStudent: ''
@@ -26,6 +28,7 @@ class App extends Component {
     this.handleEditStudent = this.handleEditStudent.bind(this);
     this.handleAddAssignment = this.handleAddAssignment.bind(this);
     this.handleGetAssignments = this.handleGetAssignments.bind(this);
+    this.handleShowTeacher = this.handleShowTeacher.bind(this);
   }
 
   getStudents(){
@@ -46,8 +49,22 @@ class App extends Component {
     this.getStudents();
   }
 
+  handleShowTeacher(){
+    if(this.state.show_teacher === false){
+      this.setState({
+        show_teacher: true,
+        show_add_student: false,
+        show_current_student: false
+      });
+    } else {
+      this.setState({ show_teacher: false });
+    }
+
+  }
+
   displayStudentOnClick(id){
     this.setState({
+      show_teacher: false,
       show_add_student: false,
       show_current_student: true,
       clickedStudent: id
@@ -58,6 +75,7 @@ class App extends Component {
   handleShowAddStudent() {
     if(this.state.show_add_student === false) {
       this.setState({
+        show_teacher: false,
         show_current_student: false,
         show_add_student: true
       });
@@ -106,6 +124,9 @@ class App extends Component {
         </div>
 
         <div className="row">
+          <div className="col text-left">
+            <button className="btn btn-dark" onClick={this.handleShowTeacher}>Teacher Profile</button>
+          </div>
           <div className="col text-right">
             <button className="btn btn-info" onClick={this.handleShowAddStudent}>Add Student</button>
           </div>
@@ -121,6 +142,11 @@ class App extends Component {
           </div>
 
           <div className="student_view_right col col-9">
+            {
+              this.state.show_teacher ?
+              <TeacherProfile teacher={this.props.teacher} />
+              : null
+            }
             {
               this.state.show_add_student ?
                 <AddStudents addStudent={this.handleAddStudent} />

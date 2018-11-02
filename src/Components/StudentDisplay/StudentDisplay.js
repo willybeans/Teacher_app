@@ -27,6 +27,14 @@ class StudentDisplay extends Component {
     });
   }
 
+  // componentDidMount(){
+  //   this.props.getAssignments(this.props.clickedStudent);
+  // }
+  //
+  // componentDidUpdate(){
+  //   this.props.getAssignments(this.props.clickedStudent);
+  // }
+
   handleAddAssignment(assignment){
     this.props.addAssignment(assignment);
   }
@@ -89,31 +97,13 @@ class StudentDisplay extends Component {
         }
       });
       currentClickedStudent = currentClickedStudent[0];
-      //this grabs the assignments of clicked student
-      if (this.props.assignments){
-        let countMatch = 0;
-        let currentAssignmentsLength = currentClickedStudent.assignments.length;
-        if (currentAssignmentsLength > 0) {
-          let stateAssignmentsLength = this.props.assignments.length;
-          //compare current states assignments with students assignment id's
-          for(let i = 0; i < currentAssignmentsLength; i++){
-            for (let item of this.props.assignments){
-              if(item._id === currentClickedStudent.assignments[i]){
-                countMatch++;
-              }
-            }
-          }
-          if(countMatch != currentAssignmentsLength){
-          this.props.getAssignments(this.props.clickedStudent);
-          }
-       }
-      }
       return currentClickedStudent;
     }
   }
 
   render() {
     let currentClickedStudent = this.handleRender();
+    //this.props.getAssignments(this.props.clickedStudent);
 
     let highlightClickedBanner = {
       background: "#CAEBF2"

@@ -25,6 +25,7 @@ class App extends Component {
     this.handleDeleteStudent = this.handleDeleteStudent.bind(this);
     this.handleEditStudent = this.handleEditStudent.bind(this);
     this.handleAddAssignment = this.handleAddAssignment.bind(this);
+    this.handleGetAssignments = this.handleGetAssignments.bind(this);
   }
 
   getStudents(){
@@ -51,6 +52,7 @@ class App extends Component {
       show_current_student: true,
       clickedStudent: id
     });
+    this.handleGetAssignments(id);
   }
 
   handleShowAddStudent() {
@@ -62,6 +64,10 @@ class App extends Component {
     } else {
       this.setState({show_add_student: false});
     }
+  }
+
+  handleGetAssignments(id){
+    this.props.getAssignments(id);
   }
 
   handleAddAssignment(assignment){

@@ -8,7 +8,7 @@ class StudentDisplay extends Component {
     super(props);
     this.state = {
       showing: true,
-      showAssignments: true,
+      showAssignments: false,
       showAddAssignment: false,
       currentClickedAssignment: ''
     };
@@ -50,8 +50,12 @@ class StudentDisplay extends Component {
 
   handleOnClickBanner(event){
     event.preventDefault();
-    let currentClick = event.currentTarget.innerText;
+    let currentClick = event.currentTarget.innerText.toString();
     let newState = this.state.showAssignments;
+
+    currentClick = currentClick.toString();
+
+    console.log(currentClick);
 
     switch(currentClick){
     case 'Assignments':
@@ -128,7 +132,7 @@ class StudentDisplay extends Component {
 
             <div className="row">
               <div className="col-10 text-center">
-                <a href="" onClick={this.handleOnClickBanner} > Assignments </a>
+                <a href="" onClick={this.handleOnClickBanner}>Assignments</a>
               </div>
               <button className="col-2 btn btn-secondary" onClick={this.showAddAssignment}> + </button>
             </div>
@@ -143,7 +147,7 @@ class StudentDisplay extends Component {
                 null}
               >
 
-            <a href="" onClick={this.handleOnClickBanner}> Profile </a>
+            <a href="" onClick={this.handleOnClickBanner}>Profile</a>
           </div>
         </div>
 

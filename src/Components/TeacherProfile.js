@@ -3,33 +3,30 @@ import React, { Component } from 'react';
 class TeacherProfile extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-
-    };
+    this.state = {};
 
   }
 
-
-
   render() {
-
 
     return (
       <div>
 
-        <div className="row">
-          <div className="col">
-            Name: {this.props.teacher.name}
+         <div>
+          <div className="row">
+            <div className="col">
+              Name: {this.props.name}
+            </div>
           </div>
-        </div>
-        <div className="row">
-          <div className="col">
-            Email: {this.props.teacher.email}
+          <div className="row">
+            <div className="col">
+              Email: {this.props.email}
+            </div>
           </div>
-        </div>
-        <div className="row">
-          <div className="col">
-            Instrument: {this.props.teacher.instrument}
+          <div className="row">
+            <div className="col">
+              Instrument: {this.props.instrument}
+            </div>
           </div>
         </div>
 

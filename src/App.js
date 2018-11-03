@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TeacherProfile from './Components/TeacherProfile';
+import TeacherDisplay from './Components/TeacherDisplay';
 import Students from './Components/StudentSearch/Students';
 import StudentDisplay from './Components/StudentDisplay/StudentDisplay';
 import AddStudents from './Components/AddStudents';
@@ -144,8 +144,8 @@ class App extends Component {
           <div className="student_view_right col col-9">
             {
               this.state.show_teacher ?
-              <TeacherProfile teacher={this.props.teacher} />
-              : null
+                <TeacherDisplay teacher={this.props.teacher} />
+                : null
             }
             {
               this.state.show_add_student ?

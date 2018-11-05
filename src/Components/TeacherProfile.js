@@ -12,7 +12,7 @@ class TeacherProfile extends Component {
     return (
       <div>
 
-         <div>
+        <div>
           <div className="row">
             <div className="col">
               Name: {this.props.name}

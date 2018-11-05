@@ -31,11 +31,12 @@ class EditTeacher extends Component {
     };
     this.setState({teacher: newTeacher});
   }
+
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state.teacher);
-  //  this.props.EditTeacher(this.state.teacher);
+    this.props.editTeacher(this.state.teacher);
   }
+  
   render() {
 
     return (

@@ -33,6 +33,9 @@ router.post("/", (req, res) => {
 
 router.put('/', (req,res) => {
   const teacherId = req.body.teacherId;
+  console.log('hi');
+  console.log(req);
+  console.log(teacherId);
   console.log(req.body);
 
   if(teacherId) {

@@ -9,6 +9,7 @@ class TeacherDisplay extends Component {
       viewEditTeacher: false
     };
     this.showEditTeacher = this.showEditTeacher.bind(this);
+    this.handleEditTeacher = this.handleEditTeacher.bind(this);
   }
 
   showEditTeacher(){
@@ -16,6 +17,10 @@ class TeacherDisplay extends Component {
     this.setState({
       viewEditTeacher: value
     });
+  }
+
+  handleEditTeacher(teacher){
+    this.props.editTeacher(teacher);
   }
 
 
@@ -39,6 +44,7 @@ class TeacherDisplay extends Component {
               name={this.props.teacher.name}
               email={this.props.teacher.email}
               instrument={this.props.teacher.instrument}
+              editTeacher={this.handleEditTeacher}
             />
             :
             <TeacherProfile

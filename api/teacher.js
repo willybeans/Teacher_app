@@ -33,21 +33,20 @@ router.post("/", (req, res) => {
 
 router.put('/', (req,res) => {
   const teacherId = req.body.teacherId;
-  console.log('hi');
-  console.log(req);
-  console.log(teacherId);
-  console.log(req.body);
 
   if(teacherId) {
-    Teacher.findById(teacherId).exec(function(err, teacher){
-      if (err) res.json(err);
+    Teacher.findByIdAndUpdate(teacherId, {
+      $set: {
+        name: req.body.name,
+        email: req.body.email,
+        instrument: req.body.instrument
+      }}, {new: true}, function(err, data) {
+      if(err) console.error(err);
 
-      // teacher.save().then(data => {
-      //   res.status(200).json(data);
-      // });
       return res.status(200).json({
-        req: req.body,
-        res: teacher
+        name: data.name,
+        email: data.email,
+        instrument: data.instrument
       });
 
     });

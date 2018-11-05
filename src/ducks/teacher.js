@@ -43,13 +43,12 @@ export function editTeacher(teacher){
     })
       .then( res=> res.json())
       .then(data => {
-        //console.log(data);
         dispatch({
           type: EDIT_TEACHER,
-          payload: null
+          payload: data
         });
       });
-  }
+  };
 }
 
 export function loginTeacher(teacher){
@@ -74,10 +73,7 @@ export default function reducer(state = initialState.teacher, action){
   case EDIT_TEACHER:
     return {
       ...state,
-      teacher: {
-        ...state.teacher,
-        ...action.payload
-      }
+      ...action.payload
     };
   case C.DELETE_TEACHER:
 

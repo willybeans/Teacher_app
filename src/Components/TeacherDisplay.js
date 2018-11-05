@@ -41,6 +41,7 @@ class TeacherDisplay extends Component {
         {
           (this.state.viewEditTeacher) ?
             <EditTeacher
+              showEditTeacher={this.showEditTeacher}
               name={this.props.teacher.name}
               email={this.props.teacher.email}
               instrument={this.props.teacher.instrument}

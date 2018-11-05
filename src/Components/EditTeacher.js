@@ -35,8 +35,9 @@ class EditTeacher extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.editTeacher(this.state.teacher);
+    this.props.showEditTeacher();
   }
-  
+
   render() {
 
     return (

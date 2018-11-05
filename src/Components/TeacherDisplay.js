@@ -24,7 +24,7 @@ class TeacherDisplay extends Component {
 
     return (
       <div>
-        <div className="row text-right">
+        <div className="row float-right">
           {
             (this.state.viewEditTeacher) ?
               <button className="btn btn-dark" onClick={this.showEditTeacher}>X</button>

@@ -32,9 +32,24 @@ router.post("/", (req, res) => {
 });
 
 router.put('/', (req,res) => {
-  return res.status(400).json({
-    message: 'update fired'
-  });
+  const teacherId = req.body.teacherId;
+  console.log(req.body);
+
+  if(teacherId) {
+    Teacher.findById(teacherId).exec(function(err, teacher){
+      if (err) res.json(err);
+
+      // teacher.save().then(data => {
+      //   res.status(200).json(data);
+      // });
+      return res.status(200).json({
+        req: req.body,
+        res: teacher
+      });
+
+    });
+  }
+
 });
 
 router.delete('/', (req, res) => {

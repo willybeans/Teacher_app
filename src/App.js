@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import TeacherProfile from './Components/TeacherProfile';
+import TeacherDisplay from './Components/TeacherDisplay';
 import Students from './Components/StudentSearch/Students';
 import StudentDisplay from './Components/StudentDisplay/StudentDisplay';
 import AddStudents from './Components/AddStudents';
 import LoginRegister from './Components/Login/LoginRegister';
 import { connect } from 'react-redux';
 import { addStudent, deleteStudent, editStudent } from './ducks/students';
-import { addTeacher } from './ducks/teacher';
+import { addTeacher, editTeacher } from './ducks/teacher';
 import { getAssignments, addAssignment } from './ducks/assignments';
 import { loginUser } from './ducks/login';
 
@@ -29,6 +29,7 @@ class App extends Component {
     this.handleAddAssignment = this.handleAddAssignment.bind(this);
     this.handleGetAssignments = this.handleGetAssignments.bind(this);
     this.handleShowTeacher = this.handleShowTeacher.bind(this);
+    this.handleEditTeacher = this.handleEditTeacher.bind(this);
   }
 
   getStudents(){
@@ -82,6 +83,11 @@ class App extends Component {
     } else {
       this.setState({show_add_student: false});
     }
+  }
+
+  handleEditTeacher(teacher){
+    teacher.teacherId = this.props.teacher.id;
+    this.props.editTeacher(teacher);
   }
 
   handleGetAssignments(id){
@@ -144,8 +150,11 @@ class App extends Component {
           <div className="student_view_right col col-9">
             {
               this.state.show_teacher ?
-              <TeacherProfile teacher={this.props.teacher} />
-              : null
+                <TeacherDisplay
+                  teacher={this.props.teacher}
+                  editTeacher={this.handleEditTeacher}
+                />
+                : null
             }
             {
               this.state.show_add_student ?
@@ -197,6 +206,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     addTeacher: (teacher) => {
       dispatch(addTeacher(teacher));
+    },
+    editTeacher: (teacher) => {
+      dispatch(editTeacher(teacher));
     },
     getAssignments: (id) => {
       dispatch(getAssignments(id));

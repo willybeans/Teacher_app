@@ -9,17 +9,18 @@ import { addStudent, deleteStudent, editStudent } from './ducks/students';
 import { addTeacher, editTeacher } from './ducks/teacher';
 import { getAssignments, addAssignment } from './ducks/assignments';
 import { loginUser } from './ducks/login';
+import DailyQuotes from './Components/DailyQuotes';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      show_quote: true,
       show_teacher: false,
       show_add_student: false,
       show_current_student: false,
       clickedStudent: ''
     };
-    this.getStudents = this.getStudents.bind(this);
     this.handleShowAddStudent = this.handleShowAddStudent.bind(this);
     //this.handleSubmit = this.handleSubmit.bind(this);
     this.handleAddStudent = this.handleAddStudent.bind(this);
@@ -32,27 +33,10 @@ class App extends Component {
     this.handleEditTeacher = this.handleEditTeacher.bind(this);
   }
 
-  getStudents(){
-    //this is where the async DB request will go
-    this.setState({
-      students: [
-        'jun yada',
-        'willybeans',
-        'brian blade',
-        'chick corea',
-        'brad mehldau'
-      ]
-    });
-  }
-
-  componentDidMount() {
-    //this is where we will put async requests
-    this.getStudents();
-  }
-
   handleShowTeacher(){
     if(this.state.show_teacher === false){
       this.setState({
+        show_quote:false,
         show_teacher: true,
         show_add_student: false,
         show_current_student: false
@@ -65,6 +49,7 @@ class App extends Component {
 
   displayStudentOnClick(id){
     this.setState({
+      show_quote: false,
       show_teacher: false,
       show_add_student: false,
       show_current_student: true,
@@ -76,6 +61,7 @@ class App extends Component {
   handleShowAddStudent() {
     if(this.state.show_add_student === false) {
       this.setState({
+        show_quote: false,
         show_teacher: false,
         show_current_student: false,
         show_add_student: true
@@ -125,7 +111,7 @@ class App extends Component {
       <div className="container-fluid">
         <div className="row">
           <div className="banner text-center col">
-            <h1>TeacherAppTitle</h1>
+            <h1></h1>
           </div>
         </div>
 
@@ -148,6 +134,13 @@ class App extends Component {
           </div>
 
           <div className="student_view_right col col-9">
+
+          {    (this.state.show_quote) ?
+            <DailyQuotes />
+            :
+            null
+
+          }
             {
               this.state.show_teacher ?
                 <TeacherDisplay

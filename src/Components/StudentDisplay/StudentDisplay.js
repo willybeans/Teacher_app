@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import StudentProfile from './StudentProfile';
-import StudentAssignments from './StudentAssignments';
-import AddAssignment from './AddAssignment';
+import StudentAssignments from './AssignmentDisplay/AssignmentDisplay';
+import AddAssignment from './AssignmentDisplay/AddAssignment';
 
 class StudentDisplay extends Component {
   constructor(props) {
@@ -26,14 +26,6 @@ class StudentDisplay extends Component {
       currentClickedAssignment: id
     });
   }
-
-  // componentDidMount(){
-  //   this.props.getAssignments(this.props.clickedStudent);
-  // }
-  //
-  // componentDidUpdate(){
-  //   this.props.getAssignments(this.props.clickedStudent);
-  // }
 
   handleAddAssignment(assignment){
     this.props.addAssignment(assignment);
@@ -62,8 +54,6 @@ class StudentDisplay extends Component {
     let newState = this.state.showAssignments;
 
     currentClick = currentClick.toString();
-
-    console.log(currentClick);
 
     switch(currentClick){
     case 'Assignments':

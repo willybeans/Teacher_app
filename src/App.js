@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TeacherDisplay from './Components/TeacherDisplay';
+import TeacherDisplay from './Components/TeacherDisplay/TeacherDisplay';
 import Students from './Components/StudentSearch/Students';
 import StudentDisplay from './Components/StudentDisplay/StudentDisplay';
 import AddStudents from './Components/AddStudents';

@@ -135,12 +135,10 @@ class App extends Component {
 
           <div className="student_view_right col col-9">
 
-          {    (this.state.show_quote) ?
-            <DailyQuotes />
-            :
-            null
-
-          }
+            {    (this.state.show_quote) ?
+              <DailyQuotes />
+              : null
+            }
             {
               this.state.show_teacher ?
                 <TeacherDisplay

@@ -116,8 +116,8 @@ class StudentDisplay extends Component {
     let currentClickedStudent = this.handleRenderStudent();
     //this.props.getAssignments(this.props.clickedStudent);
     let mostRecentAssignment = this.handleRenderRecentAssignment();
-    console.log('most recent');
-    console.log(mostRecentAssignment);
+    // console.log('most recent');
+    // console.log(mostRecentAssignment);
     let highlightClickedBanner = {
       background: "#CAEBF2"
     };
@@ -178,6 +178,7 @@ class StudentDisplay extends Component {
                 <StudentProfile
                   editStudent={this.handleEditStudent}
                   deleteStudent={this.handleDeleteStudent}
+                  current={currentClickedStudent}
                   teacherId={this.props.teacher.id}
                   studentId={currentClickedStudent._id}
                   name={currentClickedStudent.name}

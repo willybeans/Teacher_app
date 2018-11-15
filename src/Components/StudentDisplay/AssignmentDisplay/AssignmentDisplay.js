@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AssignmentItem from './AssignmentItem';
 import AssignmentBody from './AssignmentBody';
 import EditAssignment from './EditAssignment';
+import Assignments from './Assignments';
 
 class StudentAssignments extends Component {
   constructor(props){
@@ -10,6 +11,7 @@ class StudentAssignments extends Component {
       showEditAssignment: false
     };
     this.showEditAssignment = this.showEditAssignment.bind(this);
+    this.displayAssignmentOnClick = this.displayAssignmentOnClick.bind(this);
   }
 
 
@@ -45,46 +47,40 @@ class StudentAssignments extends Component {
     let currentClickedAssignment;
     let newestAssignmentDate = 0;
 
-    if(this.props.assignments){
-      assignmentItems = this.props.assignments.map( item => {
-        return(
-          <AssignmentItem
+    let id;
+    if(this.props.currentClickedAssignment != '') {
+      id = this.props.currentClickedAssignment;
+    } else {
+      id = this.props.mostRecentAssignment._id
+    }
+
+    currentClickedAssignment = this.props.assignments.map(item => {
+      if(item._id === id){
+        return (
+          <AssignmentBody
             key={item._id}
-            assignment={item}
-            displayAssignmentOnClick={this.displayAssignmentOnClick.bind(this)}
+            student={item.student}
+            id={item._id}
+            title={item.title}
+            composer={item.composer}
+            recording={item.recording}
+            sheetMusic={item.sheet_music}
+            notes={item.notes}
           />
         );
-      });
-
-      let id;
-      if(this.props.currentClickedAssignment != '') {
-        id = this.props.currentClickedAssignment;
-      } else {
-        id = this.props.mostRecentAssignment._id
       }
-
-      currentClickedAssignment = this.props.assignments.map(item => {
-        if(item._id === id){
-          return (
-            <AssignmentBody
-              key={item._id}
-              student={item.student}
-              id={item._id}
-              title={item.title}
-              composer={item.composer}
-              recording={item.recording}
-              sheetMusic={item.sheet_music}
-              notes={item.notes}
-            />
-          );
-        }
-      });
-    }
+    });
+    //}
     return (
       <div className="StudentAssignments">
         <div className="container">
           <div className="row">
-            <div className="col col-3 assignment_search"> {assignmentItems} </div>
+            <div className="col col-3 assignment_search">
+              <Assignments
+                assignments={this.props.assignments}
+                displayAssignmentOnClick={this.displayAssignmentOnClick}
+               />
+            </div>
 
             <div className="col col-9 text-center assignment_body">
 
@@ -101,7 +97,9 @@ class StudentAssignments extends Component {
 
               {
                 this.state.showEditAssignment ?
-                  <EditAssignment />
+                  <EditAssignment
+                    showEditAssignment={this.showEditAssignment}
+                  />
                   :
                   currentClickedAssignment
               }

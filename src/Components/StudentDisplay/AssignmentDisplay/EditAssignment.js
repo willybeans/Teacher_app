@@ -15,6 +15,10 @@ class AddAssignment extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount(){
+    console.log(this.props.passAssignment);
+  }
+
   handleChange = (propName) => (event) => {
     const {assignment} = this.state;
     const newAssignment = {
@@ -27,10 +31,19 @@ class AddAssignment extends Component {
   handleSubmit(e) {
     e.preventDefault();
     // this.props.editAssignemnt(this.state.assignment);
-    // this.props.showEditAssignment();
+    this.props.showEditAssignment();
   }
 
   render() {
+
+    let passAssignment;
+    for (let obj of this.props.assignments) {
+      if(id === obj._id){
+        passAssignment = obj;
+      }
+    };
+    console.log('---------------');
+    console.log(passAssignment);
 
     return (
 

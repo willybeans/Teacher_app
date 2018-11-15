@@ -5,7 +5,7 @@ class AssignmentItem extends Component {
     this.props.displayAssignmentOnClick(id);
   }
   render() {
-    //translate javascript time: 
+    //translate javascript time:
     let dateObj = this.props.assignment.date;
     dateObj = dateObj.substring(0, dateObj.length - 3);
 
@@ -18,7 +18,7 @@ class AssignmentItem extends Component {
 
     return (
       <div className="AssignmentItem row"
-      onClick={this.displayAssignmentOnClick.bind(this, this.props.assignment._id)}>
+        onClick={this.displayAssignmentOnClick.bind(this, this.props.assignment._id)}>
         {finalDate}
       </div>
     );

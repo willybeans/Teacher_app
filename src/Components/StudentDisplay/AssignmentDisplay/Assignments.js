@@ -23,7 +23,7 @@ class Assignments extends Component {
 
     return (
       <div className="">
-        <h5>Assignments: </h5>
+        <h6>Date: </h6>
         {assignmentItems}
       </div>
     );

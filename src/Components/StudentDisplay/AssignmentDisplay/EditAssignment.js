@@ -1,22 +1,36 @@
 import React, { Component } from 'react';
 
-class AddAssignment extends Component {
+class EditAssignment extends Component {
   constructor(){
     super();
     this.state={
       assignment:{
+        id: '',
         title: '',
         composer: '',
         recording: '',
         music: '',
-        notes: [],
+        notes: '',
       }
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount(){
-    console.log(this.props.passAssignment);
+    console.log(this.props.currentClickedAssignment);
+    if(this.props.currentClickedAssignment){
+      this.setState({
+        assignment:{
+          id: this.props.currentClickedAssignment._id,
+          title: this.props.currentClickedAssignment.title,
+          composer: this.props.currentClickedAssignment.composer,
+          recording: this.props.currentClickedAssignment.recording,
+          music: this.props.currentClickedAssignment.music,
+          notes: this.props.currentClickedAssignment.notes,
+        }
+      });
+    }
+
   }
 
   handleChange = (propName) => (event) => {
@@ -36,14 +50,14 @@ class AddAssignment extends Component {
 
   render() {
 
-    let passAssignment;
-    for (let obj of this.props.assignments) {
-      if(id === obj._id){
-        passAssignment = obj;
-      }
-    };
-    console.log('---------------');
-    console.log(passAssignment);
+    // let passAssignment;
+    // for (let obj of this.props.assignments) {
+    //   if(id === obj._id){
+    //     passAssignment = obj;
+    //   }
+    // };
+    // console.log('---------------');
+    // console.log(passAssignment);
 
     return (
 
@@ -89,4 +103,4 @@ class AddAssignment extends Component {
   }
 }
 
-export default AddAssignment;
+export default EditAssignment;

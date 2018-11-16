@@ -8,7 +8,7 @@ class StudentDisplay extends Component {
     super(props);
     this.state = {
       showing: true,
-      showAssignments: false,
+      showAssignments: true,
       showAddAssignment: false,
       currentClickedAssignment: ''
     };

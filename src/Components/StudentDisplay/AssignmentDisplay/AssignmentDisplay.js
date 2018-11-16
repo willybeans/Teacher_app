@@ -14,7 +14,6 @@ class StudentAssignments extends Component {
     this.displayAssignmentOnClick = this.displayAssignmentOnClick.bind(this);
   }
 
-
   displayAssignmentOnClick(id){
     this.props.displayAssignmentOnClick(id);
   }
@@ -25,22 +24,6 @@ class StudentAssignments extends Component {
       showEditAssignment: value
     });
   }
-
-  // componentDidMount(){
-  //   console.log('assignment mount');
-  //   let mostRecent, test;
-  //   if(this.props.assignments){
-  //     mostRecent = this.props.assignments.map( item => {
-  //       console.log(item);
-  //     });
-  //   }
-  // }
-
-
-  componentDidUpdate(){
-    console.log('assignment update');
-  }
-
 
   render() {
     let assignmentItems;
@@ -54,23 +37,16 @@ class StudentAssignments extends Component {
       id = this.props.mostRecentAssignment._id
     }
 
-    currentClickedAssignment = this.props.assignments.map(item => {
-      if(item._id === id){
-        return (
-          <AssignmentBody
-            key={item._id}
-            student={item.student}
-            id={item._id}
-            title={item.title}
-            composer={item.composer}
-            recording={item.recording}
-            sheetMusic={item.sheet_music}
-            notes={item.notes}
-          />
-        );
-      }
-    });
-    //}
+    if(this.props.assignments){
+      currentClickedAssignment = this.props.assignments.filter(item => {
+        if(item._id === id){
+          return item;
+        }
+      });
+
+      currentClickedAssignment = currentClickedAssignment[0];
+    }
+
     return (
       <div className="StudentAssignments">
         <div className="container">
@@ -79,7 +55,7 @@ class StudentAssignments extends Component {
               <Assignments
                 assignments={this.props.assignments}
                 displayAssignmentOnClick={this.displayAssignmentOnClick}
-               />
+              />
             </div>
 
             <div className="col col-9 text-center assignment_body">
@@ -98,10 +74,12 @@ class StudentAssignments extends Component {
               {
                 this.state.showEditAssignment ?
                   <EditAssignment
-                    showEditAssignment={this.showEditAssignment}
+                    currentClickedAssignment={currentClickedAssignment}
                   />
                   :
-                  currentClickedAssignment
+                  <AssignmentBody
+                    currentClickedAssignment={currentClickedAssignment}
+                  />
               }
             </div>
           </div>

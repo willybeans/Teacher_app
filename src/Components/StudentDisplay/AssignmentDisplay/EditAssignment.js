@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 
 class EditAssignment extends Component {
-  constructor(){
-    super();
-    this.state={
+  constructor(props){
+    super(props);
+    this.state = {
       assignment:{
         id: '',
         title: '',
         composer: '',
         recording: '',
         music: '',
-        notes: '',
+        notes: ''
       }
-    }
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -21,12 +21,13 @@ class EditAssignment extends Component {
     if(this.props.currentClickedAssignment){
       this.setState({
         assignment:{
+          ...this.state.assignment,
           id: this.props.currentClickedAssignment._id,
           title: this.props.currentClickedAssignment.title,
           composer: this.props.currentClickedAssignment.composer,
           recording: this.props.currentClickedAssignment.recording,
-          music: this.props.currentClickedAssignment.music,
-          notes: this.props.currentClickedAssignment.notes,
+          music: this.props.currentClickedAssignment.sheet_music,
+          notes: this.props.currentClickedAssignment.notes
         }
       });
     }

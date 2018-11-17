@@ -14,8 +14,15 @@ class AssignmentBody extends Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState){
+  componentDidMount(){
+    handleMountAndUpdate();
+  }
 
+  componentDidUpdate(prevProps, prevState){
+    handleMountAndUpdate();
+  }
+
+  handleMountAndUpdate(){
     if(this.props.currentClickedAssignment){
       if(this.props.currentClickedAssignment._id !== this.state.id){
         this.setState({

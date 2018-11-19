@@ -17,7 +17,6 @@ class EditAssignment extends Component {
   }
 
   componentDidMount(){
-    console.log(this.props.currentClickedAssignment);
     if(this.props.currentClickedAssignment){
       this.setState({
         assignment:{
@@ -45,20 +44,11 @@ class EditAssignment extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // this.props.editAssignemnt(this.state.assignment);
+    this.props.editAssignment(this.state.assignment);
     this.props.showEditAssignment();
   }
 
   render() {
-
-    // let passAssignment;
-    // for (let obj of this.props.assignments) {
-    //   if(id === obj._id){
-    //     passAssignment = obj;
-    //   }
-    // };
-    // console.log('---------------');
-    // console.log(passAssignment);
 
     return (
 

@@ -19,6 +19,8 @@ class StudentDisplay extends Component {
     this.handleRenderStudent = this.handleRenderStudent.bind(this);
     this.showAddAssignment = this.showAddAssignment.bind(this);
     this.handleAddAssignment = this.handleAddAssignment.bind(this);
+    this.handleEditAssignment = this.handleEditAssignment.bind(this);
+    this.handleDeleteAssignment = this.handleDeleteAssignment.bind(this);
     this.handleRenderRecentAssignment = this.handleRenderRecentAssignment.bind(this);
   }
 
@@ -30,6 +32,14 @@ class StudentDisplay extends Component {
 
   handleAddAssignment(assignment){
     this.props.addAssignment(assignment);
+  }
+
+  handleEditAssignment(assignment){
+    this.props.editAssignment(assignment);
+  }
+
+  handleDeleteAssignment(id){
+    this.props.deleteAssignment(id);
   }
 
   showAddAssignment(){
@@ -173,6 +183,8 @@ class StudentDisplay extends Component {
                   mostRecentAssignment={mostRecentAssignment}
                   currentClickedAssignment={this.state.currentClickedAssignment}
                   displayAssignmentOnClick={this.displayAssignmentOnClick}
+                  editAssignment={this.handleEditAssignment}
+                  deleteAssignment={this.handleDeleteAssignment}
                 />
                 :
                 <StudentProfile

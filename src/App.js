@@ -29,6 +29,8 @@ class App extends Component {
     this.handleEditStudent = this.handleEditStudent.bind(this);
     this.handleAddAssignment = this.handleAddAssignment.bind(this);
     this.handleGetAssignments = this.handleGetAssignments.bind(this);
+    this.handleEditAssignment = this.handleEditAssignment.bind(this);
+    this.handleDeleteAssignment = this.handleDeleteAssignment.bind(this);
     this.handleShowTeacher = this.handleShowTeacher.bind(this);
     this.handleEditTeacher = this.handleEditTeacher.bind(this);
   }
@@ -80,9 +82,19 @@ class App extends Component {
     this.props.getAssignments(id);
   }
 
+  handleEditAssignment(assignment){
+    console.log('edit assignment');
+    console.log(assignment);
+  }
+
   handleAddAssignment(assignment){
     assignment.studentId = this.state.clickedStudent;
     this.props.addAssignment(assignment);
+  }
+
+  handleDeleteAssignment(id){
+    console.log('delete assignment');
+    console.log(id);
   }
 
   handleAddStudent(student) {
@@ -163,6 +175,8 @@ class App extends Component {
                   deleteStudent={this.handleDeleteStudent}
                   editStudent={this.handleEditStudent}
                   addAssignment={this.handleAddAssignment}
+                  editAssignment={this.handleEditAssignment}
+                  deleteAssignment={this.handleDeleteAssignment}
                 />
                 : null
             }

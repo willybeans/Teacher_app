@@ -12,14 +12,20 @@ class AssignmentBody extends Component {
       music: '',
       notes: []
     }
+    this.handleMountAndUpdate = this.handleMountAndUpdate.bind(this);
+    this.handleDeleteAssignment = this.handleDeleteAssignment.bind(this);
   }
 
   componentDidMount(){
-    handleMountAndUpdate();
+    this.handleMountAndUpdate();
   }
 
   componentDidUpdate(prevProps, prevState){
-    handleMountAndUpdate();
+    this.handleMountAndUpdate();
+  }
+
+  handleDeleteAssignment(){
+    this.props.deleteAssignment(this.state.id);
   }
 
   handleMountAndUpdate(){
@@ -67,6 +73,8 @@ class AssignmentBody extends Component {
             Notes:  {this.state.notes}
           </div>
         </div>
+
+        <button className="btn btn-danger" onClick={this.handleDeleteAssignment}>Delete</button>
 
       </div>
     );

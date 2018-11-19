@@ -12,10 +12,20 @@ class StudentAssignments extends Component {
     };
     this.showEditAssignment = this.showEditAssignment.bind(this);
     this.displayAssignmentOnClick = this.displayAssignmentOnClick.bind(this);
+    this.handleEditAssignment = this.handleEditAssignment.bind(this);
+    this.handleDeleteAssignment = this.handleDeleteAssignment.bind(this);
   }
 
   displayAssignmentOnClick(id){
     this.props.displayAssignmentOnClick(id);
+  }
+
+  handleEditAssignment(assignment){
+    this.props.editAssignment(assignment);
+  }
+
+  handleDeleteAssignment(id){
+    this.props.deleteAssignment(id);
   }
 
   showEditAssignment(){
@@ -75,10 +85,13 @@ class StudentAssignments extends Component {
                 this.state.showEditAssignment ?
                   <EditAssignment
                     currentClickedAssignment={currentClickedAssignment}
+                    editAssignment={this.handleEditAssignment}
+                    showEditAssignment={this.showEditAssignment}
                   />
                   :
                   <AssignmentBody
                     currentClickedAssignment={currentClickedAssignment}
+                    deleteAssignment={this.handleDeleteAssignment}
                   />
               }
             </div>

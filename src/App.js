@@ -7,7 +7,7 @@ import LoginRegister from './Components/Login/LoginRegister';
 import { connect } from 'react-redux';
 import { addStudent, deleteStudent, editStudent } from './ducks/students';
 import { addTeacher, editTeacher } from './ducks/teacher';
-import { getAssignments, addAssignment } from './ducks/assignments';
+import { getAssignments, addAssignment, editAssignment, deleteAssignment } from './ducks/assignments';
 import { loginUser } from './ducks/login';
 import DailyQuotes from './Components/DailyQuotes';
 
@@ -85,6 +85,7 @@ class App extends Component {
   handleEditAssignment(assignment){
     console.log('edit assignment');
     console.log(assignment);
+    this.props.editAssignment(assignment);
   }
 
   handleAddAssignment(assignment){
@@ -95,6 +96,7 @@ class App extends Component {
   handleDeleteAssignment(id){
     console.log('delete assignment');
     console.log(id);
+    this.props.deleteAssignment(id);
   }
 
   handleAddStudent(student) {
@@ -220,6 +222,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     addAssignment: (assignment) => {
       dispatch(addAssignment(assignment));
+    },
+    editAssignment: (assignment) => {
+      dispatch(editAssignment(assignment));
+    },
+    deleteAssignment: (assignment) => {
+      dispatch(deleteAssignment(assignment));
     }
   };
 };

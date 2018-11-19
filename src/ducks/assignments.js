@@ -2,6 +2,8 @@ import C from './constants';
 import initialState from './initialState';
 const GET_ASSIGNMENTS = './api/assignment/GET_ASSIGNMENTS';
 const ADD_ASSIGNMENT = './api/assignment/ADD_ASSIGNMENT';
+const EDIT_ASSIGNMENT = './api/assignment/EDIT_ASSIGNMENT';
+const DELETE_ASSIGNMENT = './api/assignment/DELETE_ASSIGNMENT';
 
 export const getAssignments = (id) => {
   return dispatch => {
@@ -52,15 +54,39 @@ export const addAssignment = (assignment) => {
 };
 
 export const editAssignment = (assignment) => {
+  console.log("duck edit");
+  console.log(assignment);
+  // return dispatch => {
+  //   return fetch('/api/assignment/', {
+  //     method: 'PUT',
+  //     credentials: 'same-origin',
+  //     body: JSON.stringify({}),
+  //     headers: {
+  //       'content-type': 'application/json'
+  //     }
+  //   });
+  // }
   return {
-    type: C.EDIT_ASSIGNMENT,
+    type: EDIT_ASSIGNMENT,
     payload: assignment
   };
 };
 
 export const deleteAssignment = (assignment) => {
+  console.log('duck delete');
+  console.log(assignment);
+  // return dispatch => {
+  //   return fetch('/api/assignment/', {
+  //     method: 'PUT',
+  //     credentials: 'same-origin',
+  //     body: JSON.stringify({}),
+  //     headers: {
+  //       'content-type': 'application/json'
+  //     }
+  //   });
+  // }
   return {
-    type: C.DELETE_ASSIGNMENT,
+    type: DELETE_ASSIGNMENT,
     payload: assignment
   };
 };
@@ -77,9 +103,15 @@ export default function reducer(state = initialState.assignments, action){
       action.payload
     ];
     break;
-  case C.EDIT_ASSIGNMENT:
+  case EDIT_ASSIGNMENT:
+    return [
+      ...state
+    ]
     break;
-  case C.DELETE_ASSIGNMENT:
+  case DELETE_ASSIGNMENT:
+    return [
+      ...state
+    ]
     break;
   default:
     return state;

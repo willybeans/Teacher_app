@@ -52,10 +52,24 @@ router.post("/", function(req, res) {
 });
 
 router.put('/', (req,res) => {
-  //const assignmentID = req.body.assignmentID;
-  return res.status(200).json({
-    message: 'update fired'
-  });
+  const assignmentId = req.body.assignment.id;
+  if(assignmentId) {
+    Assignment.findByIdAndUpdate(assignmentId, {
+      $set: {
+        title: req.body.assignment.title,
+        composer: req.body.assignment.composer,
+        recording: req.body.assignment.recording,
+        sheet_music: req.body.assignment.sheet_music,
+        notes: req.body.assignment.notes
+      }
+    }, {new: true}, function(err, data) {
+      if(err) console.error(err);
+      return res.status(200).json({
+        data
+      });
+    });
+  }
+
 });
 
 router.delete('/', (req, res) => {

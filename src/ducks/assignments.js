@@ -54,22 +54,27 @@ export const addAssignment = (assignment) => {
 };
 
 export const editAssignment = (assignment) => {
-  console.log("duck edit");
-  console.log(assignment);
-  // return dispatch => {
-  //   return fetch('/api/assignment/', {
-  //     method: 'PUT',
-  //     credentials: 'same-origin',
-  //     body: JSON.stringify({}),
-  //     headers: {
-  //       'content-type': 'application/json'
-  //     }
-  //   });
-  // }
-  return {
-    type: EDIT_ASSIGNMENT,
-    payload: assignment
+  return dispatch => {
+    return fetch('/api/assignment/', {
+      method: 'PUT',
+      credentials: 'same-origin',
+      body: JSON.stringify({
+        assignment: assignment
+      }),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        dispatch ({
+          type: EDIT_ASSIGNMENT,
+          payload: data
+        });
+      })
   };
+
 };
 
 export const deleteAssignment = (assignment) => {

@@ -9,8 +9,8 @@ class AssignmentBody extends Component {
       title: '',
       composer: '',
       recording: '',
-      music: '',
-      notes: []
+      sheet_music: '',
+      notes: ''
     }
     this.handleMountAndUpdate = this.handleMountAndUpdate.bind(this);
     this.handleDeleteAssignment = this.handleDeleteAssignment.bind(this);
@@ -36,7 +36,7 @@ class AssignmentBody extends Component {
           title: this.props.currentClickedAssignment.title,
           composer: this.props.currentClickedAssignment.composer,
           recording: this.props.currentClickedAssignment.recording,
-          music: this.props.currentClickedAssignment.music,
+          sheet_music: this.props.currentClickedAssignment.sheet_music,
           notes: this.props.currentClickedAssignment.notes,
         });
       }
@@ -65,7 +65,7 @@ class AssignmentBody extends Component {
         </div>
         <div className="row">
           <div className="col">
-            Sheet Music:  {this.state.sheetMusic}
+            Sheet Music:  {this.state.sheet_music}
           </div>
         </div>
         <div className="row">

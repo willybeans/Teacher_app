@@ -83,8 +83,6 @@ class App extends Component {
   }
 
   handleEditAssignment(assignment){
-    console.log('edit assignment');
-    console.log(assignment);
     this.props.editAssignment(assignment);
   }
 

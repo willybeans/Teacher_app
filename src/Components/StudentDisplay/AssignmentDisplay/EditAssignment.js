@@ -5,7 +5,7 @@ class EditAssignment extends Component {
     super(props);
     this.state = {
       assignment:{
-        id: '',
+        _id: '',
         title: '',
         composer: '',
         recording: '',
@@ -21,7 +21,7 @@ class EditAssignment extends Component {
       this.setState({
         assignment:{
           ...this.state.assignment,
-          id: this.props.currentClickedAssignment._id,
+          _id: this.props.currentClickedAssignment._id,
           title: this.props.currentClickedAssignment.title,
           composer: this.props.currentClickedAssignment.composer,
           recording: this.props.currentClickedAssignment.recording,

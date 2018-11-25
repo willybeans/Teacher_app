@@ -52,7 +52,7 @@ router.post("/", function(req, res) {
 });
 
 router.put('/', (req,res) => {
-  const assignmentId = req.body.assignment.id;
+  const assignmentId = req.body.assignment._id;
   if(assignmentId) {
     Assignment.findByIdAndUpdate(assignmentId, {
       $set: {

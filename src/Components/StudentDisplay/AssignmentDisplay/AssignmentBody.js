@@ -5,7 +5,7 @@ class AssignmentBody extends Component {
   constructor(props){
     super(props);
     this.state={
-      id: '',
+      _id: '',
       title: '',
       composer: '',
       recording: '',
@@ -25,14 +25,14 @@ class AssignmentBody extends Component {
   }
 
   handleDeleteAssignment(){
-    this.props.deleteAssignment(this.state.id);
+    this.props.deleteAssignment(this.state._id);
   }
 
   handleMountAndUpdate(){
     if(this.props.currentClickedAssignment){
-      if(this.props.currentClickedAssignment._id !== this.state.id){
+      if(this.props.currentClickedAssignment._id !== this.state._id){
         this.setState({
-          id: this.props.currentClickedAssignment._id,
+          _id: this.props.currentClickedAssignment._id,
           title: this.props.currentClickedAssignment.title,
           composer: this.props.currentClickedAssignment.composer,
           recording: this.props.currentClickedAssignment.recording,

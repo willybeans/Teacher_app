@@ -64,9 +64,7 @@ router.put('/', (req,res) => {
       }
     }, {new: true}, function(err, data) {
       if(err) console.error(err);
-      return res.status(200).json({
-        data
-      });
+      return res.status(200).json(data);
     });
   }
 

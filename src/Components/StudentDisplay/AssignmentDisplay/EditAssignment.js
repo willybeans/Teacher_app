@@ -9,7 +9,7 @@ class EditAssignment extends Component {
         title: '',
         composer: '',
         recording: '',
-        music: '',
+        sheet_music: '',
         notes: ''
       }
     };
@@ -25,7 +25,7 @@ class EditAssignment extends Component {
           title: this.props.currentClickedAssignment.title,
           composer: this.props.currentClickedAssignment.composer,
           recording: this.props.currentClickedAssignment.recording,
-          music: this.props.currentClickedAssignment.sheet_music,
+          sheet_music: this.props.currentClickedAssignment.sheet_music,
           notes: this.props.currentClickedAssignment.notes
         }
       });
@@ -75,9 +75,9 @@ class EditAssignment extends Component {
             </div>
 
             <div className="form-group">
-              <label>Sheet Music: </label>
+              <label>Sheet Sheet Music: </label>
               <input type="text" className="form-control" id="assignment_music" placeholder="Music"
-                onChange={this.handleChange('music')} value={this.state.assignment.music}/>
+                onChange={this.handleChange('sheet_music')} value={this.state.assignment.sheet_music}/>
             </div>
 
             <div className="form-group">

@@ -44,7 +44,6 @@ export const addAssignment = (assignment) => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         dispatch({
           type: ADD_ASSIGNMENT,
           payload: data.assignment
@@ -67,7 +66,6 @@ export const editAssignment = (assignment) => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         dispatch ({
           type: EDIT_ASSIGNMENT,
           payload: data
@@ -97,6 +95,9 @@ export const deleteAssignment = (assignment) => {
 };
 
 export default function reducer(state = initialState.assignments, action){
+  console.log("action.payload");
+  console.log(action.payload);
+
   switch(action.type){
   case GET_ASSIGNMENTS:
     return [
@@ -109,9 +110,12 @@ export default function reducer(state = initialState.assignments, action){
     ];
     break;
   case EDIT_ASSIGNMENT:
-    return [
-      ...state
-    ]
+    return state.map((item, index) => {
+      if(item._id === action.payload._id){
+        return action.payload;
+      }
+      return item;
+    });
     break;
   case DELETE_ASSIGNMENT:
     return [

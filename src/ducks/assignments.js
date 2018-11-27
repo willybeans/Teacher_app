@@ -1,5 +1,6 @@
 import C from './constants';
 import initialState from './initialState';
+import {currentClickedAssignment} from './currentClicked'
 const GET_ASSIGNMENTS = './api/assignment/GET_ASSIGNMENTS';
 const ADD_ASSIGNMENT = './api/assignment/ADD_ASSIGNMENT';
 const EDIT_ASSIGNMENT = './api/assignment/EDIT_ASSIGNMENT';
@@ -21,6 +22,8 @@ export const getAssignments = (id) => {
           type: GET_ASSIGNMENTS,
           payload: data.body.data
         });
+        console.log('should fire other action');
+        dispatch(currentClickedAssignment(data.body.data));
       });
   }
 }
@@ -95,9 +98,6 @@ export const deleteAssignment = (assignment) => {
 };
 
 export default function reducer(state = initialState.assignments, action){
-  console.log("action.payload");
-  console.log(action.payload);
-
   switch(action.type){
   case GET_ASSIGNMENTS:
     return [

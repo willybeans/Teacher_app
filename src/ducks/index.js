@@ -8,12 +8,14 @@ import * as studentActions from './students';
 import assignments from './assignments';
 import login from './login';
 import { login as loginAction } from './login';
+import currentClicked from './currentClicked';
 
 const rootReducer = combineReducers({
   login,
   students,
   teacher,
-  assignments
+  assignments,
+  currentClicked
 });
 
 export default rootReducer;

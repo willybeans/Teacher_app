@@ -5,6 +5,10 @@
       "name": "",
       "email": ""
   },
+  "currentClicked": {
+    "student": "",
+    "assignment": ""
+  },
   "students": [],
   "assignments": []
 }

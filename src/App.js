@@ -19,7 +19,8 @@ class App extends Component {
       show_teacher: false,
       show_add_student: false,
       show_current_student: false,
-      clickedStudent: ''
+      clickedStudent: '',
+      currentAssigment: ''
     };
     this.handleShowAddStudent = this.handleShowAddStudent.bind(this);
     //this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,6 +28,7 @@ class App extends Component {
     this.displayStudentOnClick = this.displayStudentOnClick.bind(this);
     this.handleDeleteStudent = this.handleDeleteStudent.bind(this);
     this.handleEditStudent = this.handleEditStudent.bind(this);
+    this.displayAssignmentOnClick = this.displayAssignmentOnClick.bind(this);
     this.handleAddAssignment = this.handleAddAssignment.bind(this);
     this.handleGetAssignments = this.handleGetAssignments.bind(this);
     this.handleEditAssignment = this.handleEditAssignment.bind(this);
@@ -50,6 +52,7 @@ class App extends Component {
   }
 
   displayStudentOnClick(id){
+    this.handleGetAssignments(id);
     this.setState({
       show_quote: false,
       show_teacher: false,
@@ -57,7 +60,12 @@ class App extends Component {
       show_current_student: true,
       clickedStudent: id
     });
-    this.handleGetAssignments(id);
+  }
+
+  displayAssignmentOnClick(id){
+    this.setState({
+      currentClickedAssignment: id
+    });
   }
 
   handleShowAddStudent() {
@@ -171,6 +179,7 @@ class App extends Component {
                   getAssignments={this.props.getAssignments}
                   students={this.props.students}
                   clickedStudent={this.state.clickedStudent}
+                  currentAssigment={this.state.currentAssignment}
                   assignments={this.props.assignments}
                   deleteStudent={this.handleDeleteStudent}
                   editStudent={this.handleEditStudent}

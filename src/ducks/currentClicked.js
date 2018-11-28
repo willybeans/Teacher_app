@@ -2,12 +2,20 @@ import C from './constants';
 import initialState from './initialState';
 
 export function currentClickedStudent(student){
-
+  return {
+    type: C.CURRENT_STUDENT,
+    payload: student
+  };
 }
 
 export function currentClickedAssignment(assignment){
-  console.log('hiiiii');
-  console.log(assignment);
+  return {
+    type: C.CURRENT_ASSIGNMENT,
+    payload: assignment
+  };
+}
+
+export function mostRecentAssignment(assignment){
   let mostRecent = {
     date: 0,
     _id: ''
@@ -20,7 +28,6 @@ export function currentClickedAssignment(assignment){
       }
     }
   }
-  console.log(mostRecent);
   return {
     type: C.CURRENT_ASSIGNMENT,
     payload: mostRecent._id
@@ -31,12 +38,15 @@ export function currentClickedAssignment(assignment){
 export default function reducer(state = initialState.currentClicked, action){
   switch(action.type){
   case C.CURRENT_STUDENT:
-    return null;
+    return {
+      ...state,
+      student: action.payload
+    };
   case C.CURRENT_ASSIGNMENT:
     return {
       ...state,
       assignment: action.payload
-    }
+    };
   default:
     return state;
   }

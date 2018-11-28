@@ -1,6 +1,6 @@
 import C from './constants';
 import initialState from './initialState';
-import {currentClickedAssignment} from './currentClicked'
+import {mostRecentAssignment} from './currentClicked'
 const GET_ASSIGNMENTS = './api/assignment/GET_ASSIGNMENTS';
 const ADD_ASSIGNMENT = './api/assignment/ADD_ASSIGNMENT';
 const EDIT_ASSIGNMENT = './api/assignment/EDIT_ASSIGNMENT';
@@ -23,7 +23,7 @@ export const getAssignments = (id) => {
           payload: data.body.data
         });
         console.log('should fire other action');
-        dispatch(currentClickedAssignment(data.body.data));
+        dispatch(mostRecentAssignment(data.body.data));
       });
   }
 }

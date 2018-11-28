@@ -10,6 +10,7 @@ import { addTeacher, editTeacher } from './ducks/teacher';
 import { getAssignments, addAssignment, editAssignment, deleteAssignment } from './ducks/assignments';
 import { loginUser } from './ducks/login';
 import DailyQuotes from './Components/DailyQuotes';
+import { currentClickedStudent, currentClickedAssignment } from './ducks/currentClicked.js';
 
 class App extends Component {
   constructor(props) {
@@ -53,6 +54,7 @@ class App extends Component {
 
   displayStudentOnClick(id){
     this.handleGetAssignments(id);
+    this.props.currentClickedStudent(id);
     this.setState({
       show_quote: false,
       show_teacher: false,
@@ -63,6 +65,9 @@ class App extends Component {
   }
 
   displayAssignmentOnClick(id){
+    console.log('app');
+    console.log('dispayAssignmentonClick ' + id)
+    this.props.currentClickedAssignment(id);
     this.setState({
       currentClickedAssignment: id
     });
@@ -181,6 +186,7 @@ class App extends Component {
                   clickedStudent={this.state.clickedStudent}
                   currentAssigment={this.state.currentAssignment}
                   assignments={this.props.assignments}
+                  displayAssignmentOnClick={this.displayAssignmentOnClick}
                   deleteStudent={this.handleDeleteStudent}
                   editStudent={this.handleEditStudent}
                   addAssignment={this.handleAddAssignment}
@@ -235,6 +241,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     deleteAssignment: (assignment) => {
       dispatch(deleteAssignment(assignment));
+    },
+    currentClickedStudent: (student) => {
+      dispatch(currentClickedStudent(student));
+    },
+    currentClickedAssignment: (assignment) => {
+      dispatch(currentClickedAssignment(assignment));
     }
   };
 };

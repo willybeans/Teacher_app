@@ -25,6 +25,7 @@ class StudentDisplay extends Component {
   }
 
   displayAssignmentOnClick(id){
+    this.props.displayAssignmentOnClick(id);
     this.setState({
       currentClickedAssignment: id
     });

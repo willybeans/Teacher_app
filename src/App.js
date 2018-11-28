@@ -184,7 +184,7 @@ class App extends Component {
                   getAssignments={this.props.getAssignments}
                   students={this.props.students}
                   clickedStudent={this.state.clickedStudent}
-                  currentAssigment={this.state.currentAssignment}
+                  currentClickedAssignment={this.props.currentClicked.assignment}
                   assignments={this.props.assignments}
                   displayAssignmentOnClick={this.displayAssignmentOnClick}
                   deleteStudent={this.handleDeleteStudent}
@@ -206,7 +206,8 @@ const mapStateToProps = (state) => {
     teacher: state.teacher,
     login: state.login,
     students: state.students,
-    assignments: state.assignments
+    assignments: state.assignments,
+    currentClicked: state.currentClicked
   };
 };
 

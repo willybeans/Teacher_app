@@ -26,9 +26,9 @@ class StudentDisplay extends Component {
 
   displayAssignmentOnClick(id){
     this.props.displayAssignmentOnClick(id);
-    this.setState({
-      currentClickedAssignment: id
-    });
+    // this.setState({
+    //   currentClickedAssignment: id
+    // });
   }
 
   handleAddAssignment(assignment){
@@ -182,7 +182,7 @@ class StudentDisplay extends Component {
                 <AssignmentDisplay
                   assignments={this.props.assignments}
                   mostRecentAssignment={mostRecentAssignment}
-                  currentClickedAssignment={this.state.currentClickedAssignment}
+                  currentClickedAssignment={this.props.currentClickedAssignment}
                   displayAssignmentOnClick={this.displayAssignmentOnClick}
                   editAssignment={this.handleEditAssignment}
                   deleteAssignment={this.handleDeleteAssignment}

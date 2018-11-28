@@ -125,10 +125,6 @@ class StudentDisplay extends Component {
 
   render() {
     let currentClickedStudent = this.handleRenderStudent();
-    //this.props.getAssignments(this.props.clickedStudent);
-    let mostRecentAssignment = this.handleRenderRecentAssignment();
-    // console.log('most recent');
-    // console.log(mostRecentAssignment);
     let highlightClickedBanner = {
       background: "#CAEBF2"
     };
@@ -181,7 +177,6 @@ class StudentDisplay extends Component {
               this.state.showAssignments ?
                 <AssignmentDisplay
                   assignments={this.props.assignments}
-                  mostRecentAssignment={mostRecentAssignment}
                   currentClickedAssignment={this.props.currentClickedAssignment}
                   displayAssignmentOnClick={this.displayAssignmentOnClick}
                   editAssignment={this.handleEditAssignment}

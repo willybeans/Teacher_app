@@ -36,25 +36,14 @@ class StudentAssignments extends Component {
   }
 
   render() {
-    let assignmentItems;
     let currentClickedAssignment;
-    let newestAssignmentDate = 0;
 
-    let id;
-    if(this.props.currentClickedAssignment != '') {
-      id = this.props.currentClickedAssignment;
-    } else {
-      id = this.props.mostRecentAssignment._id
-    }
-
-    if(this.props.assignments){
-      currentClickedAssignment = this.props.assignments.filter(item => {
-        if(item._id === id){
+    if(this.props.assignments && this.props.currentClickedAssignment){
+      currentClickedAssignment = this.props.assignments.find(item => {
+        if(item._id === this.props.currentClickedAssignment){
           return item;
         }
       });
-
-      currentClickedAssignment = currentClickedAssignment[0];
     }
 
     return (
@@ -71,14 +60,19 @@ class StudentAssignments extends Component {
             <div className="col col-9 text-center assignment_body">
 
               <div className="row">
-                <div className="col text-right">
-                  {
-                    (this.state.showEditAssignment) ?
-                      <button className="btn btn-dark" onClick={this.showEditAssignment}>X</button>
-                      :
-                      <button className="btn btn-info" onClick={this.showEditAssignment}>Edit Assignment</button>
-                  }
-                </div>
+                { //hide this div if there are no assignments
+                  (!currentClickedAssignment) ?
+                    null
+                    :
+                    <div className="col text-right">
+                      {
+                        (this.state.showEditAssignment) ?
+                          <button className="btn btn-dark" onClick={this.showEditAssignment}>X</button>
+                          :
+                          <button className="btn btn-info" onClick={this.showEditAssignment}>Edit Assignment</button>
+                      }
+                    </div>
+                }
               </div>
 
               {

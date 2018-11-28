@@ -18,12 +18,11 @@ export const getAssignments = (id) => {
     })
       .then(res => res.json())
       .then(data => {
+        dispatch(mostRecentAssignment(data.body.data));
         dispatch({
           type: GET_ASSIGNMENTS,
           payload: data.body.data
         });
-        console.log('should fire other action');
-        dispatch(mostRecentAssignment(data.body.data));
       });
   }
 }

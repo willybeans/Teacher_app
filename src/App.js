@@ -7,9 +7,10 @@ import LoginRegister from './Components/Login/LoginRegister';
 import { connect } from 'react-redux';
 import { addStudent, deleteStudent, editStudent } from './ducks/students';
 import { addTeacher, editTeacher } from './ducks/teacher';
-import { getAssignments, addAssignment } from './ducks/assignments';
+import { getAssignments, addAssignment, editAssignment, deleteAssignment } from './ducks/assignments';
 import { loginUser } from './ducks/login';
 import DailyQuotes from './Components/DailyQuotes';
+import { currentClickedStudent, currentClickedAssignment } from './ducks/currentClicked.js';
 
 class App extends Component {
   constructor(props) {
@@ -19,7 +20,8 @@ class App extends Component {
       show_teacher: false,
       show_add_student: false,
       show_current_student: false,
-      clickedStudent: ''
+      clickedStudent: '',
+      currentAssigment: ''
     };
     this.handleShowAddStudent = this.handleShowAddStudent.bind(this);
     //this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,8 +29,11 @@ class App extends Component {
     this.displayStudentOnClick = this.displayStudentOnClick.bind(this);
     this.handleDeleteStudent = this.handleDeleteStudent.bind(this);
     this.handleEditStudent = this.handleEditStudent.bind(this);
+    this.displayAssignmentOnClick = this.displayAssignmentOnClick.bind(this);
     this.handleAddAssignment = this.handleAddAssignment.bind(this);
     this.handleGetAssignments = this.handleGetAssignments.bind(this);
+    this.handleEditAssignment = this.handleEditAssignment.bind(this);
+    this.handleDeleteAssignment = this.handleDeleteAssignment.bind(this);
     this.handleShowTeacher = this.handleShowTeacher.bind(this);
     this.handleEditTeacher = this.handleEditTeacher.bind(this);
   }
@@ -48,6 +53,8 @@ class App extends Component {
   }
 
   displayStudentOnClick(id){
+    this.handleGetAssignments(id);
+    this.props.currentClickedStudent(id);
     this.setState({
       show_quote: false,
       show_teacher: false,
@@ -55,7 +62,15 @@ class App extends Component {
       show_current_student: true,
       clickedStudent: id
     });
-    this.handleGetAssignments(id);
+  }
+
+  displayAssignmentOnClick(id){
+    console.log('app');
+    console.log('dispayAssignmentonClick ' + id)
+    this.props.currentClickedAssignment(id);
+    this.setState({
+      currentClickedAssignment: id
+    });
   }
 
   handleShowAddStudent() {
@@ -80,9 +95,17 @@ class App extends Component {
     this.props.getAssignments(id);
   }
 
+  handleEditAssignment(assignment){
+    this.props.editAssignment(assignment);
+  }
+
   handleAddAssignment(assignment){
     assignment.studentId = this.state.clickedStudent;
     this.props.addAssignment(assignment);
+  }
+
+  handleDeleteAssignment(id){
+    this.props.deleteAssignment(id);
   }
 
   handleAddStudent(student) {
@@ -135,12 +158,10 @@ class App extends Component {
 
           <div className="student_view_right col col-9">
 
-          {    (this.state.show_quote) ?
-            <DailyQuotes />
-            :
-            null
-
-          }
+            {    (this.state.show_quote) ?
+              <DailyQuotes />
+              : null
+            }
             {
               this.state.show_teacher ?
                 <TeacherDisplay
@@ -161,10 +182,14 @@ class App extends Component {
                   getAssignments={this.props.getAssignments}
                   students={this.props.students}
                   clickedStudent={this.state.clickedStudent}
+                  currentClickedAssignment={this.props.currentClicked.assignment}
                   assignments={this.props.assignments}
+                  displayAssignmentOnClick={this.displayAssignmentOnClick}
                   deleteStudent={this.handleDeleteStudent}
                   editStudent={this.handleEditStudent}
                   addAssignment={this.handleAddAssignment}
+                  editAssignment={this.handleEditAssignment}
+                  deleteAssignment={this.handleDeleteAssignment}
                 />
                 : null
             }
@@ -179,7 +204,8 @@ const mapStateToProps = (state) => {
     teacher: state.teacher,
     login: state.login,
     students: state.students,
-    assignments: state.assignments
+    assignments: state.assignments,
+    currentClicked: state.currentClicked
   };
 };
 
@@ -208,6 +234,18 @@ const mapDispatchToProps = (dispatch) => {
     },
     addAssignment: (assignment) => {
       dispatch(addAssignment(assignment));
+    },
+    editAssignment: (assignment) => {
+      dispatch(editAssignment(assignment));
+    },
+    deleteAssignment: (assignment) => {
+      dispatch(deleteAssignment(assignment));
+    },
+    currentClickedStudent: (student) => {
+      dispatch(currentClickedStudent(student));
+    },
+    currentClickedAssignment: (assignment) => {
+      dispatch(currentClickedAssignment(assignment));
     }
   };
 };

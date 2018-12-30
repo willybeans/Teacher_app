@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import StudentProfile from './StudentProfile';
-import StudentAssignments from './AssignmentDisplay/AssignmentDisplay';
+import AssignmentDisplay from './AssignmentDisplay/AssignmentDisplay';
 import AddAssignment from './AssignmentDisplay/AddAssignment';
 
 class StudentDisplay extends Component {
@@ -8,7 +8,7 @@ class StudentDisplay extends Component {
     super(props);
     this.state = {
       showing: true,
-      showAssignments: false,
+      showAssignments: true,
       showAddAssignment: false,
       currentClickedAssignment: ''
     };
@@ -16,19 +16,31 @@ class StudentDisplay extends Component {
     this.displayAssignmentOnClick = this.displayAssignmentOnClick.bind(this);
     this.handleEditStudent = this.handleEditStudent.bind(this);
     this.handleDeleteStudent = this.handleDeleteStudent.bind(this);
-    this.handlerender = this.handleRender.bind(this);
+    this.handleRenderStudent = this.handleRenderStudent.bind(this);
     this.showAddAssignment = this.showAddAssignment.bind(this);
     this.handleAddAssignment = this.handleAddAssignment.bind(this);
+    this.handleEditAssignment = this.handleEditAssignment.bind(this);
+    this.handleDeleteAssignment = this.handleDeleteAssignment.bind(this);
+    this.handleRenderRecentAssignment = this.handleRenderRecentAssignment.bind(this);
   }
 
   displayAssignmentOnClick(id){
-    this.setState({
-      currentClickedAssignment: id
-    });
+    this.props.displayAssignmentOnClick(id);
+    // this.setState({
+    //   currentClickedAssignment: id
+    // });
   }
 
   handleAddAssignment(assignment){
     this.props.addAssignment(assignment);
+  }
+
+  handleEditAssignment(assignment){
+    this.props.editAssignment(assignment);
+  }
+
+  handleDeleteAssignment(id){
+    this.props.deleteAssignment(id);
   }
 
   showAddAssignment(){
@@ -76,7 +88,7 @@ class StudentDisplay extends Component {
     });
   }
 
-  handleRender(){
+  handleRenderStudent(){
     let currentClickedStudent;
     //this grabs the currently clicked student from the full list
     if(this.props.students) {
@@ -91,13 +103,32 @@ class StudentDisplay extends Component {
     }
   }
 
-  render() {
-    let currentClickedStudent = this.handleRender();
-    //this.props.getAssignments(this.props.clickedStudent);
+  handleRenderRecentAssignment(){
+    if (this.props.currentClickedAssignment === '') {
+      let grabMostRecentDate = {
+        date: 0
+      };
+      if(this.props.assignments){
+        this.props.assignments.forEach( item => {
+          if(item.date > grabMostRecentDate.date) {
+            grabMostRecentDate = item
+          }
+        });
+        return grabMostRecentDate;
+        // this.setState({
+        //   currentClickedAssignment: grabMostRecentDate._id
+        // });
+      }
+    }
+  }
 
+
+  render() {
+    let currentClickedStudent = this.handleRenderStudent();
     let highlightClickedBanner = {
       background: "#CAEBF2"
     };
+
 
     return (
       <div>
@@ -119,13 +150,14 @@ class StudentDisplay extends Component {
           </div>
 
           <div className="studentDisplayNavProfile col-6 text-center"
-          style={
-            (this.state.showing) ?
-              (this.state.showAssignments) ?
-                null : highlightClickedBanner
+            style={
+              (this.state.showing) ?
+                (this.state.showAssignments) ?
+                  null : highlightClickedBanner
                 :
-                null}
-              >
+                null
+            }
+          >
 
             <a href="" onClick={this.handleOnClickBanner}>Profile</a>
           </div>
@@ -137,21 +169,24 @@ class StudentDisplay extends Component {
               <AddAssignment
                 showAddAssignment={this.showAddAssignment}
                 addAssignment={this.handleAddAssignment}
-               />
+              />
               : null
           }
           <div style={{display: (this.state.showing ? 'block' : 'none') }}>
             {
               this.state.showAssignments ?
-                <StudentAssignments
+                <AssignmentDisplay
                   assignments={this.props.assignments}
-                  currentClickedAssignment={this.state.currentClickedAssignment}
+                  currentClickedAssignment={this.props.currentClickedAssignment}
                   displayAssignmentOnClick={this.displayAssignmentOnClick}
+                  editAssignment={this.handleEditAssignment}
+                  deleteAssignment={this.handleDeleteAssignment}
                 />
                 :
                 <StudentProfile
                   editStudent={this.handleEditStudent}
                   deleteStudent={this.handleDeleteStudent}
+                  current={currentClickedStudent}
                   teacherId={this.props.teacher.id}
                   studentId={currentClickedStudent._id}
                   name={currentClickedStudent.name}

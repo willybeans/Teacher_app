@@ -1,7 +1,10 @@
 import C from './constants';
 import initialState from './initialState';
+import {mostRecentAssignment} from './currentClicked'
 const GET_ASSIGNMENTS = './api/assignment/GET_ASSIGNMENTS';
 const ADD_ASSIGNMENT = './api/assignment/ADD_ASSIGNMENT';
+const EDIT_ASSIGNMENT = './api/assignment/EDIT_ASSIGNMENT';
+const DELETE_ASSIGNMENT = './api/assignment/DELETE_ASSIGNMENT';
 
 export const getAssignments = (id) => {
   return dispatch => {
@@ -15,6 +18,7 @@ export const getAssignments = (id) => {
     })
       .then(res => res.json())
       .then(data => {
+        dispatch(mostRecentAssignment(data.body.data));
         dispatch({
           type: GET_ASSIGNMENTS,
           payload: data.body.data
@@ -42,7 +46,6 @@ export const addAssignment = (assignment) => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         dispatch({
           type: ADD_ASSIGNMENT,
           payload: data.assignment
@@ -52,17 +55,51 @@ export const addAssignment = (assignment) => {
 };
 
 export const editAssignment = (assignment) => {
-  return {
-    type: C.EDIT_ASSIGNMENT,
-    payload: assignment
+  return dispatch => {
+    return fetch('/api/assignment/', {
+      method: 'PUT',
+      credentials: 'same-origin',
+      body: JSON.stringify({
+        assignment: assignment
+      }),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        dispatch ({
+          type: EDIT_ASSIGNMENT,
+          payload: data
+        });
+      })
   };
+
 };
 
 export const deleteAssignment = (assignment) => {
-  return {
-    type: C.DELETE_ASSIGNMENT,
-    payload: assignment
-  };
+  return dispatch => {
+    return fetch('/api/assignment/', {
+      method: 'DELETE',
+      credentials: 'same-origin',
+      body: JSON.stringify({
+        assignment: assignment
+      }),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+      .then( res => res.json())
+      .then( data => {
+        dispatch(getAssignments(data.student))
+        //THIS IS THROWING AN ERROR:
+        //ASSIGNMENTDISPLAY.JS ---
+        //this.props.assignments.find is not a function
+        // dispatch({
+        //   type: DELETE_ASSIGNMENT
+        // });
+      })
+  }
 };
 
 export default function reducer(state = initialState.assignments, action){
@@ -77,9 +114,21 @@ export default function reducer(state = initialState.assignments, action){
       action.payload
     ];
     break;
-  case C.EDIT_ASSIGNMENT:
+  case EDIT_ASSIGNMENT:
+    return state.map((item, index) => {
+      if(item._id === action.payload._id){
+        return action.payload;
+      }
+      return item;
+    });
     break;
-  case C.DELETE_ASSIGNMENT:
+  case DELETE_ASSIGNMENT:
+    return {...state}
+    // return state.map( (item, index) => {
+    //   if(item._id  !== action.payload._id){
+    //     return item;
+    //   }
+    // })
     break;
   default:
     return state;

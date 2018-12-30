@@ -1,4 +1,5 @@
 import React from 'react';
+
 const DailyQuotes = (props) => {
   return (
     <div className="main_quote text-center">
@@ -9,6 +10,6 @@ const DailyQuotes = (props) => {
       <h5>- John Taylor Gatto</h5>
     </div>
   );
-}
+};
 
 export default DailyQuotes;

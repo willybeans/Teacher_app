@@ -117,8 +117,7 @@ export default function reducer (state = initialState.students, action) {
         return action.payload;
       }
       return item;
-    })
-
+    });
     break;
   case DELETE_STUDENT:
     return [

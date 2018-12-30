@@ -78,22 +78,28 @@ export const editAssignment = (assignment) => {
 };
 
 export const deleteAssignment = (assignment) => {
-  console.log('duck delete');
-  console.log(assignment);
-  // return dispatch => {
-  //   return fetch('/api/assignment/', {
-  //     method: 'PUT',
-  //     credentials: 'same-origin',
-  //     body: JSON.stringify({}),
-  //     headers: {
-  //       'content-type': 'application/json'
-  //     }
-  //   });
-  // }
-  return {
-    type: DELETE_ASSIGNMENT,
-    payload: assignment
-  };
+  return dispatch => {
+    return fetch('/api/assignment/', {
+      method: 'DELETE',
+      credentials: 'same-origin',
+      body: JSON.stringify({
+        assignment: assignment
+      }),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+      .then( res => res.json())
+      .then( data => {
+        dispatch(getAssignments(data.student))
+        //THIS IS THROWING AN ERROR:
+        //ASSIGNMENTDISPLAY.JS ---
+        //this.props.assignments.find is not a function
+        // dispatch({
+        //   type: DELETE_ASSIGNMENT
+        // });
+      })
+  }
 };
 
 export default function reducer(state = initialState.assignments, action){
@@ -117,9 +123,12 @@ export default function reducer(state = initialState.assignments, action){
     });
     break;
   case DELETE_ASSIGNMENT:
-    return [
-      ...state
-    ]
+    return {...state}
+    // return state.map( (item, index) => {
+    //   if(item._id  !== action.payload._id){
+    //     return item;
+    //   }
+    // })
     break;
   default:
     return state;

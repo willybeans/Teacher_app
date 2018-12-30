@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class AssignmentBody extends Component {
 
   handleDeleteAssignment(){
-    this.props.deleteAssignment(this.state._id);
+    this.props.deleteAssignment(this.props.currentClickedAssignment._id);
   }
 
   render() {
@@ -37,7 +37,7 @@ class AssignmentBody extends Component {
           </div>
         </div>
 
-        <button className="btn btn-danger" onClick={this.handleDeleteAssignment}>Delete</button>
+        <button className="btn btn-danger" onClick={this.handleDeleteAssignment.bind(this)}>Delete</button>
 
       </div>
     );

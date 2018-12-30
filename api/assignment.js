@@ -71,10 +71,17 @@ router.put('/', (req,res) => {
 });
 
 router.delete('/', (req, res) => {
+  console.log('req.body');
+  console.log(req.body);
+  if(req.body.assignment){
+    Assignment.findByIdAndRemove(req.body.assignment, (err, data) => {
+      if(err) console.error(err);
+      return res.status(200).json(data);
+    })
+
+  }
   //const assignmentID = req.body.assignmentID;
-  return res.status(200).json({
-    message: 'delete fired',
-  });
+
 });
 
 

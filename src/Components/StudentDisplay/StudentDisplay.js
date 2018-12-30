@@ -104,7 +104,7 @@ class StudentDisplay extends Component {
   }
 
   handleRenderRecentAssignment(){
-    if (this.state.currentClickedAssignment === '') {
+    if (this.props.currentClickedAssignment === '') {
       let grabMostRecentDate = {
         date: 0
       };

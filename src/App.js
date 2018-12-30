@@ -105,8 +105,6 @@ class App extends Component {
   }
 
   handleDeleteAssignment(id){
-    console.log('delete assignment');
-    console.log(id);
     this.props.deleteAssignment(id);
   }
 

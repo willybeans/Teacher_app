@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FaEdit, FaTimes } from 'react-icons/fa'
 import AssignmentItem from './AssignmentItem';
 import AssignmentBody from './AssignmentBody';
 import EditAssignment from './EditAssignment';
@@ -67,9 +68,9 @@ class StudentAssignments extends Component {
                     <div className="col text-right">
                       {
                         (this.state.showEditAssignment) ?
-                          <button className="btn btn-dark" onClick={this.showEditAssignment}>X</button>
+                          <button className="btn btn-dark" onClick={this.showEditAssignment}>< FaTimes /></button>
                           :
-                          <button className="btn btn-info" onClick={this.showEditAssignment}>Edit Assignment</button>
+                          <button className="btn btn-info" onClick={this.showEditAssignment}>< FaEdit /></button>
                       }
                     </div>
                 }

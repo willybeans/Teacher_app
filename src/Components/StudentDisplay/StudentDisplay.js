@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FaPlusSquare } from 'react-icons/fa';
 import StudentProfile from './StudentProfile';
 import AssignmentDisplay from './AssignmentDisplay/AssignmentDisplay';
 import AddAssignment from './AssignmentDisplay/AddAssignment';
@@ -145,7 +146,7 @@ class StudentDisplay extends Component {
               <div className="col-10 text-center">
                 <a href="" onClick={this.handleOnClickBanner}>Assignments</a>
               </div>
-              <button className="col-2 btn btn-secondary" onClick={this.showAddAssignment}> + </button>
+              <button className="col-2 btn btn-secondary" onClick={this.showAddAssignment}> <FaPlusSquare/> </button>
             </div>
           </div>
 

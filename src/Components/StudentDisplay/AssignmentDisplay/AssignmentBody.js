@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FaTrashAlt, FaEdit } from 'react-icons/fa'
 
 class AssignmentBody extends Component {
 
@@ -37,7 +38,7 @@ class AssignmentBody extends Component {
           </div>
         </div>
 
-        <button className="btn btn-danger" onClick={this.handleDeleteAssignment.bind(this)}>Delete</button>
+        <button className="btn btn-danger" onClick={this.handleDeleteAssignment.bind(this)}><FaTrashAlt /></button>
 
       </div>
     );

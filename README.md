@@ -28,7 +28,7 @@ This app will allow teachers to document their students, the progress and goals 
   8. open two terminals and run the commands: 
        - webpack bundle: `npm run dev`
        - nodemon server: `npm start`
-  ### Your first push request
+  ### Your first pull request
   - Make clear your intention to work on a problem in the issue section by either: 
    1. Making an issue yourself and leaving a comment of your intent to complete the issue
    2. Comment on existing issue with your intention to fix it

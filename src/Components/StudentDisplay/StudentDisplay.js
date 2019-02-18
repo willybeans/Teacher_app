@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { FaPlusSquare } from 'react-icons/fa';
 import StudentProfile from './StudentProfile';
 import AssignmentDisplay from './AssignmentDisplay/AssignmentDisplay';
 import AddAssignment from './AssignmentDisplay/AddAssignment';
@@ -145,7 +147,7 @@ class StudentDisplay extends Component {
               <div className="col-10 text-center">
                 <a href="" onClick={this.handleOnClickBanner}>Assignments</a>
               </div>
-              <button className="col-2 btn btn-secondary" onClick={this.showAddAssignment}> + </button>
+              <button className="col-2 btn btn-secondary" onClick={this.showAddAssignment}> <FaPlusSquare/> </button>
             </div>
           </div>
 
@@ -204,5 +206,31 @@ class StudentDisplay extends Component {
     );
   }
 }
+
+// const mapStateToProps = state => ({
+//   profile: state.profile,
+// });
+//
+// const mapDispatchToProps = dispatch => ({
+//   fetchUserProfile: () => {
+//     dispatch(fetchUserProfile());
+//   },
+//   updateProfileComponent: (key, value) => {
+//     dispatch(updateProfileComponent(key, value));
+//   },
+// });
+
+// Profile.propTypes = {
+//   fetchUserProfile: PropTypes.func.isRequired,
+//   updateProfileComponent: PropTypes.func.isRequired,
+//   profile: PropTypes.string.isRequired,
+// };
+
+// export default withRouter(
+//   connect(
+//     mapStateToProps,
+//     { fetchProjectCollaborators }
+//   )(Projects)
+// );
 
 export default StudentDisplay;

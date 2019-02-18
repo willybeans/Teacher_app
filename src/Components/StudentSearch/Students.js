@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import StudentItem from './StudentItem'
+import StudentItem from './StudentItem';
+import { FaUserPlus } from 'react-icons/fa';
 
 class Students extends Component {
   displayStudentOnClick(id){
@@ -22,7 +23,10 @@ class Students extends Component {
 
     return (
       <div className="">
-        <h3>Students: </h3>
+        <div className="">
+          <h3>Students </h3>
+          <div onClick={this.handleShowAddStudent}> <FaUserPlus /> </div>
+        </div>
         {studentItems}
       </div>
     );

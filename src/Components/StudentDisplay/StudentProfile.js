@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import EditStudentProfile from './EditStudentProfile';
 import ViewStudentProfile from './ViewStudentProfile';
 
@@ -46,7 +47,7 @@ class StudentProfile extends Component {
               (this.state.viewEditStudent) ?
                 <button className="btn btn-dark" onClick={this.showEditStudent}>X</button>
                 :
-                <button className="btn btn-info" onClick={this.showEditStudent}>Edit Student</button>
+                <button className="btn btn-info" onClick={this.showEditStudent}>< FaEdit /></button>
             }
           </div>
         </div>
@@ -80,7 +81,7 @@ class StudentProfile extends Component {
               (this.state.viewEditStudent) ?
                 null
                 :
-                <button className="btn btn-danger" onClick={this.handleDeleteStudent.bind(this)}>Delete Student</button>
+                <button className="btn btn-danger" onClick={this.handleDeleteStudent.bind(this)}>< FaTrashAlt /></button>
             }
           </div>
         </div>

@@ -11,6 +11,7 @@ import { getAssignments, addAssignment, editAssignment, deleteAssignment } from 
 import { loginUser } from './ducks/login';
 import DailyQuotes from './Components/DailyQuotes';
 import { currentClickedStudent, currentClickedAssignment } from './ducks/currentClicked.js';
+import { FaFolder } from 'react-icons/fa';
 
 class App extends Component {
   constructor(props) {
@@ -140,10 +141,10 @@ class App extends Component {
 
         <div className="row">
           <div className="col text-left">
-            <button className="btn btn-dark" onClick={this.handleShowTeacher}>Teacher Profile</button>
+            <button className="btn btn-dark" onClick={this.handleShowTeacher}><FaFolder /></button>
           </div>
           <div className="col text-right">
-            <button className="btn btn-info" onClick={this.handleShowAddStudent}>Add Student</button>
+            <button className="btn btn-info" onClick={this.handleShowAddStudent}>Add Student(delete me)</button>
           </div>
         </div>
 

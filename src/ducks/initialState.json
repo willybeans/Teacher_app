@@ -1,5 +1,11 @@
 {
   "login": false,
+  "displayState": {
+    "show_quote": true,
+    "show_teacher": false,
+    "show_add_student": false,
+    "show_current_student": false,
+  },
   "teacher": {
       "id": "",
       "name": "",

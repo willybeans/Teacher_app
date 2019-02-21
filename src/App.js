@@ -40,6 +40,7 @@ class App extends Component {
   }
 
   handleShowTeacher(){
+
     if(this.state.show_teacher === false){
       this.setState({
         show_quote:false,
@@ -247,6 +248,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     currentClickedAssignment: (assignment) => {
       dispatch(currentClickedAssignment(assignment));
+    },
+    displayValue: (value, type) => {
+      dispatch(displayValue)
     }
   };
 };
